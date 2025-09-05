@@ -1,5 +1,7 @@
+import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 
 const Pitch = () => {
   const panels = [
@@ -231,13 +233,47 @@ const Pitch = () => {
     },
   ];
 
+  const panelRefs = useRef<HTMLDivElement[]>([]);
+  const [showHeader, setShowHeader] = useState(true);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY < lastY || currentY < 10) {
+        setShowHeader(true);
+      } else if (currentY > lastY) {
+        setShowHeader(false);
+      }
+      lastY = currentY;
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollToPanel = (index: number) => {
+    panelRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <div
+        className={`transition-transform duration-300 ${
+          showHeader ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <Header />
+      </div>
       <main>
-        {panels.map((panel) => (
-          <section key={panel.id} className={`py-20 ${panel.className}`}>
-            <div className="container mx-auto px-6 max-w-4xl">
+        {panels.map((panel, index) => (
+          <section
+            key={panel.id}
+            ref={(el) => {
+              panelRefs.current[index] = el as HTMLDivElement;
+            }}
+            className={`relative h-screen flex items-center ${panel.className}`}
+          >
+            <div className="container mx-auto px-6 max-w-4xl text-center md:text-left">
               <h2 className="text-3xl font-bold mb-4">{panel.title}</h2>
               {panel.subtitle && (
                 <p className="text-xl mb-6">{panel.subtitle}</p>
@@ -252,6 +288,23 @@ const Pitch = () => {
                 </div>
               )}
             </div>
+            {index > 0 && (
+              <Button
+                variant="secondary"
+                className="absolute top-4 right-4"
+                onClick={() => scrollToPanel(index - 1)}
+              >
+                Previous
+              </Button>
+            )}
+            {index < panels.length - 1 && (
+              <Button
+                className="absolute bottom-4 right-4"
+                onClick={() => scrollToPanel(index + 1)}
+              >
+                Next
+              </Button>
+            )}
           </section>
         ))}
       </main>
