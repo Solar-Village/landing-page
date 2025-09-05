@@ -13,10 +13,15 @@ vi.mock('react-router-dom', async () => {
 
 import Header from '@/components/Header';
 import Whitepaper from '@/pages/Whitepaper';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('Header', () => {
   it('includes Whitepaper link', () => {
-    render(<Header />);
+    render(
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+    );
     const link = screen.getByRole('link', { name: /Whitepaper/i });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', '/whitepaper');
@@ -25,13 +30,21 @@ describe('Header', () => {
 
 describe('Whitepaper page', () => {
   it('renders PDF iframe and back button', () => {
-    render(<Whitepaper />);
+    render(
+      <BrowserRouter>
+        <Whitepaper />
+      </BrowserRouter>
+    );
     expect(screen.getByTitle(/SolarVillage Whitepaper/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Back/i })).toBeInTheDocument();
   });
 
   it('back button navigates back', async () => {
-    render(<Whitepaper />);
+    render(
+      <BrowserRouter>
+        <Whitepaper />
+      </BrowserRouter>
+    );
     const user = userEvent.setup();
     await user.click(screen.getByRole('button', { name: /Back/i }));
     expect(mockedNavigate).toHaveBeenCalledWith(-1);

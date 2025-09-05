@@ -1,6 +1,7 @@
 import { Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,12 +20,42 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
-            <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
-            <a href="#impact" className="text-muted-foreground hover:text-primary transition-colors">Impact</a>
-            <a href="/financials" className="text-muted-foreground hover:text-primary transition-colors">Financials</a>
-            <a href="/pitch" className="text-muted-foreground hover:text-primary transition-colors">Pitch</a>
-            <a href="/whitepaper" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper</a>
+            <Link
+              to="/#home"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              to="/#features"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Features
+            </Link>
+            <Link
+              to="/#impact"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Impact
+            </Link>
+            <Link
+              to="/financials"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Financials
+            </Link>
+            <Link
+              to="/pitch"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Pitch
+            </Link>
+            <Link
+              to="/whitepaper"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Whitepaper
+            </Link>
           </nav>
 
           {/* Desktop CTA */}
@@ -48,12 +79,42 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top-5 duration-300">
             <nav className="flex flex-col space-y-4">
-              <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
-              <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
-              <a href="#impact" className="text-muted-foreground hover:text-primary transition-colors">Impact</a>
-              <a href="/financials" className="text-muted-foreground hover:text-primary transition-colors">Financials</a>
-              <a href="/pitch" className="text-muted-foreground hover:text-primary transition-colors">Pitch</a>
-              <a href="/whitepaper" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper</a>
+              <Link
+                to="/#home"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                to="/#features"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Features
+              </Link>
+              <Link
+                to="/#impact"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Impact
+              </Link>
+              <Link
+                to="/financials"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Financials
+              </Link>
+              <Link
+                to="/pitch"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Pitch
+              </Link>
+              <Link
+                to="/whitepaper"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Whitepaper
+              </Link>
             </nav>
             <div className="flex flex-col space-y-2 pt-4 border-t border-border">
               <Button variant="ghost" className="w-full">Sign In</Button>
