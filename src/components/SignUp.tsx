@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckCircle, MapPin, Smartphone, Users } from "lucide-react";
+import { showConceptToast } from "@/lib/conceptToast";
 
 const SignUp = () => {
   return (
@@ -169,12 +170,13 @@ const SignUp = () => {
                 </ul>
               </div>
 
-              <Button 
-                className="w-full bg-gradient-sunrise hover:shadow-glow text-lg py-6 transition-all duration-300"
-                size="lg"
-              >
-                Register Village Interest
-              </Button>
+                <Button
+                  className="w-full bg-gradient-sunrise hover:shadow-glow text-lg py-6 transition-all duration-300"
+                  size="lg"
+                  onClick={showConceptToast}
+                >
+                  Register Village Interest
+                </Button>
 
               <p className="text-xs text-muted-foreground text-center">
                 By registering, you indicate interest in solar development for your village. 
