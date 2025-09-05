@@ -24,6 +24,7 @@ const Header = () => {
             <a href="#impact" className="text-muted-foreground hover:text-primary transition-colors">Impact</a>
             <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
             <a href="/pitch" className="text-muted-foreground hover:text-primary transition-colors">Pitch</a>
+            <a href="/whitepaper" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper</a>
           </nav>
 
           {/* Desktop CTA */}
@@ -52,6 +53,7 @@ const Header = () => {
               <a href="#impact" className="text-muted-foreground hover:text-primary transition-colors">Impact</a>
               <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
               <a href="/pitch" className="text-muted-foreground hover:text-primary transition-colors">Pitch</a>
+              <a href="/whitepaper" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper</a>
             </nav>
             <div className="flex flex-col space-y-2 pt-4 border-t border-border">
               <Button variant="ghost" className="w-full">Sign In</Button>
