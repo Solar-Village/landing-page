@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Zap, Users, TrendingUp } from "lucide-react";
 import heroImage from "@/assets/hero-solar-village.jpg";
-import { showConceptToast } from "@/lib/conceptToast";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -40,16 +40,14 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-gradient-sunrise hover:shadow-glow text-lg px-8 py-6 transition-all duration-300 transform hover:scale-105"
-                onClick={showConceptToast}
+                onClick={() =>
+                  document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 Get Solar Power Today
               </Button>
-              <Button
-                size="lg"
-                className="bg-white text-village hover:bg-white/90 text-lg px-8 py-6"
-                onClick={showConceptToast}
-              >
-                See How It Works
+              <Button size="lg" className="bg-white text-village hover:bg-white/90 text-lg px-8 py-6" asChild>
+                <Link to="/financials">See How It Works</Link>
               </Button>
           </div>
 

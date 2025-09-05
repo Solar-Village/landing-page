@@ -1,11 +1,36 @@
 import { Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { showConceptToast } from "@/lib/conceptToast";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const getHref = (id: string) =>
+    location.pathname === "/" ? `#${id}` : `/#${id}`;
+
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  const handleGetStarted = () => {
+    if (location.pathname === "/") {
+      document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/#signup");
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
@@ -22,19 +47,22 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="#home"
+              href={getHref("home")}
+              onClick={(e) => handleAnchorClick(e, "home")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Home
             </a>
             <a
-              href="#features"
+              href={getHref("features")}
+              onClick={(e) => handleAnchorClick(e, "features")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Features
             </a>
             <a
-              href="#impact"
+              href={getHref("impact")}
+              onClick={(e) => handleAnchorClick(e, "impact")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Impact
@@ -64,7 +92,7 @@ const Header = () => {
             <Button variant="ghost" onClick={showConceptToast}>Sign In</Button>
             <Button
               className="bg-gradient-sunrise hover:shadow-solar transition-all duration-300"
-              onClick={showConceptToast}
+              onClick={handleGetStarted}
             >
               Get Started
             </Button>
@@ -84,19 +112,22 @@ const Header = () => {
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top-5 duration-300">
             <nav className="flex flex-col space-y-4">
               <a
-                href="#home"
+                href={getHref("home")}
+                onClick={(e) => handleAnchorClick(e, "home")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Home
               </a>
               <a
-                href="#features"
+                href={getHref("features")}
+                onClick={(e) => handleAnchorClick(e, "features")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Features
               </a>
               <a
-                href="#impact"
+                href={getHref("impact")}
+                onClick={(e) => handleAnchorClick(e, "impact")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Impact
@@ -126,7 +157,7 @@ const Header = () => {
               </Button>
               <Button
                 className="w-full bg-gradient-sunrise hover:shadow-solar transition-all duration-300"
-                onClick={showConceptToast}
+                onClick={handleGetStarted}
               >
                 Get Started
               </Button>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import FloatingBackButton from "@/components/FloatingBackButton";
 import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
 import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
 import FamilyWithLight from "@/assets/FamilyWithLight.png";
@@ -313,6 +314,7 @@ const Pitch = () => {
       >
         <Header />
       </div>
+      <FloatingBackButton />
       <main>
         {panels.map((panel, index) => (
           <section

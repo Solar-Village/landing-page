@@ -1,23 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import FloatingBackButton from "@/components/FloatingBackButton";
 
 const Financials = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <Button
-        onClick={() => navigate(-1)}
-        variant="outline"
-        className="fixed top-16 right-4 z-50"
-      >
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back
-      </Button>
+      <FloatingBackButton />
       <main>
         <section className="w-full py-24 text-center bg-muted">
           <h1 className="text-4xl font-bold mb-2">Financials</h1>
