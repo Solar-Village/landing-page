@@ -16,12 +16,14 @@ const Header = () => {
     e: React.MouseEvent<HTMLAnchorElement>,
     id: string
   ) => {
+    e.preventDefault();
     if (location.pathname === "/") {
-      e.preventDefault();
       window.location.hash = id;
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    } else {
+      navigate(`/#${id}`);
     }
+    setIsMobileMenuOpen(false);
   };
 
   const handleGetStarted = () => {
@@ -38,12 +40,22 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (location.pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+              setIsMobileMenuOpen(false);
+            }}
+            className="flex items-center space-x-2"
+          >
             <div className="w-10 h-10 bg-gradient-sunrise rounded-full flex items-center justify-center">
               <Sun className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold text-foreground">SolarVillage</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
