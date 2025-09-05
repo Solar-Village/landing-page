@@ -42,10 +42,9 @@ const Hero = () => {
             >
               Get Solar Power Today
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6 backdrop-blur-sm"
+            <Button
+              size="lg"
+              className="bg-white text-village hover:bg-white/90 text-lg px-8 py-6"
             >
               See How It Works
             </Button>
