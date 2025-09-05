@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
+import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
 
 const Pitch = () => {
   const panels = [
@@ -10,7 +12,10 @@ const Pitch = () => {
       title: "SolarVillage",
       subtitle: "Powering Northern Nigeria with Transparent Solar Payments",
       content: "",
-      className: "bg-gradient-sunrise text-white text-center",
+      className: "text-white text-center bg-cover bg-center",
+      style: {
+        backgroundImage: `url(${PeopleReadingInTheDark})`,
+      },
     },
     {
       id: 2,
@@ -229,12 +234,17 @@ const Pitch = () => {
           UNDP, philanthropists, and partners are invited to fund, oversee, and scale SolarVillage as a global model for transparent rural electrification.
         </p>
       ),
-      className: "bg-gradient-sunrise text-white text-center",
+      className: "text-white text-center bg-cover bg-center",
+      style: {
+        backgroundImage: `url(${ChildrenStudyingWithLight})`,
+      },
     },
   ];
 
   const panelRefs = useRef<HTMLDivElement[]>([]);
   const [showHeader, setShowHeader] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showNav, setShowNav] = useState(true);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -251,8 +261,35 @@ const Pitch = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      return;
+    }
+    const observers: IntersectionObserver[] = [];
+    panelRefs.current.forEach((panel, idx) => {
+      if (!panel) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setShowNav(false);
+            setCurrentIndex(idx);
+            setTimeout(() => setShowNav(true), 100);
+          }
+        },
+        { threshold: 0.6 }
+      );
+      observer.observe(panel);
+      observers.push(observer);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   const scrollToPanel = (index: number) => {
     panelRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+    if (typeof IntersectionObserver === "undefined") {
+      setCurrentIndex(index);
+      return;
+    }
   };
 
   return (
@@ -272,6 +309,7 @@ const Pitch = () => {
               panelRefs.current[index] = el as HTMLDivElement;
             }}
             className={`relative h-screen flex items-center ${panel.className}`}
+            style={panel.style}
           >
             <div className="container mx-auto px-6 max-w-4xl text-center md:text-left">
               <h2 className="text-3xl font-bold mb-4">{panel.title}</h2>
@@ -288,26 +326,26 @@ const Pitch = () => {
                 </div>
               )}
             </div>
-            {index > 0 && (
-              <Button
-                variant="secondary"
-                className="absolute top-4 right-4"
-                onClick={() => scrollToPanel(index - 1)}
-              >
-                Previous
-              </Button>
-            )}
-            {index < panels.length - 1 && (
-              <Button
-                className="absolute bottom-4 right-4"
-                onClick={() => scrollToPanel(index + 1)}
-              >
-                Next
-              </Button>
-            )}
           </section>
         ))}
       </main>
+      {showNav && currentIndex > 0 && (
+        <Button
+          variant="secondary"
+          className="fixed bottom-4 left-4 z-50"
+          onClick={() => scrollToPanel(currentIndex - 1)}
+        >
+          Previous
+        </Button>
+      )}
+      {showNav && currentIndex < panels.length - 1 && (
+        <Button
+          className="fixed bottom-4 right-4 z-50"
+          onClick={() => scrollToPanel(currentIndex + 1)}
+        >
+          Next
+        </Button>
+      )}
       <Footer />
     </div>
   );
