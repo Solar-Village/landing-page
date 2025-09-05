@@ -1,4 +1,5 @@
 import { Sun, Facebook, Twitter, Instagram, Linkedin, Phone, Mail, MapPin } from "lucide-react";
+import { showConceptToast } from "@/lib/conceptToast";
 
 const Footer = () => {
   return (
@@ -29,25 +30,93 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#home" className="text-white/80 hover:text-primary-glow transition-colors">Home</a></li>
-              <li><a href="#features" className="text-white/80 hover:text-primary-glow transition-colors">Features</a></li>
-              <li><a href="#impact" className="text-white/80 hover:text-primary-glow transition-colors">Impact</a></li>
-              <li><a href="#pricing" className="text-white/80 hover:text-primary-glow transition-colors">Pricing</a></li>
-              <li><a href="#" className="text-white/80 hover:text-primary-glow transition-colors">About Us</a></li>
-            </ul>
-          </div>
+                <li>
+                  <a href="#home" className="text-white/80 hover:text-primary-glow transition-colors">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#features" className="text-white/80 hover:text-primary-glow transition-colors">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#impact" className="text-white/80 hover:text-primary-glow transition-colors">
+                    Impact
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#pricing"
+                    className="text-white/80 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    About Us
+                  </a>
+                </li>
+              </ul>
+            </div>
 
           {/* Support */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-white/80 hover:text-primary-glow transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-white/80 hover:text-primary-glow transition-colors">Installation Guide</a></li>
-              <li><a href="#" className="text-white/80 hover:text-primary-glow transition-colors">Payment Help</a></li>
-              <li><a href="#" className="text-white/80 hover:text-primary-glow transition-colors">Technical Support</a></li>
-              <li><a href="#" className="text-white/80 hover:text-primary-glow transition-colors">Contact Local Team</a></li>
-            </ul>
-          </div>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Installation Guide
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Payment Help
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Technical Support
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Contact Local Team
+                  </a>
+                </li>
+              </ul>
+            </div>
 
           {/* Contact Info */}
           <div>
@@ -82,10 +151,28 @@ const Footer = () => {
               © 2024 SolarVillage. All rights reserved. Powering Africa's future.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-white/60 hover:text-primary-glow transition-colors">Privacy Policy</a>
-              <a href="#" className="text-white/60 hover:text-primary-glow transition-colors">Terms of Service</a>
-              <a href="#" className="text-white/60 hover:text-primary-glow transition-colors">Cookie Policy</a>
-            </div>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-primary-glow transition-colors"
+                  onClick={showConceptToast}
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-primary-glow transition-colors"
+                  onClick={showConceptToast}
+                >
+                  Terms of Service
+                </a>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-primary-glow transition-colors"
+                  onClick={showConceptToast}
+                >
+                  Cookie Policy
+                </a>
+              </div>
           </div>
         </div>
       </div>

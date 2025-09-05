@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Star, Quote } from "lucide-react";
 import familyImage from "@/assets/family-solar-power.jpg";
 import studyImage from "@/assets/children-studying.jpg";
+import { showConceptToast } from "@/lib/conceptToast";
 
 const Impact = () => {
   const testimonials = [
@@ -102,21 +103,23 @@ const Impact = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Join thousands of families already enjoying clean, reliable energy. Get started today with no upfront costs.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-sunrise hover:shadow-glow text-lg px-8 py-6 transition-all duration-300"
-            >
-              Request Installation
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6"
-            >
-              Speak to Our Team
-            </Button>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-gradient-sunrise hover:shadow-glow text-lg px-8 py-6 transition-all duration-300"
+                onClick={showConceptToast}
+              >
+                Request Installation
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6"
+                onClick={showConceptToast}
+              >
+                Speak to Our Team
+              </Button>
+            </div>
         </div>
       </div>
     </section>

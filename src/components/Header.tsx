@@ -2,6 +2,7 @@ import { Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { showConceptToast } from "@/lib/conceptToast";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -60,8 +61,11 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost">Sign In</Button>
-            <Button className="bg-gradient-sunrise hover:shadow-solar transition-all duration-300">
+            <Button variant="ghost" onClick={showConceptToast}>Sign In</Button>
+            <Button
+              className="bg-gradient-sunrise hover:shadow-solar transition-all duration-300"
+              onClick={showConceptToast}
+            >
               Get Started
             </Button>
           </div>
@@ -117,8 +121,13 @@ const Header = () => {
               </Link>
             </nav>
             <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-              <Button variant="ghost" className="w-full">Sign In</Button>
-              <Button className="w-full bg-gradient-sunrise hover:shadow-solar transition-all duration-300">
+              <Button variant="ghost" className="w-full" onClick={showConceptToast}>
+                Sign In
+              </Button>
+              <Button
+                className="w-full bg-gradient-sunrise hover:shadow-solar transition-all duration-300"
+                onClick={showConceptToast}
+              >
                 Get Started
               </Button>
             </div>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Zap, Users, TrendingUp } from "lucide-react";
 import heroImage from "@/assets/hero-solar-village.jpg";
+import { showConceptToast } from "@/lib/conceptToast";
 
 const Hero = () => {
   return (
@@ -36,18 +37,20 @@ const Hero = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button 
-              size="lg" 
-              className="bg-gradient-sunrise hover:shadow-glow text-lg px-8 py-6 transition-all duration-300 transform hover:scale-105"
-            >
-              Get Solar Power Today
-            </Button>
-            <Button
-              size="lg"
-              className="bg-white text-village hover:bg-white/90 text-lg px-8 py-6"
-            >
-              See How It Works
-            </Button>
+              <Button
+                size="lg"
+                className="bg-gradient-sunrise hover:shadow-glow text-lg px-8 py-6 transition-all duration-300 transform hover:scale-105"
+                onClick={showConceptToast}
+              >
+                Get Solar Power Today
+              </Button>
+              <Button
+                size="lg"
+                className="bg-white text-village hover:bg-white/90 text-lg px-8 py-6"
+                onClick={showConceptToast}
+              >
+                See How It Works
+              </Button>
           </div>
 
           {/* Stats */}
