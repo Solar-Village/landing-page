@@ -20,24 +20,24 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/#home"
+            <a
+              href="#home"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Home
-            </Link>
-            <Link
-              to="/#features"
+            </a>
+            <a
+              href="#features"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Features
-            </Link>
-            <Link
-              to="/#impact"
+            </a>
+            <a
+              href="#impact"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Impact
-            </Link>
+            </a>
             <Link
               to="/financials"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -79,24 +79,24 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top-5 duration-300">
             <nav className="flex flex-col space-y-4">
-              <Link
-                to="/#home"
+              <a
+                href="#home"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Home
-              </Link>
-              <Link
-                to="/#features"
+              </a>
+              <a
+                href="#features"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Features
-              </Link>
-              <Link
-                to="/#impact"
+              </a>
+              <a
+                href="#impact"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Impact
-              </Link>
+              </a>
               <Link
                 to="/financials"
                 className="text-muted-foreground hover:text-primary transition-colors"
