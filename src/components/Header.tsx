@@ -18,6 +18,7 @@ const Header = () => {
   ) => {
     if (location.pathname === "/") {
       e.preventDefault();
+      window.location.hash = id;
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
