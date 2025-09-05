@@ -4,6 +4,9 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
 import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
+import FamilyWithLight from "@/assets/FamilyWithLight.png";
+import SolarVillageMetrics from "@/assets/solar-village-metrics.png";
+import SolarVillageStakeholders from "@/assets/solar-village-stakeholders.png";
 
 const Pitch = () => {
   const panels = [
@@ -52,7 +55,10 @@ const Pitch = () => {
           <p className="text-sm font-medium">Users pay → (get code?) → activate solar meter → receive power</p>
         </div>
       ),
-      className: "bg-muted",
+      className: "text-white text-center bg-cover bg-center",
+      style: {
+        backgroundImage: `url(${FamilyWithLight})`,
+      },
     },
     {
       id: 4,
@@ -122,7 +128,10 @@ const Pitch = () => {
           <li>• Local banks (on/off-ramps)</li>
         </ul>
       ),
-      className: "bg-background",
+      className: "text-white text-center bg-cover bg-center",
+      style: {
+        backgroundImage: `url(${SolarVillageStakeholders})`,
+      },
     },
     {
       id: 8,
@@ -194,7 +203,10 @@ const Pitch = () => {
           <li>• Environmental: reduced kerosene/diesel use</li>
         </ul>
       ),
-      className: "bg-muted",
+      className: "text-white text-center bg-cover bg-center",
+      style: {
+        backgroundImage: `url(${SolarVillageMetrics})`,
+      },
     },
     {
       id: 13,
