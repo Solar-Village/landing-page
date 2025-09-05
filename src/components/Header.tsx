@@ -22,7 +22,7 @@ const Header = () => {
             <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
             <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
             <a href="#impact" className="text-muted-foreground hover:text-primary transition-colors">Impact</a>
-            <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
+            <a href="/financials" className="text-muted-foreground hover:text-primary transition-colors">Financials</a>
             <a href="/pitch" className="text-muted-foreground hover:text-primary transition-colors">Pitch</a>
             <a href="/whitepaper" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper</a>
           </nav>
@@ -51,7 +51,7 @@ const Header = () => {
               <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
               <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
               <a href="#impact" className="text-muted-foreground hover:text-primary transition-colors">Impact</a>
-              <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
+              <a href="/financials" className="text-muted-foreground hover:text-primary transition-colors">Financials</a>
               <a href="/pitch" className="text-muted-foreground hover:text-primary transition-colors">Pitch</a>
               <a href="/whitepaper" className="text-muted-foreground hover:text-primary transition-colors">Whitepaper</a>
             </nav>
