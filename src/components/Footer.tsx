@@ -31,23 +31,23 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
                 <li>
-                  <a href="#home" className="text-white/80 hover:text-primary-glow transition-colors">
+                  <a href="/#home" className="text-white/80 hover:text-primary-glow transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#features" className="text-white/80 hover:text-primary-glow transition-colors">
+                  <a href="/#features" className="text-white/80 hover:text-primary-glow transition-colors">
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#impact" className="text-white/80 hover:text-primary-glow transition-colors">
+                  <a href="/#impact" className="text-white/80 hover:text-primary-glow transition-colors">
                     Impact
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#pricing"
+                    href="/#pricing"
                     className="text-white/80 hover:text-primary-glow transition-colors"
                     onClick={showConceptToast}
                   >
