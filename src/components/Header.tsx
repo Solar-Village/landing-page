@@ -49,22 +49,25 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link
-            to="/"
-            onClick={(e) => {
-              if (location.pathname === "/") {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-              setIsMobileMenuOpen(false);
-            }}
-            className="flex items-center space-x-2"
-          >
-            <div className="w-10 h-10 bg-gradient-sunrise rounded-full flex items-center justify-center">
-              <Sun className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-xl font-bold text-foreground">SolarVillage</span>
-          </Link>
+          <div className="flex items-center">
+            <Link
+              to="/"
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+                setIsMobileMenuOpen(false);
+              }}
+              className="flex items-center space-x-2"
+            >
+              <div className="w-10 h-10 bg-gradient-sunrise rounded-full flex items-center justify-center">
+                <Sun className="h-6 w-6 text-white" />
+              </div>
+              <span className="text-xl font-bold text-foreground">SolarVillage</span>
+            </Link>
+            <span className="ml-3 text-sm text-muted-foreground">Coming Soon</span>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
