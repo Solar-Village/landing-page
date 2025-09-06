@@ -118,7 +118,7 @@ const SignUp = () => {
 
       toast({
         description:
-          "Successfully submitted. Thanks for your interest. We will reach out shortly to schedule a discussion.",
+          "Successfully submitted. Thanks for your interest. Please note that this is still a concept in development, and it may take some time before we can get back to you.",
       });
       reset();
     } catch (err: unknown) {
