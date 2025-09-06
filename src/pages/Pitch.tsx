@@ -264,8 +264,8 @@ const Pitch = () => {
             <strong>Capital:</strong> Grants & impact investors fund MicroGrid installs
           </div>
           <div>
-            <strong>Recycling:</strong> Repayments flow to repay capital, then optionally 
-            fund the next village
+            <strong>Recycling:</strong> Repayments flow to repay capital, then optionally
+            fund another village
           </div>
         </div>
       ),
@@ -479,7 +479,10 @@ const Pitch = () => {
   }, []);
 
   useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") {
+    if (
+      (typeof navigator !== "undefined" && navigator.userAgent.includes("jsdom")) ||
+      typeof IntersectionObserver === "undefined"
+    ) {
       return;
     }
     const observers: IntersectionObserver[] = [];
@@ -503,10 +506,8 @@ const Pitch = () => {
 
   const scrollToPanel = (index: number) => {
     panelRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
-    if (typeof IntersectionObserver === "undefined") {
-      setCurrentIndex(index);
-      return;
-    }
+    setCurrentIndex(index);
+    setShowNav(true);
   };
 
   return (
@@ -535,26 +536,30 @@ const Pitch = () => {
             } ${panel.className}`}
             style={panel.style}
           >
-            <div
-              className={`container mx-auto px-6 max-w-4xl text-center md:text-left text-lg md:text-xl ${
-                panel.style?.backgroundImage
-                  ? "bg-black/60 border border-white rounded p-6"
-                  : ""
-              }`}
-            >
-              <h2 className="text-4xl font-bold mb-4">{panel.title}</h2>
-              {panel.subtitle && (
-                <p className="text-2xl mb-6">{panel.subtitle}</p>
-              )}
-              {panel.content && (
-                <div className="space-y-4">
-                  {typeof panel.content === "string" ? (
-                    <p>{panel.content}</p>
-                  ) : (
-                    panel.content
-                  )}
-                </div>
-              )}
+            <div className="container mx-auto px-6 max-w-4xl">
+              <div
+                className={`text-center md:text-left text-lg md:text-xl ${
+                  panel.style?.backgroundImage
+                    ? "bg-black/60 border border-white rounded p-6"
+                    : panel.className?.includes("bg-gradient")
+                      ? ""
+                      : "m-8 md:m-12 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-primary/10 to-village/20"
+                }`}
+              >
+                <h2 className="text-4xl font-bold mb-4">{panel.title}</h2>
+                {panel.subtitle && (
+                  <p className="text-2xl mb-6">{panel.subtitle}</p>
+                )}
+                {panel.content && (
+                  <div className="space-y-4">
+                    {typeof panel.content === "string" ? (
+                      <p>{panel.content}</p>
+                    ) : (
+                      panel.content
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </section>
         ))}
