@@ -22,7 +22,11 @@ const Pitch = () => {
       id: 1,
       title: "SolarVillage",
       subtitle: "Powering Northern Nigeria with Transparent Solar Payments",
-      content: "",
+      content: (
+        <p className="text-base md:text-lg">
+          Tap to top-up. Lights on. No travel, no middlemen, full transparency.
+        </p>
+      ),
       className: "text-white text-center bg-cover bg-center",
       style: {
         backgroundImage: `url(${PeopleReadingInTheDark})`,
@@ -31,16 +35,19 @@ const Pitch = () => {
     {
       id: 2,
       title: "The Challenge",
-      subtitle: "80M Nigerians lack reliable electricity",
+      subtitle: "Reliable energy is scarce; paying for it is harder",
       content: (
         <div className="space-y-4">
-          <p className="text-muted-foreground">Solar projects exist but payments are inefficient:</p>
-          <ul className="space-y-2">
-            <li>• Long trips to banks/solar offices</li>
-            <li>• Middlemen increase costs</li>
-            <li>• Corruption (?)</li>
-            <li>• Contractors underpaid</li>
-            <li>• Philanthropist investors lack visibility and transparency of repayment</li>
+          <p className="text-muted-foreground">
+            Solar hardware exists, but payment and accountability break the
+            model:
+          </p>
+          <ul className="space-y-2 text-sm">
+            <li>• Families travel far to pay and lose a day’s income</li>
+            <li>• Cash leakage and middlemen raise costs & reduce trust</li>
+            <li>• Contractors face unpredictable revenues and delays</li>
+            <li>• Many users have feature phones and limited internet</li>
+            <li>• Donors lack clear line-of-sight on repayments & impact</li>
           </ul>
         </div>
       ),
@@ -49,18 +56,22 @@ const Pitch = () => {
     {
       id: 3,
       title: "The Solution",
-      subtitle: "SolarVillage App",
+      subtitle: "A SolarVillage App",
       content: (
-        <div className="space-y-4">
-          <p>Dual interfaces:</p>
-          <ul className="space-y-2">
-            <li>• Mobile-first web app for smartphones</li>
-            <li>• USSD app (via Africa Talks) for feature phones</li>
-          </ul>
-          <p>
-            <strong>Compliant Naira Stablecoin (cNGN):</strong> regulator-approved, transparent settlement
+        <div className="space-y-4 text-white">
+          <p className="text-sm">
+            <strong>Dual access:</strong> mobile-first web app for smartphones +
+            USSD (via Africa Talks) for feature phones.
           </p>
-          <p className="font-medium">Users pay → (get code?) → activate solar meter → receive power</p>
+          <p className="text-sm">
+            <strong>How it feels:</strong> Top-up on your phone → electricity
+            starts. Simple as airtime.
+          </p>
+          <p className="text-sm">
+            <strong>Under the hood:</strong> Compliant Naira (cNGN) provides
+            regulator-approved, on-chain settlement for end-to-end
+            transparency.
+          </p>
         </div>
       ),
       className: "text-white text-center bg-cover bg-center",
@@ -75,20 +86,33 @@ const Pitch = () => {
       content: (
         <div className="space-y-3">
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">1</div>
-            <span>Transfer money from bank → SolarVillage app</span>
+            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">
+              1
+            </div>
+            <span className="text-sm">
+              User tops up from bank or mobile wallet in the SolarVillage app or
+              via USSD
+            </span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">2</div>
-            <span>Funds converted into cNGN stablecoin</span>
+            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">
+              2
+            </div>
+            <span className="text-sm">
+              Funds settle instantly in cNGN; payment is recorded on-chain
+            </span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">3</div>
-            <span>User receives activation code</span>
+            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">
+              3
+            </div>
+            <span className="text-sm">
+              Meter is authorized and power turns on for the paid duration
+            </span>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">4</div>
-            <span>Code entered into solar meter → power enabled for days/weeks</span>
+          <div className="text-xs text-muted-foreground pl-8">
+            (Backup paths like one-time activation codes are available where
+            needed.)
           </div>
         </div>
       ),
@@ -99,12 +123,25 @@ const Pitch = () => {
       title: "Benefits",
       subtitle: "",
       content: (
-        <div className="space-y-3">
-          <div><strong>For Communities:</strong> Instant access, no travel needed, energy security</div>
-          <div><strong>For Contractors:</strong> Guaranteed, transparent payments, more business</div>
-          <div><strong>For Philanthropists:</strong> Assured repayment flows, measurable impact</div>
-          <div><strong>For UNDP:</strong> Oversight, success metrics, replicable model</div>
-          <div><strong>For Compliant Naira:</strong> Flagship real-world use case, transaction volume</div>
+        <div className="space-y-3 text-sm">
+          <div>
+            <strong>Communities:</strong> Instant access, no travel, real energy
+            security
+          </div>
+          <div>
+            <strong>Contractors:</strong> Predictable cash flow and faster
+            payouts
+          </div>
+          <div>
+            <strong>Philanthropists:</strong> Village-tied repayments, auditable
+            impact
+          </div>
+          <div>
+            <strong>UNDP:</strong> Independent oversight and replicable model
+          </div>
+          <div>
+            <strong>cNGN:</strong> Flagship, real-world settlement at scale
+          </div>
         </div>
       ),
       className: "bg-gradient-to-r from-primary to-village text-white",
@@ -114,10 +151,19 @@ const Pitch = () => {
       title: "Why Now? Why Blockchain?",
       subtitle: "",
       content: (
-        <div className="space-y-3">
-          <div><strong>Regulatory readiness:</strong> Compliant Naira already approved by Nigerian regulators</div>
-          <div><strong>USSD availability:</strong> Africa Talks API enables rural access</div>
-          <div><strong>Energy demand:</strong> Strong community need + UNDP rural electrification mandates</div>
+        <div className="space-y-3 text-sm">
+          <div>
+            <strong>Regulatory tailwind:</strong> cNGN is already
+            regulator-approved
+          </div>
+          <div>
+            <strong>Universal access:</strong> USSD via Africa Talks reaches
+            offline users
+          </div>
+          <div>
+            <strong>True transparency:</strong> On-chain flows align users,
+            contractors, and donors
+          </div>
         </div>
       ),
       className: "bg-primary/5",
@@ -146,11 +192,22 @@ const Pitch = () => {
       title: "Implementation Plan",
       subtitle: "",
       content: (
-        <div className="space-y-3">
-          <div><strong>Phase 1 (0–6 months):</strong> Pilot in 3 villages</div>
-          <div><strong>Phase 2 (6–18 months):</strong> Expand to 20+ villages, add dashboards</div>
-          <div><strong>Phase 3 (18–36 months):</strong> Regional scale, DAOs, grid tie-ins</div>
-          <div className="mt-3 text-muted-foreground">+ Community training • Contractor onboarding • UNDP monitoring</div>
+        <div className="space-y-3 text-sm">
+          <div>
+            <strong>Phase 1 (0–6 months):</strong> Pilot in 1-3 villages; launch
+            app + USSD; train communities
+          </div>
+          <div>
+            <strong>Phase 2 (6–18 months):</strong> 5-15 villages; donor
+            dashboards; contractor network scale-up
+          </div>
+          <div>
+            <strong>Phase 3 (18–36 months):</strong> Regional scale; village
+            DAOs; grid & carbon integrations
+          </div>
+          <div className="mt-3 text-muted-foreground">
+            + Community training • Contractor onboarding • UNDP monitoring
+          </div>
         </div>
       ),
       className: "bg-muted",
@@ -160,11 +217,20 @@ const Pitch = () => {
       title: "Financial Model",
       subtitle: "",
       content: (
-        <div className="space-y-2">
-          <div><strong>Transaction fees:</strong> small % for sustainability</div>
-          <div><strong>Service fees:</strong> from operators / contractors (if applicable)</div>
-          <div><strong>Funding sources:</strong> grants + philanthropic financing</div>
-          <div><strong>Reinvestment:</strong> support maintenance, training, scaling</div>
+        <div className="space-y-2 text-sm">
+          <div>
+            <strong>User payments:</strong> Simple prepaid top-ups power meters
+          </div>
+          <div>
+            <strong>Fees:</strong> Small platform + service fees sustain Ops
+          </div>
+          <div>
+            <strong>Capital:</strong> Grants & impact investors fund MicroGrid installs
+          </div>
+          <div>
+            <strong>Recycling:</strong> Repayments flow to repay capital, then optionally 
+            fund the next village
+          </div>
         </div>
       ),
       className: "bg-background",
@@ -174,11 +240,22 @@ const Pitch = () => {
       title: "Risk Mitigation",
       subtitle: "",
       content: (
-        <div className="space-y-2">
-          <div><strong>Adoption hurdles:</strong> community training</div>
-          <div><strong>Regulatory risk:</strong> minimized (cNGN pre-approved)</div>
-          <div><strong>Technical risk:</strong> phased rollout, redundancy</div>
-          <div><strong>Trust issues:</strong> UNDP oversight, transparent ledger</div>
+        <div className="space-y-2 text-sm">
+          <div>
+            <strong>Adoption:</strong> Localized training & UX for web + USSD
+          </div>
+          <div>
+            <strong>Regulatory:</strong> Work within cNGN approvals; audit-ready
+            reporting
+          </div>
+          <div>
+            <strong>Technical:</strong> Redundant rails; phased rollout; 24/7
+            support
+          </div>
+          <div>
+            <strong>Trust:</strong> UNDP oversight; fully transparent on-chain
+            flows
+          </div>
         </div>
       ),
       className: "bg-gradient-to-r from-secondary to-primary text-white",
@@ -188,12 +265,12 @@ const Pitch = () => {
       title: "Side Opportunities",
       subtitle: "",
       content: (
-        <ul className="space-y-2">
-          <li>• Expansion of cNGN to Cardano ecosystem</li>
-          <li>• Grid integration: connect solar micro-grids to national grid</li>
-          <li>• Village DAOs: community-led governance</li>
-          <li>• Carbon credits: monetize CO₂ savings</li>
-          <li>• Microfinance: build credit scores for loans</li>
+        <ul className="space-y-2 text-sm">
+          <li>• Extend cNGN to Cardano for global impact finance</li>
+          <li>• Hybridize with national grid where feasible</li>
+          <li>• Village DAOs for local governance & tariffs</li>
+          <li>• Carbon credit monetization from diesel displacement</li>
+          <li>• Microfinance using repayment-based credit scores</li>
         </ul>
       ),
       className: "bg-background",
@@ -203,12 +280,12 @@ const Pitch = () => {
       title: "Impact Metrics",
       subtitle: "",
       content: (
-        <ul className="space-y-2">
-          <li>• Households electrified</li>
-          <li>• Repayment rates & cNGN volume</li>
-          <li>• Hours of reliable power</li>
-          <li>• Social impact: reduced travel, better education</li>
-          <li>• Environmental: reduced kerosene/diesel use</li>
+        <ul className="space-y-2 text-sm">
+          <li>• Households electrified & kWh delivered</li>
+          <li>• Repayment rates and cNGN volume</li>
+          <li>• Uptime and hours of reliable power</li>
+          <li>• Reduced travel; better education outcomes</li>
+          <li>• Lower kerosene/diesel use & CO₂ avoided</li>
         </ul>
       ),
       className: "text-white text-center bg-cover bg-center",
@@ -221,10 +298,19 @@ const Pitch = () => {
       title: "Roadmap",
       subtitle: "",
       content: (
-        <div className="space-y-3">
-          <div><strong>Year 1:</strong> Pilot launch → 20 communities?</div>
-          <div><strong>Year 2:</strong> Regional expansion → DAO governance</div>
-          <div><strong>Year 3:</strong> National scale → carbon credit integration</div>
+        <div className="space-y-3 text-sm">
+          <div>
+            <strong>Year 1:</strong> Pilot & proof → 3–5 villages; 500–1,000
+            households
+          </div>
+          <div>
+            <strong>Year 2:</strong> Regional scale → 20–30 villages; donor
+            dashboards; DAOs
+          </div>
+          <div>
+            <strong>Year 3:</strong> National expansion → 100+ villages; carbon
+            credits & microfinance
+          </div>
         </div>
       ),
       className: "bg-background",
@@ -234,13 +320,25 @@ const Pitch = () => {
       title: "Partnerships",
       subtitle: "",
       content: (
-        <div className="space-y-2">
-          <div><strong>Africa Talks</strong> – USSD access</div>
-          <div><strong>Local Banks</strong> – payment rails</div>
-          <div><strong>Contractors</strong> – solar deployment</div>
-          <div><strong>UNDP</strong> – oversight & legitimacy</div>
-          <div><strong>Philanthropists</strong> – financing</div>
-          <div><strong>Compliant Naira</strong> – stablecoin settlement</div>
+        <div className="space-y-2 text-sm">
+          <div>
+            <strong>Africa Talks</strong> – USSD access
+          </div>
+          <div>
+            <strong>Local Banks & Mobile Money</strong> – payment rails
+          </div>
+          <div>
+            <strong>Contractors</strong> – deployment & maintenance
+          </div>
+          <div>
+            <strong>UNDP</strong> – oversight & legitimacy
+          </div>
+          <div>
+            <strong>Philanthropists & Impact Investors</strong> – financing
+          </div>
+          <div>
+            <strong>Compliant Naira</strong> – stablecoin settlement
+          </div>
         </div>
       ),
       className: "bg-muted",
@@ -251,7 +349,8 @@ const Pitch = () => {
       subtitle: "Join us to power Northern Nigeria sustainably.",
       content: (
         <p>
-          UNDP, philanthropists, and partners are invited to fund, oversee, and scale SolarVillage as a global model for transparent rural electrification.
+          Fund, oversee, and scale SolarVillage—so families top-up on their
+          phones and the lights come on. Transparent by design. Built to last.
         </p>
       ),
       className: "text-white text-center bg-cover bg-center",
