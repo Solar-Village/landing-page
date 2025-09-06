@@ -64,14 +64,22 @@ const stateOptions = [
 ] as const;
 
 const formSchema = z.object({
-  firstName: z.string().min(1),
-  lastName: z.string().min(1),
-  role: z.enum(roleOptions),
-  phone: z.string().min(1),
-  email: z.string().email(),
-  villageName: z.string().min(1),
-  state: z.enum(stateOptions),
-  householdCount: z.coerce.number().int().gt(5),
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
+  role: z.enum(roleOptions, { required_error: "Role is required" }),
+  phone: z.string().min(1, { message: "Phone number is required" }),
+  email: z
+    .string()
+    .email()
+    .refine((val) => val.split("@")[1]?.includes("."), {
+      message: "Please enter a valid email address (e.g., name@example.com)",
+    }),
+  villageName: z.string().min(1, { message: "Village name is required" }),
+  state: z.enum(stateOptions, { required_error: "State is required" }),
+  householdCount: z.coerce
+    .number()
+    .int()
+    .gte(5, { message: "Household count must be at least 5" }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -89,23 +97,40 @@ const SignUp = () => {
   });
 
   const onSubmit = async (values: FormValues) => {
-    const { error } = await supabase.from("solar_village_signups").insert({
-      first_name: values.firstName,
-      last_name: values.lastName,
-      role: values.role,
-      phone_number: values.phone,
-      email: values.email,
-      village_name: values.villageName,
-      state: values.state,
-      household_count: values.householdCount,
-    });
+    try {
+      const { error } = await supabase.from("solar_village_signups").insert({
+        first_name: values.firstName,
+        last_name: values.lastName,
+        role: values.role,
+        phone_number: values.phone,
+        email: values.email,
+        village_name: values.villageName,
+        state: values.state,
+        household_count: values.householdCount,
+      });
 
-    if (error) {
-      toast({ description: error.message });
-    } else {
-      toast({ description: "Registration submitted!" });
+      if (error) {
+        toast({
+          description: `Error. We tried submitting but something went wrong. Please try again later. ${error.message}`,
+        });
+        return;
+      }
+
+      toast({
+        description:
+          "Successfully submitted. Thanks for your interest. Please note that this is still a concept in development, and it may take some time before we can get back to you.",
+      });
       reset();
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      toast({
+        description: `Error. We tried submitting but something went wrong. Please try again later. ${message}`,
+      });
     }
+  };
+
+  const onError = () => {
+    toast({ description: "Form not filled in properly." });
   };
 
   return (
@@ -186,7 +211,10 @@ const SignUp = () => {
               </p>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <p className="text-xs text-muted-foreground text-center mb-4">
+                All fields are required.
+              </p>
+              <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">Contact First Name</Label>
@@ -195,6 +223,11 @@ const SignUp = () => {
                       placeholder="Your first name"
                       {...register("firstName")}
                     />
+                    {errors.firstName && (
+                      <p className="text-sm text-destructive">
+                        {errors.firstName.message}
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Contact Last Name</Label>
@@ -203,6 +236,11 @@ const SignUp = () => {
                       placeholder="Your last name"
                       {...register("lastName")}
                     />
+                    {errors.lastName && (
+                      <p className="text-sm text-destructive">
+                        {errors.lastName.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -229,6 +267,11 @@ const SignUp = () => {
                       </Select>
                     )}
                   />
+                  {errors.role && (
+                    <p className="text-sm text-destructive">
+                      {errors.role.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -239,6 +282,11 @@ const SignUp = () => {
                     placeholder="+234 800 000 0000"
                     {...register("phone")}
                   />
+                  {errors.phone && (
+                    <p className="text-sm text-destructive">
+                      {errors.phone.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -249,6 +297,11 @@ const SignUp = () => {
                     placeholder="you@example.com"
                     {...register("email")}
                   />
+                  {errors.email && (
+                    <p className="text-sm text-destructive">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -258,6 +311,11 @@ const SignUp = () => {
                     placeholder="Enter your village name"
                     {...register("villageName")}
                   />
+                  {errors.villageName && (
+                    <p className="text-sm text-destructive">
+                      {errors.villageName.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -283,6 +341,11 @@ const SignUp = () => {
                       </Select>
                     )}
                   />
+                  {errors.state && (
+                    <p className="text-sm text-destructive">
+                      {errors.state.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -295,6 +358,11 @@ const SignUp = () => {
                     placeholder="Enter number of households"
                     {...register("householdCount", { valueAsNumber: true })}
                   />
+                  {errors.householdCount && (
+                    <p className="text-sm text-destructive">
+                      {errors.householdCount.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="bg-muted/50 p-4 rounded-lg">
