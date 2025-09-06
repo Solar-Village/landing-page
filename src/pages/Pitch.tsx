@@ -58,25 +58,25 @@ const Pitch = () => {
       title: "The Solution",
       subtitle: "A SolarVillage App",
       content: (
-        <div className="space-y-4 text-white">
-          <p className="text-sm">
-            <strong>Dual access:</strong> mobile-first web app for smartphones +
+        <div className="space-y-6 text-white">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <strong className="text-village">Dual access:</strong> mobile-first web app for smartphones +
             USSD (via Africa Talks) for feature phones.
-          </p>
-          <p className="text-sm">
-            <strong>How it feels:</strong> Top-up on your phone → electricity
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <strong className="text-village">How it feels:</strong> Top-up on your phone → electricity
             starts. Simple as airtime.
-          </p>
-          <p className="text-sm">
-            <strong>Under the hood:</strong> Compliant Naira (cNGN) provides
+          </div>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <strong className="text-village">Under the hood:</strong> Compliant Naira (cNGN) provides
             regulator-approved, on-chain settlement for end-to-end
             transparency.
-          </p>
+          </div>
         </div>
       ),
-      className: "text-white text-center bg-cover bg-center",
+      className: "text-white text-center bg-cover bg-center bg-fixed",
       style: {
-        backgroundImage: `url(${FamilyWithLight})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${FamilyWithLight})`,
       },
     },
     {
@@ -84,67 +84,83 @@ const Pitch = () => {
       title: "How It Works",
       subtitle: "",
       content: (
-        <div className="space-y-3">
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">
-              1
+        <div className="space-y-6">
+          <div className="relative">
+            <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gradient-to-b from-primary to-village"></div>
+            <div className="space-y-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-village rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                  1
+                </div>
+                <div className="flex-1 pt-2">
+                  <span className="text-base font-medium">
+                    User tops up from bank or mobile wallet in the SolarVillage app or
+                    via USSD
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-village to-primary rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                  2
+                </div>
+                <div className="flex-1 pt-2">
+                  <span className="text-base font-medium">
+                    Funds settle instantly in cNGN; payment is recorded on-chain
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-village rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                  3
+                </div>
+                <div className="flex-1 pt-2">
+                  <span className="text-base font-medium">
+                    Meter is authorized and power turns on for the paid duration
+                  </span>
+                </div>
+              </div>
             </div>
-            <span className="text-sm">
-              User tops up from bank or mobile wallet in the SolarVillage app or
-              via USSD
-            </span>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">
-              2
-            </div>
-            <span className="text-sm">
-              Funds settle instantly in cNGN; payment is recorded on-chain
-            </span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">
-              3
-            </div>
-            <span className="text-sm">
-              Meter is authorized and power turns on for the paid duration
-            </span>
-          </div>
-          <div className="text-xs text-muted-foreground pl-8">
-            (Backup paths like one-time activation codes are available where
-            needed.)
+          <div className="text-sm text-muted-foreground bg-muted/50 rounded-lg p-4 italic">
+            (Backup paths like one-time activation codes are available where needed.)
           </div>
         </div>
       ),
-      className: "bg-background",
+      className: "bg-gradient-to-br from-background via-background to-primary/5",
     },
     {
       id: 5,
       title: "Benefits",
       subtitle: "",
       content: (
-        <div className="space-y-3 text-sm">
-          <div>
-            <strong>Communities:</strong> Instant access, no travel, real energy
-            security
+        <div className="grid md:grid-cols-2 gap-6 text-white">
+          <div className="space-y-4">
+            <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+              <strong className="text-yellow-300">Communities:</strong> Instant access, no travel, real energy
+              security
+            </div>
+            <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+              <strong className="text-yellow-300">Contractors:</strong> Predictable cash flow and faster
+              payouts
+            </div>
           </div>
-          <div>
-            <strong>Contractors:</strong> Predictable cash flow and faster
-            payouts
+          <div className="space-y-4">
+            <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+              <strong className="text-yellow-300">Philanthropists:</strong> Village-tied repayments, auditable
+              impact
+            </div>
+            <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
+              <strong className="text-yellow-300">UNDP:</strong> Independent oversight and replicable model
+            </div>
           </div>
-          <div>
-            <strong>Philanthropists:</strong> Village-tied repayments, auditable
-            impact
-          </div>
-          <div>
-            <strong>UNDP:</strong> Independent oversight and replicable model
-          </div>
-          <div>
-            <strong>cNGN:</strong> Flagship, real-world settlement at scale
+          <div className="md:col-span-2">
+            <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20 text-center">
+              <strong className="text-yellow-300">cNGN:</strong> Flagship, real-world settlement at scale
+            </div>
           </div>
         </div>
       ),
-      className: "bg-gradient-to-r from-primary to-village text-white",
+      className: "bg-gradient-to-br from-primary via-village to-primary text-white",
     },
     {
       id: 6,
@@ -173,18 +189,36 @@ const Pitch = () => {
       title: "Stakeholders",
       subtitle: "",
       content: (
-        <ul className="space-y-2">
-          <li>• Community members (energy users)</li>
-          <li>• Contractors & installers (solar deployment)</li>
-          <li>• Philanthropists & impact investors (financing)</li>
-          <li>• UNDP & agencies (oversight)</li>
-          <li>• Compliant Naira team (blockchain settlement layer)</li>
-          <li>• Local banks (on/off-ramps)</li>
-        </ul>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-white">
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-village font-semibold mb-2">Energy Users</div>
+            <div className="text-sm">Community members</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-village font-semibold mb-2">Deployment</div>
+            <div className="text-sm">Contractors & installers</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-village font-semibold mb-2">Financing</div>
+            <div className="text-sm">Philanthropists & impact investors</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-village font-semibold mb-2">Oversight</div>
+            <div className="text-sm">UNDP & agencies</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-village font-semibold mb-2">Settlement</div>
+            <div className="text-sm">Compliant Naira team</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-village font-semibold mb-2">Payment Rails</div>
+            <div className="text-sm">Local banks</div>
+          </div>
+        </div>
       ),
-      className: "text-white text-center bg-cover bg-center",
+      className: "text-white text-center bg-cover bg-center bg-fixed",
       style: {
-        backgroundImage: `url(${SolarVillageStakeholders})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${SolarVillageStakeholders})`,
       },
     },
     {
@@ -280,17 +314,34 @@ const Pitch = () => {
       title: "Impact Metrics",
       subtitle: "",
       content: (
-        <ul className="space-y-2 text-sm">
-          <li>• Households electrified & kWh delivered</li>
-          <li>• Repayment rates and cNGN volume</li>
-          <li>• Uptime and hours of reliable power</li>
-          <li>• Reduced travel; better education outcomes</li>
-          <li>• Lower kerosene/diesel use & CO₂ avoided</li>
-        </ul>
+        <div className="grid md:grid-cols-2 gap-4 text-white">
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-2xl font-bold text-village mb-2">⚡</div>
+            <div className="text-sm">Households electrified & kWh delivered</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-2xl font-bold text-village mb-2">💰</div>
+            <div className="text-sm">Repayment rates and cNGN volume</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-2xl font-bold text-village mb-2">⏱️</div>
+            <div className="text-sm">Uptime and hours of reliable power</div>
+          </div>
+          <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
+            <div className="text-2xl font-bold text-village mb-2">🎓</div>
+            <div className="text-sm">Reduced travel; better education outcomes</div>
+          </div>
+          <div className="md:col-span-2">
+            <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30 text-center">
+              <div className="text-2xl font-bold text-village mb-2">🌱</div>
+              <div className="text-sm">Lower kerosene/diesel use & CO₂ avoided</div>
+            </div>
+          </div>
+        </div>
       ),
-      className: "text-white text-center bg-cover bg-center",
+      className: "text-white text-center bg-cover bg-center bg-fixed",
       style: {
-        backgroundImage: `url(${SolarVillageMetrics})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${SolarVillageMetrics})`,
       },
     },
     {
@@ -348,14 +399,24 @@ const Pitch = () => {
       title: "Call to Action",
       subtitle: "Join us to power Northern Nigeria sustainably.",
       content: (
-        <p>
-          Fund, oversee, and scale SolarVillage—so families top-up on their
-          phones and the lights come on. Transparent by design. Built to last.
-        </p>
+        <div className="text-center space-y-6">
+          <p className="text-lg font-medium leading-relaxed">
+            Fund, oversee, and scale SolarVillage—so families top-up on their
+            phones and the lights come on. Transparent by design. Built to last.
+          </p>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <p className="text-village font-semibold text-xl">
+              Ready to light up Northern Nigeria?
+            </p>
+            <p className="text-sm mt-2 opacity-90">
+              UNDP, philanthropists, and partners are invited to join us.
+            </p>
+          </div>
+        </div>
       ),
-      className: "text-white text-center bg-cover bg-center",
+      className: "text-white text-center bg-cover bg-center bg-fixed",
       style: {
-        backgroundImage: `url(${ChildrenStudyingWithLight})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${ChildrenStudyingWithLight})`,
       },
     },
   ];
