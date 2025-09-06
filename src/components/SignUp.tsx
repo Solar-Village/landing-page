@@ -2,11 +2,112 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { CheckCircle, MapPin, Smartphone, Users } from "lucide-react";
-import { showConceptToast } from "@/lib/conceptToast";
+import { useForm, Controller } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "@/hooks/use-toast";
+import { createClient } from "@/lib/supabase";
+
+const roleOptions = [
+  "Chief",
+  "Council Member",
+  "Leader",
+  "Assigned Representative",
+  "Other",
+] as const;
+
+const stateOptions = [
+  "Abia",
+  "Adamawa",
+  "Akwa Ibom",
+  "Anambra",
+  "Bauchi",
+  "Bayelsa",
+  "Benue",
+  "Borno",
+  "Cross River",
+  "Delta",
+  "Ebonyi",
+  "Edo",
+  "Ekiti",
+  "Enugu",
+  "Gombe",
+  "Imo",
+  "Jigawa",
+  "Kaduna",
+  "Kano",
+  "Katsina",
+  "Kebbi",
+  "Kogi",
+  "Kwara",
+  "Lagos",
+  "Nasarawa",
+  "Niger",
+  "Ogun",
+  "Ondo",
+  "Osun",
+  "Oyo",
+  "Plateau",
+  "Rivers",
+  "Sokoto",
+  "Taraba",
+  "Yobe",
+  "Zamfara",
+] as const;
+
+const formSchema = z.object({
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
+  role: z.enum(roleOptions),
+  phone: z.string().min(1),
+  email: z.string().email(),
+  villageName: z.string().min(1),
+  state: z.enum(stateOptions),
+  householdCount: z.coerce.number().int().gt(5),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const SignUp = () => {
+  const supabase = createClient();
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = async (values: FormValues) => {
+    const { error } = await supabase.from("solar_village_signups").insert({
+      first_name: values.firstName,
+      last_name: values.lastName,
+      role: values.role,
+      phone_number: values.phone,
+      email: values.email,
+      village_name: values.villageName,
+      state: values.state,
+      household_count: values.householdCount,
+    });
+
+    if (error) {
+      toast({ description: error.message });
+    } else {
+      toast({ description: "Registration submitted!" });
+      reset();
+    }
+  };
+
   return (
     <section id="signup" className="py-20 bg-gradient-hero">
       <div className="container mx-auto px-6">
@@ -84,104 +185,146 @@ const SignUp = () => {
                 Village representatives: start the process to bring solar power to your community
               </p>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <CardContent>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName">Contact First Name</Label>
+                    <Input
+                      id="firstName"
+                      placeholder="Your first name"
+                      {...register("firstName")}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName">Contact Last Name</Label>
+                    <Input
+                      id="lastName"
+                      placeholder="Your last name"
+                      {...register("lastName")}
+                    />
+                  </div>
+                </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">Contact First Name</Label>
-                  <Input id="firstName" placeholder="Your first name" />
+                  <Label htmlFor="role">Your Role in the Community</Label>
+                  <Controller
+                    name="role"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select your role" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {roleOptions.map((role) => (
+                            <SelectItem key={role} value={role}>
+                              {role}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
                 </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="lastName">Contact Last Name</Label>
-                  <Input id="lastName" placeholder="Your last name" />
+                  <Label htmlFor="phone">Phone Number</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+234 800 000 0000"
+                    {...register("phone")}
+                  />
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="role">Your Role in the Community</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select your role" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="chief">Village Chief/Elder</SelectItem>
-                    <SelectItem value="council">Council Member</SelectItem>
-                    <SelectItem value="leader">Community Leader</SelectItem>
-                    <SelectItem value="representative">Community Representative</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input id="phone" type="tel" placeholder="+234 800 000 0000" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="villageName">Village Name</Label>
-                <Input id="villageName" placeholder="Enter your village name" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="state">State/Region</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select your state" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="lagos">Lagos</SelectItem>
-                    <SelectItem value="kano">Kano</SelectItem>
-                    <SelectItem value="oyo">Oyo</SelectItem>
-                    <SelectItem value="rivers">Rivers</SelectItem>
-                    <SelectItem value="kaduna">Kaduna</SelectItem>
-                    <SelectItem value="ogun">Ogun</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="householdCount">Estimated Number of Households</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Households in village" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="10-25">10-25 households</SelectItem>
-                    <SelectItem value="26-50">26-50 households</SelectItem>
-                    <SelectItem value="51-100">51-100 households</SelectItem>
-                    <SelectItem value="100+">More than 100</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="bg-muted/50 p-4 rounded-lg">
-                <div className="flex items-center space-x-2 mb-2">
-                  <CheckCircle className="h-4 w-4 text-success" />
-                  <span className="text-sm font-medium">Village benefits:</span>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    {...register("email")}
+                  />
                 </div>
-                <ul className="text-sm text-muted-foreground space-y-1 ml-6">
-                  <li>• Complete village solar microgrid installation</li>
-                  <li>• Every household gets connected to clean energy</li>
-                  <li>• ₦1,000/day + ₦10/kWh (sun) + ₦100/kWh (no sun)</li>
-                  <li>• Community ownership after investment payoff</li>
-                  <li>• Mobile payment and usage monitoring app</li>
-                  <li>• Technical support and maintenance</li>
-                </ul>
-              </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="villageName">Village Name</Label>
+                  <Input
+                    id="villageName"
+                    placeholder="Enter your village name"
+                    {...register("villageName")}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="state">State/Region</Label>
+                  <Controller
+                    name="state"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select your state" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {stateOptions.map((s) => (
+                            <SelectItem key={s} value={s}>
+                              {s}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="householdCount">
+                    Estimated Number of Households
+                  </Label>
+                  <Input
+                    id="householdCount"
+                    type="number"
+                    placeholder="Enter number of households"
+                    {...register("householdCount", { valueAsNumber: true })}
+                  />
+                </div>
+
+                <div className="bg-muted/50 p-4 rounded-lg">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <CheckCircle className="h-4 w-4 text-success" />
+                    <span className="text-sm font-medium">Village benefits:</span>
+                  </div>
+                  <ul className="text-sm text-muted-foreground space-y-1 ml-6">
+                    <li>• Complete village solar microgrid installation</li>
+                    <li>• Every household gets connected to clean energy</li>
+                    <li>• ₦1,000/day + ₦10/kWh (sun) + ₦100/kWh (no sun)</li>
+                    <li>• Community ownership after investment payoff</li>
+                    <li>• Mobile payment and usage monitoring app</li>
+                    <li>• Technical support and maintenance</li>
+                  </ul>
+                </div>
 
                 <Button
                   className="w-full bg-gradient-sunrise hover:shadow-glow text-lg py-6 transition-all duration-300"
                   size="lg"
-                  onClick={showConceptToast}
+                  type="submit"
                 >
                   Register Village Interest
                 </Button>
 
-              <p className="text-xs text-muted-foreground text-center">
-                By registering, you indicate interest in solar development for your village. 
-                Our team will assess feasibility and contact you about next steps.
-              </p>
+                <p className="text-xs text-muted-foreground text-center">
+                  By registering, you indicate interest in solar development for your village.
+                  Our team will assess feasibility and contact you about next steps.
+                </p>
+              </form>
             </CardContent>
           </Card>
         </div>
