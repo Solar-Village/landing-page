@@ -96,8 +96,24 @@ const SignUp = () => {
     resolver: zodResolver(formSchema),
   });
 
+  const fetchIpAddresses = async (): Promise<string[]> => {
+    try {
+      const [ipv4, ipv6] = await Promise.all([
+        fetch("https://api.ipify.org?format=json").then((r) => r.json()).catch(() => null),
+        fetch("https://api64.ipify.org?format=json").then((r) => r.json()).catch(() => null),
+      ]);
+      const ips: string[] = [];
+      if (ipv4?.ip) ips.push(ipv4.ip);
+      if (ipv6?.ip && !ips.includes(ipv6.ip)) ips.push(ipv6.ip);
+      return ips;
+    } catch {
+      return [];
+    }
+  };
+
   const onSubmit = async (values: FormValues) => {
     try {
+      const ip_addresses = await fetchIpAddresses();
       const { error } = await supabase.from("solar_village_signups").insert({
         first_name: values.firstName,
         last_name: values.lastName,
@@ -107,6 +123,7 @@ const SignUp = () => {
         village_name: values.villageName,
         state: values.state,
         household_count: values.householdCount,
+        ip_addresses,
       });
 
       if (error) {

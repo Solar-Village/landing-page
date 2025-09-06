@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Star, Quote } from "lucide-react";
 import familyImage from "@/assets/family-solar-power.jpg";
 import studyImage from "@/assets/children-studying.jpg";
-import { showConceptToast } from "@/lib/conceptToast";
 
 const Impact = () => {
   const testimonials = [
@@ -107,14 +106,20 @@ const Impact = () => {
               <Button
                 size="lg"
                 className="bg-gradient-sunrise hover:shadow-glow text-lg px-8 py-6 transition-all duration-300"
-                onClick={showConceptToast}
+                onClick={() =>
+                  document
+                    .getElementById("signup")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 Request Installation
               </Button>
               <Button
                 size="lg"
                 className="bg-white text-village hover:bg-white/90 text-lg px-8 py-6"
-                onClick={showConceptToast}
+                onClick={() =>
+                  window.open("https://www.firebelly.xyz/start", "_blank")
+                }
               >
                 Speak to Our Team
               </Button>
