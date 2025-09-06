@@ -10,6 +10,13 @@ import SolarVillageMetrics from "@/assets/solar-village-metrics.png";
 import SolarVillageStakeholders from "@/assets/solar-village-stakeholders.png";
 
 const Pitch = () => {
+  useEffect(() => {
+    if (typeof navigator !== "undefined" && navigator.userAgent.includes("jsdom")) {
+      return;
+    }
+    window.scrollTo({ top: 0 });
+  }, []);
+
   const panels = [
     {
       id: 1,
@@ -28,7 +35,7 @@ const Pitch = () => {
       content: (
         <div className="space-y-4">
           <p className="text-muted-foreground">Solar projects exist but payments are inefficient:</p>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2">
             <li>• Long trips to banks/solar offices</li>
             <li>• Middlemen increase costs</li>
             <li>• Corruption (?)</li>
@@ -46,14 +53,14 @@ const Pitch = () => {
       content: (
         <div className="space-y-4">
           <p>Dual interfaces:</p>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2">
             <li>• Mobile-first web app for smartphones</li>
             <li>• USSD app (via Africa Talks) for feature phones</li>
           </ul>
-          <p className="text-sm">
+          <p>
             <strong>Compliant Naira Stablecoin (cNGN):</strong> regulator-approved, transparent settlement
           </p>
-          <p className="text-sm font-medium">Users pay → (get code?) → activate solar meter → receive power</p>
+          <p className="font-medium">Users pay → (get code?) → activate solar meter → receive power</p>
         </div>
       ),
       className: "text-white text-center bg-cover bg-center",
@@ -69,19 +76,19 @@ const Pitch = () => {
         <div className="space-y-3">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">1</div>
-            <span className="text-sm">Transfer money from bank → SolarVillage app</span>
+            <span>Transfer money from bank → SolarVillage app</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">2</div>
-            <span className="text-sm">Funds converted into cNGN stablecoin</span>
+            <span>Funds converted into cNGN stablecoin</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">3</div>
-            <span className="text-sm">User receives activation code</span>
+            <span>User receives activation code</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-white text-xs">4</div>
-            <span className="text-sm">Code entered into solar meter → power enabled for days/weeks</span>
+            <span>Code entered into solar meter → power enabled for days/weeks</span>
           </div>
         </div>
       ),
@@ -92,7 +99,7 @@ const Pitch = () => {
       title: "Benefits",
       subtitle: "",
       content: (
-        <div className="space-y-3 text-sm">
+        <div className="space-y-3">
           <div><strong>For Communities:</strong> Instant access, no travel needed, energy security</div>
           <div><strong>For Contractors:</strong> Guaranteed, transparent payments, more business</div>
           <div><strong>For Philanthropists:</strong> Assured repayment flows, measurable impact</div>
@@ -107,7 +114,7 @@ const Pitch = () => {
       title: "Why Now? Why Blockchain?",
       subtitle: "",
       content: (
-        <div className="space-y-3 text-sm">
+        <div className="space-y-3">
           <div><strong>Regulatory readiness:</strong> Compliant Naira already approved by Nigerian regulators</div>
           <div><strong>USSD availability:</strong> Africa Talks API enables rural access</div>
           <div><strong>Energy demand:</strong> Strong community need + UNDP rural electrification mandates</div>
@@ -120,7 +127,7 @@ const Pitch = () => {
       title: "Stakeholders",
       subtitle: "",
       content: (
-        <ul className="space-y-2 text-sm">
+        <ul className="space-y-2">
           <li>• Community members (energy users)</li>
           <li>• Contractors & installers (solar deployment)</li>
           <li>• Philanthropists & impact investors (financing)</li>
@@ -139,7 +146,7 @@ const Pitch = () => {
       title: "Implementation Plan",
       subtitle: "",
       content: (
-        <div className="space-y-3 text-sm">
+        <div className="space-y-3">
           <div><strong>Phase 1 (0–6 months):</strong> Pilot in 3 villages</div>
           <div><strong>Phase 2 (6–18 months):</strong> Expand to 20+ villages, add dashboards</div>
           <div><strong>Phase 3 (18–36 months):</strong> Regional scale, DAOs, grid tie-ins</div>
@@ -153,7 +160,7 @@ const Pitch = () => {
       title: "Financial Model",
       subtitle: "",
       content: (
-        <div className="space-y-2 text-sm">
+        <div className="space-y-2">
           <div><strong>Transaction fees:</strong> small % for sustainability</div>
           <div><strong>Service fees:</strong> from operators / contractors (if applicable)</div>
           <div><strong>Funding sources:</strong> grants + philanthropic financing</div>
@@ -167,7 +174,7 @@ const Pitch = () => {
       title: "Risk Mitigation",
       subtitle: "",
       content: (
-        <div className="space-y-2 text-sm">
+        <div className="space-y-2">
           <div><strong>Adoption hurdles:</strong> community training</div>
           <div><strong>Regulatory risk:</strong> minimized (cNGN pre-approved)</div>
           <div><strong>Technical risk:</strong> phased rollout, redundancy</div>
@@ -181,7 +188,7 @@ const Pitch = () => {
       title: "Side Opportunities",
       subtitle: "",
       content: (
-        <ul className="space-y-2 text-sm">
+        <ul className="space-y-2">
           <li>• Expansion of cNGN to Cardano ecosystem</li>
           <li>• Grid integration: connect solar micro-grids to national grid</li>
           <li>• Village DAOs: community-led governance</li>
@@ -196,7 +203,7 @@ const Pitch = () => {
       title: "Impact Metrics",
       subtitle: "",
       content: (
-        <ul className="space-y-2 text-sm">
+        <ul className="space-y-2">
           <li>• Households electrified</li>
           <li>• Repayment rates & cNGN volume</li>
           <li>• Hours of reliable power</li>
@@ -214,7 +221,7 @@ const Pitch = () => {
       title: "Roadmap",
       subtitle: "",
       content: (
-        <div className="space-y-3 text-sm">
+        <div className="space-y-3">
           <div><strong>Year 1:</strong> Pilot launch → 20 communities?</div>
           <div><strong>Year 2:</strong> Regional expansion → DAO governance</div>
           <div><strong>Year 3:</strong> National scale → carbon credit integration</div>
@@ -227,7 +234,7 @@ const Pitch = () => {
       title: "Partnerships",
       subtitle: "",
       content: (
-        <div className="space-y-2 text-sm">
+        <div className="space-y-2">
           <div><strong>Africa Talks</strong> – USSD access</div>
           <div><strong>Local Banks</strong> – payment rails</div>
           <div><strong>Contractors</strong> – solar deployment</div>
@@ -243,7 +250,7 @@ const Pitch = () => {
       title: "Call to Action",
       subtitle: "Join us to power Northern Nigeria sustainably.",
       content: (
-        <p className="text-sm">
+        <p>
           UNDP, philanthropists, and partners are invited to fund, oversee, and scale SolarVillage as a global model for transparent rural electrification.
         </p>
       ),
@@ -255,23 +262,58 @@ const Pitch = () => {
   ];
 
   const panelRefs = useRef<HTMLDivElement[]>([]);
+  const lastScrollY = useRef(0);
   const [showHeader, setShowHeader] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNav, setShowNav] = useState(true);
 
   useEffect(() => {
-    let lastY = window.scrollY;
+    lastScrollY.current = window.scrollY;
     const onScroll = () => {
       const currentY = window.scrollY;
-      if (currentY < lastY || currentY < 10) {
+      if (currentY < lastScrollY.current || currentY < 10) {
         setShowHeader(true);
-      } else if (currentY > lastY) {
+      } else if (currentY > lastScrollY.current) {
         setShowHeader(false);
       }
-      lastY = currentY;
+      lastScrollY.current = currentY;
     };
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY < 0) {
+        setShowHeader(true);
+      } else if (e.deltaY > 0) {
+        setShowHeader(false);
+      }
+    };
+    window.addEventListener("wheel", onWheel, { passive: true });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
+  useEffect(() => {
+    let touchStartY = 0;
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      const currentY = e.touches[0].clientY;
+      if (currentY > touchStartY) {
+        setShowHeader(true);
+      } else if (currentY < touchStartY) {
+        setShowHeader(false);
+      }
+      touchStartY = currentY;
+    };
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+    };
   }, []);
 
   useEffect(() => {
@@ -322,18 +364,28 @@ const Pitch = () => {
             ref={(el) => {
               panelRefs.current[index] = el as HTMLDivElement;
             }}
-            className={`relative h-screen flex items-center ${panel.className}`}
+            className={`relative h-screen flex flex-col items-center ${
+              panel.style?.backgroundImage
+                ? "justify-end pb-[20vh]"
+                : "justify-center"
+            } ${panel.className}`}
             style={panel.style}
           >
-            <div className="container mx-auto px-6 max-w-4xl text-center md:text-left">
-              <h2 className="text-3xl font-bold mb-4">{panel.title}</h2>
+            <div
+              className={`container mx-auto px-6 max-w-4xl text-center md:text-left text-lg md:text-xl ${
+                panel.style?.backgroundImage
+                  ? "bg-black/60 border border-white rounded p-6"
+                  : ""
+              }`}
+            >
+              <h2 className="text-4xl font-bold mb-4">{panel.title}</h2>
               {panel.subtitle && (
-                <p className="text-xl mb-6">{panel.subtitle}</p>
+                <p className="text-2xl mb-6">{panel.subtitle}</p>
               )}
               {panel.content && (
                 <div className="space-y-4">
                   {typeof panel.content === "string" ? (
-                    <p className="text-lg">{panel.content}</p>
+                    <p>{panel.content}</p>
                   ) : (
                     panel.content
                   )}

@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingBackButton from "@/components/FloatingBackButton";
 
 const Financials = () => {
+  useEffect(() => {
+    if (typeof navigator !== "undefined" && navigator.userAgent.includes("jsdom")) {
+      return;
+    }
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
