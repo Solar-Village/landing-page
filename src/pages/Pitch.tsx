@@ -67,7 +67,6 @@ const Pitch = () => {
       style: {
         backgroundImage: `url(${FamilyWithLight})`,
       },
-      position: "bottom",
     },
     {
       id: 4,
@@ -259,28 +258,62 @@ const Pitch = () => {
       style: {
         backgroundImage: `url(${ChildrenStudyingWithLight})`,
       },
-      position: "bottom",
     },
   ];
 
   const panelRefs = useRef<HTMLDivElement[]>([]);
+  const lastScrollY = useRef(0);
   const [showHeader, setShowHeader] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNav, setShowNav] = useState(true);
 
   useEffect(() => {
-    let lastY = window.scrollY;
+    lastScrollY.current = window.scrollY;
     const onScroll = () => {
       const currentY = window.scrollY;
-      if (currentY < lastY || currentY < 10) {
+      if (currentY < lastScrollY.current || currentY < 10) {
         setShowHeader(true);
-      } else if (currentY > lastY) {
+      } else if (currentY > lastScrollY.current) {
         setShowHeader(false);
       }
-      lastY = currentY;
+      lastScrollY.current = currentY;
     };
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY < 0) {
+        setShowHeader(true);
+      } else if (e.deltaY > 0) {
+        setShowHeader(false);
+      }
+    };
+    window.addEventListener("wheel", onWheel, { passive: true });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
+  useEffect(() => {
+    let touchStartY = 0;
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      const currentY = e.touches[0].clientY;
+      if (currentY > touchStartY) {
+        setShowHeader(true);
+      } else if (currentY < touchStartY) {
+        setShowHeader(false);
+      }
+      touchStartY = currentY;
+    };
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+    };
   }, []);
 
   useEffect(() => {
@@ -331,10 +364,10 @@ const Pitch = () => {
             ref={(el) => {
               panelRefs.current[index] = el as HTMLDivElement;
             }}
-            className={`relative h-screen flex ${
-              panel.position === "bottom"
-                ? "items-end pb-[33vh]"
-                : "items-center"
+            className={`relative h-screen flex flex-col items-center ${
+              panel.style?.backgroundImage
+                ? "justify-end pb-[20vh]"
+                : "justify-center"
             } ${panel.className}`}
             style={panel.style}
           >
