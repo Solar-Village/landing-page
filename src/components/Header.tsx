@@ -1,6 +1,6 @@
 import { Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { showConceptToast } from "@/lib/conceptToast";
 
@@ -32,6 +32,15 @@ const Header = () => {
     } else {
       navigate("/#signup");
     }
+    setIsMobileMenuOpen(false);
+  };
+
+  const handlePageNav = (e: MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    if (location.pathname !== path) {
+      navigate(path);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
 
@@ -80,24 +89,27 @@ const Header = () => {
             >
               Impact
             </a>
-            <Link
-              to="/financials"
+            <a
+              href="/financials"
+              onClick={(e) => handlePageNav(e, "/financials")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Financials
-            </Link>
-            <Link
-              to="/pitch"
+            </a>
+            <a
+              href="/pitch"
+              onClick={(e) => handlePageNav(e, "/pitch")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Pitch
-            </Link>
-            <Link
-              to="/whitepaper"
+            </a>
+            <a
+              href="/whitepaper"
+              onClick={(e) => handlePageNav(e, "/whitepaper")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Whitepaper
-            </Link>
+            </a>
           </nav>
 
           {/* Desktop CTA */}
@@ -145,24 +157,27 @@ const Header = () => {
               >
                 Impact
               </a>
-              <Link
-                to="/financials"
+              <a
+                href="/financials"
+                onClick={(e) => handlePageNav(e, "/financials")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Financials
-              </Link>
-              <Link
-                to="/pitch"
+              </a>
+              <a
+                href="/pitch"
+                onClick={(e) => handlePageNav(e, "/pitch")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Pitch
-              </Link>
-              <Link
-                to="/whitepaper"
+              </a>
+              <a
+                href="/whitepaper"
+                onClick={(e) => handlePageNav(e, "/whitepaper")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Whitepaper
-              </Link>
+              </a>
             </nav>
             <div className="flex flex-col space-y-2 pt-4 border-t border-border">
               <Button variant="ghost" className="w-full" onClick={showConceptToast}>

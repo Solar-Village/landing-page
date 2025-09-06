@@ -10,6 +10,13 @@ import SolarVillageMetrics from "@/assets/solar-village-metrics.png";
 import SolarVillageStakeholders from "@/assets/solar-village-stakeholders.png";
 
 const Pitch = () => {
+  useEffect(() => {
+    if (typeof navigator !== "undefined" && navigator.userAgent.includes("jsdom")) {
+      return;
+    }
+    window.scrollTo({ top: 0 });
+  }, []);
+
   const panels = [
     {
       id: 1,
@@ -60,6 +67,7 @@ const Pitch = () => {
       style: {
         backgroundImage: `url(${FamilyWithLight})`,
       },
+      position: "bottom",
     },
     {
       id: 4,
@@ -251,6 +259,7 @@ const Pitch = () => {
       style: {
         backgroundImage: `url(${ChildrenStudyingWithLight})`,
       },
+      position: "bottom",
     },
   ];
 
@@ -322,7 +331,11 @@ const Pitch = () => {
             ref={(el) => {
               panelRefs.current[index] = el as HTMLDivElement;
             }}
-            className={`relative h-screen flex items-center ${panel.className}`}
+            className={`relative h-screen flex ${
+              panel.position === "bottom"
+                ? "items-end pb-[33vh]"
+                : "items-center"
+            } ${panel.className}`}
             style={panel.style}
           >
             <div
