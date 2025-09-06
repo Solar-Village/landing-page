@@ -5,6 +5,9 @@ import App from '@/App';
 // Mock SignUp component to avoid Supabase dependency in tests
 vi.mock('@/components/SignUp', () => ({ default: () => <div>SignUp</div> }));
 
+// jsdom doesn't implement scrollTo, so mock it for tests
+window.scrollTo = vi.fn();
+
 describe('App router', () => {
   const renderWithPath = (path: string) => {
     window.history.pushState({}, '', path);
