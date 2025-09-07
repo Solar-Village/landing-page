@@ -424,59 +424,9 @@ const Pitch = () => {
   ];
 
   const panelRefs = useRef<HTMLDivElement[]>([]);
-  const lastScrollY = useRef(0);
-  const [showHeader, setShowHeader] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNav, setShowNav] = useState(true);
 
-  useEffect(() => {
-    lastScrollY.current = window.scrollY;
-    const onScroll = () => {
-      const currentY = window.scrollY;
-      if (currentY < lastScrollY.current || currentY < 10) {
-        setShowHeader(true);
-      } else if (currentY > lastScrollY.current) {
-        setShowHeader(false);
-      }
-      lastScrollY.current = currentY;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const onWheel = (e: WheelEvent) => {
-      if (e.deltaY < 0) {
-        setShowHeader(true);
-      } else if (e.deltaY > 0) {
-        setShowHeader(false);
-      }
-    };
-    window.addEventListener("wheel", onWheel, { passive: true });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, []);
-
-  useEffect(() => {
-    let touchStartY = 0;
-    const onTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-    };
-    const onTouchMove = (e: TouchEvent) => {
-      const currentY = e.touches[0].clientY;
-      if (currentY > touchStartY) {
-        setShowHeader(true);
-      } else if (currentY < touchStartY) {
-        setShowHeader(false);
-      }
-      touchStartY = currentY;
-    };
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
-    return () => {
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", onTouchMove);
-    };
-  }, []);
 
   useEffect(() => {
     if (
@@ -512,13 +462,7 @@ const Pitch = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div
-        className={`transition-transform duration-300 ${
-          showHeader ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <Header />
-      </div>
+      <Header />
       <FloatingBackButton />
       <main>
         {panels.map((panel, index) => (
