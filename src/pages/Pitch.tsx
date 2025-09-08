@@ -174,12 +174,16 @@ const Pitch = () => {
               regulator-approved
             </div>
             <div>
-              <strong>Universal access:</strong> USSD via Africa Talks reaches
-              offline users
-            </div>
-            <div>
               <strong>True transparency:</strong> On-chain flows align users,
               contractors, and donors
+            </div>
+            <div>
+              <strong>Smart Contracts:</strong> Programability, automated
+              payment flows
+            </div>
+            <div>
+              <strong>Follow-on opportunities:</strong> with DAOs, on-chain
+              governance, micro-finance, and more
             </div>
           </div>
         </div>
