@@ -43,7 +43,7 @@ const Pitch = () => {
             model:
           </p>
           <ul className="space-y-2 text-lg">
-            <li>- Families maight have to travel far to pay, may lose a day’s income</li>
+            <li>- Families might have to travel far to pay, may lose a day’s income</li>
             <li>- Cash leakage and middlemen raise costs & reduce trust</li>
             <li>- Operators / maintenance crews face unpredictable revenues and delays</li>
             <li>- Many users only have feature phones and/or limited internet</li>
@@ -262,7 +262,7 @@ const Pitch = () => {
             <strong>Capital:</strong> Impact investors fund MicroGrid installs
           </div>
           <div>
-            <strong>User payments:</strong> Simple prepaid top-ups => power meter starts remotely
+            <strong>User payments:</strong> Simple prepaid top-ups → power meter starts remotely
           </div>
           <div>
             <strong>SaaS Fees: Small platform + service fees sustain SolarVillage Ops</strong>
