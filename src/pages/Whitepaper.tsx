@@ -19,9 +19,19 @@ const Whitepaper = () => {
       <FloatingBackButton />
       <div className="container mx-auto px-6 py-8">
         <Tabs defaultValue="whitepaper" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="whitepaper">Whitepaper</TabsTrigger>
-            <TabsTrigger value="accelerator">SDG Blockchain Accellerator</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 rounded-lg bg-gradient-sunrise p-1 text-white shadow">
+            <TabsTrigger
+              value="whitepaper"
+              className="rounded-md data-[state=active]:bg-black/30"
+            >
+              Whitepaper
+            </TabsTrigger>
+            <TabsTrigger
+              value="accelerator"
+              className="rounded-md data-[state=active]:bg-black/30"
+            >
+              SDG Blockchain Accelerator
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="whitepaper" className="mt-4">
             <iframe
@@ -34,7 +44,7 @@ const Whitepaper = () => {
             <iframe
               src="https://docs.google.com/document/d/e/2PACX-1vTlIBqu76DilHtf7ZLAQ3MkdEDI4SjF1WljVfxattxGUR2QDqKsfs66ucc45_bcMpNdm93pJEdbtvvL/pub?embedded=true"
               className="w-full h-screen"
-              title="SDG Blockchain Accellerator"
+              title="SDG Blockchain Accelerator"
             />
           </TabsContent>
         </Tabs>

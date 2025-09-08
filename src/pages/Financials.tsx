@@ -47,6 +47,15 @@ const Financials = () => {
         </section>
         <section className="w-full py-16">
           <div className="container mx-auto px-6">
+            <h2 className="text-3xl font-bold mb-4">For Contractors</h2>
+            <p className="text-muted-foreground">
+              During the build-out stage, contractors face slightly higher costs as each household requires a remote meter installation.
+              In the maintenance and operations phase, those meters reduce fee-collection expenses while delivering more reliable and transparent revenues.
+            </p>
+          </div>
+        </section>
+        <section className="w-full py-16">
+          <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold mb-4">For Impact Investors</h2>
             <p className="text-muted-foreground">
               SolarVillage offers a unique opportunity for mission-driven capital. Each investment is tied to a specific
