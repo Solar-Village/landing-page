@@ -255,17 +255,19 @@ const Pitch = () => {
       content: (
         <div className="space-y-2 text-lg">
           <div>
-            <strong>User payments:</strong> Simple prepaid top-ups power meters
+            <strong>Capital:</strong> Impact investors fund MicroGrid installs
           </div>
           <div>
-            <strong>Fees:</strong> Small platform + service fees sustain Ops
+            <strong>User payments:</strong> Simple prepaid top-ups => power meter starts remotely
           </div>
           <div>
-            <strong>Capital:</strong> Grants & impact investors fund MicroGrid installs
+            <strong>SaaS Fees: Small platform + service fees sustain SolarVillage Ops</strong>
           </div>
           <div>
-            <strong>Recycling:</strong> Repayments flow to repay capital, then optionally
-            fund another village
+            <strong>Repayment:</strong> Fees flow to repay capital + maintenance costs
+          </div>
+          <div>
+            <strong>Recycling:</strong> Impact investors can redeploy to new projects. Village can collect & manage their own funds once paid off.
           </div>
         </div>
       ),
