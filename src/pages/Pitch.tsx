@@ -128,7 +128,7 @@ const Pitch = () => {
           </div>
         </div>
       ),
-      className: "bg-gradient-to-br from-background via-background to-primary/5",
+      className: "bg-gradient-to-br from-primary/10 via-background to-village/20",
     },
     {
       id: 5,
@@ -138,13 +138,18 @@ const Pitch = () => {
         <div className="flex flex-col items-center">
           <Dialog>
             <DialogTrigger asChild>
-              <img
-                src={SolarVillageProcess}
-                alt="Solar Village process diagram"
-                className="w-full max-w-3xl mx-auto cursor-pointer"
-              />
+              <div className="flex flex-col items-center w-full cursor-pointer">
+                <img
+                  src={SolarVillageProcess}
+                  alt="Solar Village process diagram"
+                  className="w-full max-w-3xl mx-auto"
+                />
+                <div className="mt-2 w-full text-right text-sm text-muted-foreground">
+                  Click to enlarge
+                </div>
+              </div>
             </DialogTrigger>
-            <DialogContent className="w-screen h-screen max-w-full p-0 sm:rounded-none">
+            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none sm:rounded-none">
               <img
                 src={SolarVillageProcess}
                 alt="Solar Village process diagram"
@@ -152,9 +157,6 @@ const Pitch = () => {
               />
             </DialogContent>
           </Dialog>
-          <div className="mt-2 w-full text-right text-sm text-muted-foreground">
-            Click to enlarge
-          </div>
         </div>
       ),
       className: "bg-background",
@@ -198,25 +200,37 @@ const Pitch = () => {
       title: "Why Now? Why Blockchain?",
       subtitle: "",
       content: (
-        <div className="bg-earth rounded-3xl p-8 md:p-12 text-center text-white">
-          <div className="space-y-3 text-lg">
-            <div>
-              <strong>Regulatory tailwind:</strong> cNGN is already
-              regulator-approved
-            </div>
-            <div>
-              <strong>True transparency:</strong> On-chain flows align users,
-              contractors, and donors
-            </div>
-            <div>
-              <strong>Smart Contracts:</strong> Programability, automated
-              payment flows
-            </div>
-            <div>
-              <strong>Follow-on opportunities:</strong> with DAOs, on-chain
-              governance, micro-finance, and more
-            </div>
-          </div>
+        <div className="text-center text-white">
+          <ul className="space-y-4 text-xl">
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">📜</span>
+              <span>
+                <strong>Regulatory tailwind:</strong> cNGN is already
+                regulator-approved
+              </span>
+            </li>
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">🔍</span>
+              <span>
+                <strong>True transparency:</strong> On-chain flows align users,
+                contractors, and donors
+              </span>
+            </li>
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">🤖</span>
+              <span>
+                <strong>Smart Contracts:</strong> Programability, automated
+                payment flows
+              </span>
+            </li>
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">🚀</span>
+              <span>
+                <strong>Follow-on opportunities:</strong> with DAOs, on-chain
+                governance, micro-finance, and more
+              </span>
+            </li>
+          </ul>
         </div>
       ),
       className: "bg-primary/5",
@@ -335,8 +349,8 @@ const Pitch = () => {
     },
     {
       id: 12,
-      title: "Side Opportunities",
-      subtitle: "",
+      title: "Follow-on Opportunities",
+      subtitle: "Blockchain technology enables exciting growth paths",
       content: (
         <ul className="space-y-2 text-lg">
           <li>• Extend cNGN to Cardano for global impact finance</li>
