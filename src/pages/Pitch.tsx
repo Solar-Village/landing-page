@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import FloatingBackButton from "@/components/FloatingBackButton";
 import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
 import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
@@ -126,10 +127,51 @@ const Pitch = () => {
           </div>
         </div>
       ),
-      className: "bg-gradient-to-br from-background via-background to-primary/5",
+      className: "bg-gradient-to-br from-primary/10 via-background to-village/20",
     },
     {
       id: 5,
+      title: "Process Diagram",
+      subtitle: "",
+      content: (
+        <div className="flex flex-col items-center">
+          <Dialog>
+            <DialogTrigger asChild>
+              <div className="flex flex-col items-center w-full cursor-pointer">
+                <iframe
+                  src="https://docs.google.com/presentation/d/e/2PACX-1vSFKXpoyzIUXNkLUxcj6YbqOZvMgm587c8dPSo6De24_a_W_ye0NBLAggHel-FPVyBwob3WpkgO4yg3/pubembed?start=false&loop=true&delayms=60000"
+                  title="Solar Village process diagram"
+                  frameBorder="0"
+                  width="960"
+                  height="569"
+                  className="w-full max-w-[960px] pointer-events-none"
+                  allowFullScreen
+                ></iframe>
+                <div className="mt-2 w-full text-right text-sm text-muted-foreground">
+                  Click to enlarge
+                </div>
+              </div>
+            </DialogTrigger>
+            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none sm:rounded-none">
+              <div className="w-full h-full flex items-center justify-center">
+                <iframe
+                  src="https://docs.google.com/presentation/d/e/2PACX-1vSFKXpoyzIUXNkLUxcj6YbqOZvMgm587c8dPSo6De24_a_W_ye0NBLAggHel-FPVyBwob3WpkgO4yg3/pubembed?start=false&loop=true&delayms=60000"
+                  title="Solar Village process diagram"
+                  frameBorder="0"
+                  width="960"
+                  height="569"
+                  className="max-w-full max-h-full"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+      ),
+      className: "bg-background",
+    },
+    {
+      id: 6,
       title: "Benefits",
       subtitle: "",
       content: (
@@ -163,35 +205,47 @@ const Pitch = () => {
       className: "bg-gradient-to-br from-primary via-village to-primary text-white",
     },
     {
-      id: 6,
+      id: 7,
       title: "Why Now? Why Blockchain?",
       subtitle: "",
       content: (
-        <div className="bg-earth rounded-3xl p-8 md:p-12 text-center text-white">
-          <div className="space-y-3 text-lg">
-            <div>
-              <strong>Regulatory tailwind:</strong> cNGN is already
-              regulator-approved
-            </div>
-            <div>
-              <strong>True transparency:</strong> On-chain flows align users,
-              contractors, and donors
-            </div>
-            <div>
-              <strong>Smart Contracts:</strong> Programability, automated
-              payment flows
-            </div>
-            <div>
-              <strong>Follow-on opportunities:</strong> with DAOs, on-chain
-              governance, micro-finance, and more
-            </div>
-          </div>
+        <div className="text-center text-white">
+          <ul className="space-y-4 text-xl">
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">📜</span>
+              <span>
+                <strong>Regulatory tailwind:</strong> cNGN is already
+                regulator-approved
+              </span>
+            </li>
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">🔍</span>
+              <span>
+                <strong>True transparency:</strong> On-chain flows align users,
+                contractors, and donors
+              </span>
+            </li>
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">🤖</span>
+              <span>
+                <strong>Smart Contracts:</strong> Programability, automated
+                payment flows
+              </span>
+            </li>
+            <li className="flex items-center justify-center gap-2">
+              <span className="text-2xl">🚀</span>
+              <span>
+                <strong>Follow-on opportunities:</strong> with DAOs, on-chain
+                governance, micro-finance, and more
+              </span>
+            </li>
+          </ul>
         </div>
       ),
       className: "bg-primary/5",
     },
     {
-      id: 7,
+      id: 8,
       title: "Stakeholders",
       subtitle: "",
       content: (
@@ -228,7 +282,7 @@ const Pitch = () => {
       },
     },
     {
-      id: 8,
+      id: 9,
       title: "Implementation Plan",
       subtitle: "",
       content: (
@@ -253,7 +307,7 @@ const Pitch = () => {
       className: "bg-gradient-to-r from-primary to-secondary text-white",
     },
     {
-      id: 9,
+      id: 10,
       title: "Financial Model",
       subtitle: "",
       content: (
@@ -278,7 +332,7 @@ const Pitch = () => {
       className: "bg-background",
     },
     {
-      id: 10,
+      id: 11,
       title: "Risk Mitigation",
       subtitle: "",
       content: (
@@ -303,9 +357,9 @@ const Pitch = () => {
       className: "bg-gradient-to-br from-primary via-village to-primary text-white",
     },
     {
-      id: 11,
-      title: "Side Opportunities",
-      subtitle: "",
+      id: 12,
+      title: "Follow-on Opportunities",
+      subtitle: "Blockchain technology enables exciting growth paths",
       content: (
         <ul className="space-y-2 text-lg">
           <li>• Extend cNGN to Cardano for global impact finance</li>
@@ -318,7 +372,7 @@ const Pitch = () => {
       className: "bg-background",
     },
     {
-      id: 12,
+      id: 13,
       title: "Impact Metrics",
       subtitle: "",
       content: (
@@ -353,7 +407,7 @@ const Pitch = () => {
       },
     },
     {
-      id: 13,
+      id: 14,
       title: "Roadmap",
       subtitle: "",
       content: (
@@ -375,7 +429,7 @@ const Pitch = () => {
       className: "bg-background",
     },
     {
-      id: 14,
+      id: 15,
       title: "Partnerships",
       subtitle: "",
       content: (
@@ -403,7 +457,7 @@ const Pitch = () => {
       className: "bg-gradient-to-r from-primary to-secondary text-white",
     },
     {
-      id: 15,
+      id: 16,
       title: "Call to Action",
       subtitle: "Join us to power Northern Nigeria sustainably.",
       content: (
