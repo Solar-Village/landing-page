@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import FloatingBackButton from "@/components/FloatingBackButton";
 import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
 import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
 import FamilyWithLight from "@/assets/FamilyWithLight.png";
 import SolarVillageMetrics from "@/assets/solar-village-metrics.png";
 import SolarVillageStakeholders from "@/assets/solar-village-stakeholders.png";
+import SolarVillageProcess from "@/assets/solar-village-process.png";
 
 const Pitch = () => {
   useEffect(() => {
@@ -130,6 +132,35 @@ const Pitch = () => {
     },
     {
       id: 5,
+      title: "Process Diagram",
+      subtitle: "",
+      content: (
+        <div className="flex flex-col items-center">
+          <Dialog>
+            <DialogTrigger asChild>
+              <img
+                src={SolarVillageProcess}
+                alt="Solar Village process diagram"
+                className="w-full max-w-3xl mx-auto cursor-pointer"
+              />
+            </DialogTrigger>
+            <DialogContent className="w-screen h-screen max-w-full p-0 sm:rounded-none">
+              <img
+                src={SolarVillageProcess}
+                alt="Solar Village process diagram"
+                className="w-full h-full object-contain"
+              />
+            </DialogContent>
+          </Dialog>
+          <div className="mt-2 w-full text-right text-sm text-muted-foreground">
+            Click to enlarge
+          </div>
+        </div>
+      ),
+      className: "bg-background",
+    },
+    {
+      id: 6,
       title: "Benefits",
       subtitle: "",
       content: (
@@ -163,7 +194,7 @@ const Pitch = () => {
       className: "bg-gradient-to-br from-primary via-village to-primary text-white",
     },
     {
-      id: 6,
+      id: 7,
       title: "Why Now? Why Blockchain?",
       subtitle: "",
       content: (
@@ -191,7 +222,7 @@ const Pitch = () => {
       className: "bg-primary/5",
     },
     {
-      id: 7,
+      id: 8,
       title: "Stakeholders",
       subtitle: "",
       content: (
@@ -228,7 +259,7 @@ const Pitch = () => {
       },
     },
     {
-      id: 8,
+      id: 9,
       title: "Implementation Plan",
       subtitle: "",
       content: (
@@ -253,7 +284,7 @@ const Pitch = () => {
       className: "bg-gradient-to-r from-primary to-secondary text-white",
     },
     {
-      id: 9,
+      id: 10,
       title: "Financial Model",
       subtitle: "",
       content: (
@@ -278,7 +309,7 @@ const Pitch = () => {
       className: "bg-background",
     },
     {
-      id: 10,
+      id: 11,
       title: "Risk Mitigation",
       subtitle: "",
       content: (
@@ -303,7 +334,7 @@ const Pitch = () => {
       className: "bg-gradient-to-br from-primary via-village to-primary text-white",
     },
     {
-      id: 11,
+      id: 12,
       title: "Side Opportunities",
       subtitle: "",
       content: (
@@ -318,7 +349,7 @@ const Pitch = () => {
       className: "bg-background",
     },
     {
-      id: 12,
+      id: 13,
       title: "Impact Metrics",
       subtitle: "",
       content: (
@@ -353,7 +384,7 @@ const Pitch = () => {
       },
     },
     {
-      id: 13,
+      id: 14,
       title: "Roadmap",
       subtitle: "",
       content: (
@@ -375,7 +406,7 @@ const Pitch = () => {
       className: "bg-background",
     },
     {
-      id: 14,
+      id: 15,
       title: "Partnerships",
       subtitle: "",
       content: (
@@ -403,7 +434,7 @@ const Pitch = () => {
       className: "bg-gradient-to-r from-primary to-secondary text-white",
     },
     {
-      id: 15,
+      id: 16,
       title: "Call to Action",
       subtitle: "Join us to power Northern Nigeria sustainably.",
       content: (
