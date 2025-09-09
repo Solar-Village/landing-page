@@ -9,7 +9,6 @@ import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
 import FamilyWithLight from "@/assets/FamilyWithLight.png";
 import SolarVillageMetrics from "@/assets/solar-village-metrics.png";
 import SolarVillageStakeholders from "@/assets/solar-village-stakeholders.png";
-import SolarVillageProcess from "@/assets/solar-village-process.png";
 
 const Pitch = () => {
   useEffect(() => {
@@ -139,22 +138,32 @@ const Pitch = () => {
           <Dialog>
             <DialogTrigger asChild>
               <div className="flex flex-col items-center w-full cursor-pointer">
-                <img
-                  src={SolarVillageProcess}
-                  alt="Solar Village process diagram"
-                  className="w-full max-w-3xl mx-auto"
-                />
+                <iframe
+                  src="https://docs.google.com/presentation/d/e/2PACX-1vSFKXpoyzIUXNkLUxcj6YbqOZvMgm587c8dPSo6De24_a_W_ye0NBLAggHel-FPVyBwob3WpkgO4yg3/pubembed?start=false&loop=true&delayms=60000"
+                  title="Solar Village process diagram"
+                  frameBorder="0"
+                  width="960"
+                  height="569"
+                  className="w-full max-w-[960px] pointer-events-none"
+                  allowFullScreen
+                ></iframe>
                 <div className="mt-2 w-full text-right text-sm text-muted-foreground">
                   Click to enlarge
                 </div>
               </div>
             </DialogTrigger>
             <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none sm:rounded-none">
-              <img
-                src={SolarVillageProcess}
-                alt="Solar Village process diagram"
-                className="w-full h-full object-contain"
-              />
+              <div className="w-full h-full flex items-center justify-center">
+                <iframe
+                  src="https://docs.google.com/presentation/d/e/2PACX-1vSFKXpoyzIUXNkLUxcj6YbqOZvMgm587c8dPSo6De24_a_W_ye0NBLAggHel-FPVyBwob3WpkgO4yg3/pubembed?start=false&loop=true&delayms=60000"
+                  title="Solar Village process diagram"
+                  frameBorder="0"
+                  width="960"
+                  height="569"
+                  className="max-w-full max-h-full"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </DialogContent>
           </Dialog>
         </div>
