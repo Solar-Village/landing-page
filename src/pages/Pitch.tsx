@@ -9,8 +9,10 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import FloatingBackButton from "@/components/FloatingBackButton";
+import { cn } from "@/lib/utils";
 import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
 import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
 import FamilyWithLight from "@/assets/FamilyWithLight.png";
@@ -24,6 +26,26 @@ const Pitch = () => {
     }
     window.scrollTo({ top: 0 });
   }, []);
+
+  const [open, setOpen] = useState(false);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    onSelect();
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  useEffect(() => {
+    if (open) {
+      api?.reInit();
+    }
+  }, [api, open]);
 
   const opportunities = [
     {
@@ -535,18 +557,22 @@ const Pitch = () => {
               <li key={o.letter}>{`${o.letter} - ${o.title}`}</li>
             ))}
           </ul>
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button size="lg" className="mt-6">
                 Explore opportunities
               </Button>
             </DialogTrigger>
-            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none">
+            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none overflow-hidden">
               <DialogTitle className="sr-only">Follow-on Opportunities</DialogTitle>
-              <Carousel className="h-full" opts={{ loop: true }}>
-                <CarouselContent className="h-full">
+              <Carousel
+                className="h-full w-full"
+                opts={{ loop: true }}
+                setApi={setApi}
+              >
+                <CarouselContent className="h-full w-full">
                   {opportunities.map((o) => (
-                    <CarouselItem key={o.letter}>
+                    <CarouselItem key={o.letter} className="h-full">
                       <div
                         className={`h-full w-full flex flex-col items-center justify-center p-8 text-center ${o.className}`}
                       >
@@ -559,8 +585,22 @@ const Pitch = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-4 top-1/2 -translate-y-1/2" />
-                <CarouselNext className="right-4 top-1/2 -translate-y-1/2" />
+                <CarouselPrevious className="left-4 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="right-4 top-1/2 -translate-y-1/2 z-10" />
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  {opportunities.map((_, idx) => (
+                    <button
+                      key={idx}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className={cn(
+                        "h-2 w-2 rounded-full bg-white/50",
+                        idx === current && "bg-white"
+                      )}
+                      onClick={() => api?.scrollTo(idx)}
+                      data-testid="opportunity-dot"
+                    />
+                  ))}
+                </div>
               </Carousel>
             </DialogContent>
           </Dialog>

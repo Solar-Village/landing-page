@@ -35,5 +35,14 @@ describe("Follow-on opportunities modal", () => {
     expect(
       within(dialog).getByText(/Financing for PUE \(Productive Use of Electricity\)/i)
     ).toBeInTheDocument();
+
+    const dots = within(dialog).getAllByTestId("opportunity-dot");
+    expect(dots).toHaveLength(8);
+
+    const next = within(dialog).getByRole("button", { name: /next slide/i });
+    await user.click(next);
+    expect(
+      within(dialog).getByText(/Paying for Electricity with Crops or Labor/i)
+    ).toBeInTheDocument();
   });
 });
