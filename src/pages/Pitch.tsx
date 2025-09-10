@@ -840,7 +840,10 @@ const Pitch = () => {
   }, []);
 
   const scrollToPanel = (index: number) => {
-    panelRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+    const target = panelRefs.current[index];
+    if (target) {
+      window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+    }
     setCurrentIndex(index);
     setShowNav(true);
   };
