@@ -181,6 +181,12 @@ function useToast() {
     }
   }, [state])
 
+  React.useEffect(() => {
+    const dismissOnScroll = () => dispatch({ type: "DISMISS_TOAST" })
+    window.addEventListener("scroll", dismissOnScroll)
+    return () => window.removeEventListener("scroll", dismissOnScroll)
+  }, [])
+
   return {
     ...state,
     toast,
