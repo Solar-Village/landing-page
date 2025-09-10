@@ -5,18 +5,63 @@ import { vi } from "vitest";
 import Pitch from "@/pages/Pitch";
 
 describe("Pitch navigation", () => {
-  it("scrolls between panels using navigation buttons", async () => {
-    Element.prototype.scrollIntoView = vi.fn();
+  it("scrolls between panels using Next and Previous", async () => {
+    const scrollToMock = vi.fn();
+    Object.defineProperty(window, "scrollTo", { writable: true, value: scrollToMock });
     const user = userEvent.setup();
     render(
       <BrowserRouter>
         <Pitch />
       </BrowserRouter>
     );
-    const nextButton = screen.getAllByText(/next/i)[0];
+    const nextButton = screen.getByRole("button", { name: /next/i });
     await user.click(nextButton);
-    const prevButton = screen.getAllByText(/previous/i)[0];
+    const prevButton = screen.getByRole("button", { name: /previous/i });
     await user.click(prevButton);
-    expect(Element.prototype.scrollIntoView).toHaveBeenCalledTimes(2);
+    expect(scrollToMock).toHaveBeenCalledTimes(2);
+  });
+
+  it("scrolls to the last panel and back to the first", async () => {
+    const scrollToMock = vi.fn();
+    Object.defineProperty(window, "scrollTo", { writable: true, value: scrollToMock });
+    const user = userEvent.setup();
+    render(
+      <BrowserRouter>
+        <Pitch />
+      </BrowserRouter>
+    );
+    const lastButton = screen.getByRole("button", { name: /last/i });
+    await user.click(lastButton);
+    const firstButton = screen.getByRole("button", { name: /first/i });
+    await user.click(firstButton);
+    expect(scrollToMock).toHaveBeenCalledTimes(2);
+  });
+
+  it("disables navigation buttons at the boundaries", async () => {
+    const scrollToMock = vi.fn();
+    Object.defineProperty(window, "scrollTo", { writable: true, value: scrollToMock });
+    const user = userEvent.setup();
+    render(
+      <BrowserRouter>
+        <Pitch />
+      </BrowserRouter>
+    );
+
+    const prevButton = screen.getByRole("button", { name: /previous/i });
+    const firstButton = screen.getByRole("button", { name: /first/i });
+    const nextButton = screen.getByRole("button", { name: /next/i });
+    const lastButton = screen.getByRole("button", { name: /last/i });
+
+    expect(prevButton).toBeDisabled();
+    expect(firstButton).toBeDisabled();
+    expect(nextButton).toBeEnabled();
+    expect(lastButton).toBeEnabled();
+
+    await user.click(lastButton);
+
+    expect(nextButton).toBeDisabled();
+    expect(lastButton).toBeDisabled();
+    expect(prevButton).toBeEnabled();
+    expect(firstButton).toBeEnabled();
   });
 });
