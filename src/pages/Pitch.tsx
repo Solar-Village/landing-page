@@ -2,8 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import FloatingBackButton from "@/components/FloatingBackButton";
+import { cn } from "@/lib/utils";
 import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
 import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
 import FamilyWithLight from "@/assets/FamilyWithLight.png";
@@ -17,6 +26,187 @@ const Pitch = () => {
     }
     window.scrollTo({ top: 0 });
   }, []);
+
+  const [open, setOpen] = useState(false);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    onSelect();
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  useEffect(() => {
+    if (open) {
+      api?.reInit();
+    }
+  }, [api, open]);
+
+  const opportunities = [
+    {
+      letter: "A",
+      title: "Financing for PUE (Productive Use of Electricity)",
+      className: "bg-gradient-to-br from-emerald-600 to-green-400 text-white",
+      content: (
+        <ul className="list-disc space-y-2 text-left max-w-xl text-xl">
+          <li>Provide upfront capital for productive devices</li>
+          <li>Link repayments to energy revenues</li>
+          <li>Boost local businesses and incomes</li>
+          <li>Scale micro-enterprises through energy access</li>
+        </ul>
+      ),
+      tagline: "Power businesses for growth",
+    },
+    {
+      letter: "B",
+      title: "Paying for Electricity with Crops or Labor (Sarafu-style)",
+      className: "bg-gradient-to-br from-amber-200 to-orange-400 text-gray-900",
+      content: (
+        <div className="grid gap-2 max-w-xl text-xl">
+          <div className="border rounded p-2 bg-white/70">
+            Address cash liquidity gaps
+          </div>
+          <div className="border rounded p-2 bg-white/70">
+            Tokenize pledges of harvests or work
+          </div>
+          <div className="border rounded p-2 bg-white/70">
+            Use vouchers as collateral for energy
+          </div>
+          <div className="border rounded p-2 bg-white/70">
+            Expand affordability beyond cash
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "C",
+      title: "Irrefutable Tracking of QAMF Indicators",
+      className: "bg-gradient-to-br from-indigo-600 to-purple-600 text-white",
+      content: (
+        <div className="space-y-2 text-left max-w-xl text-xl">
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>Extend asset inventory + on-chain settlement</span>
+          </div>
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>Capture uptime, electrification, repayments, maintenance</span>
+          </div>
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>Publish tamper-proof records for donors/investors</span>
+          </div>
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>De-risk funding & enable scale</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "D",
+      title: "Hybridization with the National Grid",
+      className: "bg-gradient-to-br from-sky-500 to-blue-700 text-white",
+      content: (
+        <ol className="list-decimal space-y-2 text-left max-w-xl text-xl">
+          <li>Integrate solar microgrids with grid extensions</li>
+          <li>Use asset registry as integration point</li>
+          <li>Maintain local assets as backup supply</li>
+          <li>Reduce risk of stranded infrastructure</li>
+        </ol>
+      ),
+    },
+    {
+      letter: "E",
+      title: "Village DAOs for Local Governance and Tariffs",
+      className: "bg-gradient-to-br from-rose-500 to-pink-500 text-white",
+      content: (
+        <div className="space-y-2 text-left max-w-xl text-xl">
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Community voting on tariffs, reinvestment, maintenance</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Transparent, auditable decisions on local energy economy</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Empower users as active stakeholders</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Build trust & local ownership</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "F",
+      title: "Carbon Credit Monetization from Diesel Displacement",
+      className: "bg-gradient-to-br from-gray-800 to-green-700 text-white",
+      content: (
+        <div className="grid gap-2 max-w-xl text-xl">
+          <div className="bg-white/20 rounded p-2">
+            Replace diesel → measurable CO₂ savings
+          </div>
+          <div className="bg-white/20 rounded p-2">
+            Use transaction + asset records for audit trail
+          </div>
+          <div className="bg-white/20 rounded p-2">
+            Issue verified carbon credits
+          </div>
+          <div className="bg-white/20 rounded p-2">
+            Create new revenue stream for communities
+          </div>
+        </div>
+      ),
+      tagline: "Turn clean energy into capital",
+    },
+    {
+      letter: "G",
+      title: "Microfinance Using Repayment-Based Credit Scores",
+      className: "bg-gradient-to-br from-teal-500 to-cyan-600 text-white",
+      content: (
+        <div className="space-y-2 text-left max-w-xl text-xl">
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Repayment history = community credit score</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Unlock loans for education, healthcare, equipment</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Bridge from energy access to financial inclusion</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Build resilience & upward mobility</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "H",
+      title: "End-of-Life Decommissioning of Minigrid Components",
+      className: "bg-gradient-to-br from-slate-700 to-zinc-900 text-white",
+      content: (
+        <ul className="list-disc space-y-2 text-left max-w-xl text-xl">
+          <li>Register every component at deployment</li>
+          <li>Track lifecycle for panels, inverters, batteries</li>
+          <li>Enable responsible recycling/repurposing</li>
+          <li>Support circular-economy financing</li>
+        </ul>
+      ),
+    },
+  ];
 
   const panels = [
     {
@@ -209,7 +399,7 @@ const Pitch = () => {
       title: "Why Now? Why Blockchain?",
       subtitle: "",
       content: (
-        <div className="text-center text-white">
+        <div className="text-center text-black">
           <ul className="space-y-4 text-xl">
             <li className="flex items-center justify-center gap-2">
               <span className="text-2xl">📜</span>
@@ -243,6 +433,70 @@ const Pitch = () => {
         </div>
       ),
       className: "bg-primary/5",
+    },
+    {
+      id: 12,
+      title: "Follow-on Opportunities",
+      subtitle: "Blockchain technology enables exciting growth paths",
+      content: (
+        <>
+          <ul className="space-y-2 text-lg">
+            {opportunities.map((o) => (
+              <li key={o.letter}>{`${o.letter} - ${o.title}`}</li>
+            ))}
+          </ul>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <div className="mt-6 flex justify-end">
+              <DialogTrigger asChild>
+                <Button size="lg" className="animate-bounce hover:animate-none">
+                  Explore opportunities
+                </Button>
+              </DialogTrigger>
+            </div>
+            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none overflow-hidden flex">
+              <DialogTitle className="sr-only">Follow-on Opportunities</DialogTitle>
+              <Carousel
+                className="h-full w-full"
+                opts={{ loop: true }}
+                setApi={setApi}
+              >
+                <CarouselContent containerClassName="h-full w-full" className="h-full w-full">
+                  {opportunities.map((o) => (
+                    <CarouselItem key={o.letter} className="h-full">
+                      <div
+                        className={`h-full w-full flex flex-col items-center justify-center p-8 text-center text-xl ${o.className}`}
+                      >
+                        <h3 className="text-3xl font-bold mb-6">{o.title}</h3>
+                        {o.content}
+                        {o.tagline && (
+                          <p className="mt-4 text-xl font-semibold">{o.tagline}</p>
+                        )}
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="!left-4 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="!right-4 top-1/2 -translate-y-1/2 z-10" />
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
+                  {opportunities.map((_, idx) => (
+                    <button
+                      key={idx}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className={cn(
+                        "h-3 w-3 rounded-full bg-white/50 border border-white",
+                        idx === current && "bg-white"
+                      )}
+                      onClick={() => api?.scrollTo(idx)}
+                      data-testid="opportunity-dot"
+                    />
+                  ))}
+                </div>
+              </Carousel>
+            </DialogContent>
+          </Dialog>
+        </>
+      ),
+      className: "bg-background",
     },
     {
       id: 8,
@@ -357,21 +611,6 @@ const Pitch = () => {
       className: "bg-gradient-to-br from-primary via-village to-primary text-white",
     },
     {
-      id: 12,
-      title: "Follow-on Opportunities",
-      subtitle: "Blockchain technology enables exciting growth paths",
-      content: (
-        <ul className="space-y-2 text-lg">
-          <li>• Extend cNGN to Cardano for global impact finance</li>
-          <li>• Hybridize with national grid where feasible</li>
-          <li>• Village DAOs for local governance & tariffs</li>
-          <li>• Carbon credit monetization from diesel displacement</li>
-          <li>• Microfinance using repayment-based credit scores</li>
-        </ul>
-      ),
-      className: "bg-background",
-    },
-    {
       id: 13,
       title: "Impact Metrics",
       subtitle: "",
@@ -433,26 +672,48 @@ const Pitch = () => {
       title: "Partnerships",
       subtitle: "",
       content: (
-        <div className="space-y-2 text-lg">
-          <div>
-            <strong>Africa Talks</strong> – USSD access
-          </div>
-          <div>
-            <strong>Local Banks & Mobile Money</strong> – payment rails
-          </div>
-          <div>
-            <strong>Contractors</strong> – deployment & maintenance
-          </div>
-          <div>
-            <strong>UNDP</strong> – oversight & legitimacy
-          </div>
-          <div>
-            <strong>Philanthropists & Impact Investors</strong> – financing
-          </div>
-          <div>
-            <strong>Compliant Naira</strong> – stablecoin settlement
-          </div>
-        </div>
+        <table className="w-full text-lg">
+          <tbody>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Policy & Regulation</td>
+              <td className="space-y-1">
+                <div>Rural Electrification Agency (REA)</div>
+                <div>Federal Ministry of Power</div>
+                <div>National Information Technology Development Agency (NITDA)</div>
+                <div>Nigeria Communications Commission (NCC)</div>
+                <div>State & Local Government Representatives</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Programmatic & Development</td>
+              <td className="space-y-1">
+                <div>Africa Minigrid Programme – Regional Team</div>
+                <div>United Nations Development Programme (UNDP)</div>
+                <div>Northwest Development Commission</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Technical & Delivery</td>
+              <td className="space-y-1">
+                <div>Rocky Mountain Institute (RMI)</div>
+                <div>Africa Talks (USSD access)</div>
+                <div>Contractors for microgrid deployment & maintenance</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Finance & Settlement</td>
+              <td className="space-y-1">
+                <div>Local Banks & Mobile Money Providers (payment rails)</div>
+                <div>Wrapped CBDC Ltd (Compliant Naira, cNGN)</div>
+                <div>Impact Investors & Philanthropists</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Community</td>
+              <td>Host Communities & Beneficiaries</td>
+            </tr>
+          </tbody>
+        </table>
       ),
       className: "bg-gradient-to-r from-primary to-secondary text-white",
     },

@@ -48,6 +48,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isMobileMenuOpen) return;
       const currentY = window.scrollY;
       if (currentY > lastScrollY.current && currentY > 50) {
         setHidden(true);
@@ -58,7 +59,13 @@ const Header = () => {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      window.scrollTo({ top: 0 });
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <header
