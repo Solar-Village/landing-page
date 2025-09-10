@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingBackButton from "@/components/FloatingBackButton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import whitepaperPDF from "@/assets/SolarVillage-Nigeria.pdf";
 
 const Whitepaper = () => {
   useEffect(() => {
@@ -35,7 +34,7 @@ const Whitepaper = () => {
           </TabsList>
           <TabsContent value="whitepaper" className="mt-4">
             <iframe
-              src={whitepaperPDF}
+              src="https://drive.google.com/file/d/14u-WN5Aj6X8zZQy4-L9HIUd0lq3JAENs/preview"
               className="h-screen w-full"
               title="SolarVillage Whitepaper"
             />
