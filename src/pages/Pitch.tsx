@@ -829,22 +829,31 @@ const Pitch = () => {
           </section>
         ))}
       </main>
-      {showNav && currentIndex > 0 && (
-        <Button
-          variant="secondary"
-          className="fixed bottom-4 left-4 z-50"
-          onClick={() => scrollToPanel(currentIndex - 1)}
-        >
-          Previous
-        </Button>
-      )}
-      {showNav && currentIndex < panels.length - 1 && (
-        <Button
-          className="fixed bottom-4 right-4 z-50"
-          onClick={() => scrollToPanel(currentIndex + 1)}
-        >
-          Next
-        </Button>
+      {showNav && (
+        <div className="fixed bottom-4 right-4 z-50 grid grid-cols-2 gap-2">
+          {currentIndex > 0 && (
+            <Button
+              variant="secondary"
+              onClick={() => scrollToPanel(0)}
+            >
+              Top
+            </Button>
+          )}
+          {currentIndex < panels.length - 1 && (
+            <Button onClick={() => scrollToPanel(currentIndex + 1)}>Next</Button>
+          )}
+          {currentIndex < panels.length - 1 && (
+            <Button onClick={() => scrollToPanel(panels.length - 1)}>Bottom</Button>
+          )}
+          {currentIndex > 0 && (
+            <Button
+              variant="secondary"
+              onClick={() => scrollToPanel(currentIndex - 1)}
+            >
+              Previous
+            </Button>
+          )}
+        </div>
       )}
       <Footer />
     </div>
