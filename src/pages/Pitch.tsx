@@ -842,7 +842,8 @@ const Pitch = () => {
   const scrollToPanel = (index: number) => {
     const target = panelRefs.current[index];
     if (target) {
-      window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+      const top = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top, behavior: "smooth" });
     }
     setCurrentIndex(index);
     setShowNav(true);
