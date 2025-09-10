@@ -747,6 +747,8 @@ const Pitch = () => {
   const panelRefs = useRef<HTMLDivElement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showNav, setShowNav] = useState(true);
+  const navButtonClass =
+    "bg-gray-500/50 text-white hover:bg-gray-500 hover:text-white disabled:opacity-50";
 
 
   useEffect(() => {
@@ -831,28 +833,38 @@ const Pitch = () => {
       </main>
       {showNav && (
         <div className="fixed bottom-4 right-4 z-50 grid grid-cols-2 gap-2">
-          {currentIndex > 0 && (
-            <Button
-              variant="secondary"
-              onClick={() => scrollToPanel(0)}
-            >
-              Top
-            </Button>
-          )}
-          {currentIndex < panels.length - 1 && (
-            <Button onClick={() => scrollToPanel(currentIndex + 1)}>Next</Button>
-          )}
-          {currentIndex < panels.length - 1 && (
-            <Button onClick={() => scrollToPanel(panels.length - 1)}>Bottom</Button>
-          )}
-          {currentIndex > 0 && (
-            <Button
-              variant="secondary"
-              onClick={() => scrollToPanel(currentIndex - 1)}
-            >
-              Previous
-            </Button>
-          )}
+          <Button
+            variant="ghost"
+            className={navButtonClass}
+            onClick={() => scrollToPanel(currentIndex - 1)}
+            disabled={currentIndex === 0}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="ghost"
+            className={navButtonClass}
+            onClick={() => scrollToPanel(currentIndex + 1)}
+            disabled={currentIndex === panels.length - 1}
+          >
+            Next
+          </Button>
+          <Button
+            variant="ghost"
+            className={navButtonClass}
+            onClick={() => scrollToPanel(0)}
+            disabled={currentIndex === 0}
+          >
+            Top
+          </Button>
+          <Button
+            variant="ghost"
+            className={navButtonClass}
+            onClick={() => scrollToPanel(panels.length - 1)}
+            disabled={currentIndex === panels.length - 1}
+          >
+            Bottom
+          </Button>
         </div>
       )}
       <Footer />

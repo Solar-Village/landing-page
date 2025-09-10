@@ -30,8 +30,35 @@ describe("Pitch navigation", () => {
     );
     const bottomButton = screen.getByRole("button", { name: /bottom/i });
     await user.click(bottomButton);
-    const topButton = await screen.findByRole("button", { name: /top/i });
+    const topButton = screen.getByRole("button", { name: /top/i });
     await user.click(topButton);
     expect(Element.prototype.scrollIntoView).toHaveBeenCalledTimes(2);
+  });
+
+  it("disables navigation buttons at the boundaries", async () => {
+    Element.prototype.scrollIntoView = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <BrowserRouter>
+        <Pitch />
+      </BrowserRouter>
+    );
+
+    const prevButton = screen.getByRole("button", { name: /previous/i });
+    const topButton = screen.getByRole("button", { name: /top/i });
+    const nextButton = screen.getByRole("button", { name: /next/i });
+    const bottomButton = screen.getByRole("button", { name: /bottom/i });
+
+    expect(prevButton).toBeDisabled();
+    expect(topButton).toBeDisabled();
+    expect(nextButton).toBeEnabled();
+    expect(bottomButton).toBeEnabled();
+
+    await user.click(bottomButton);
+
+    expect(nextButton).toBeDisabled();
+    expect(bottomButton).toBeDisabled();
+    expect(prevButton).toBeEnabled();
+    expect(topButton).toBeEnabled();
   });
 });
