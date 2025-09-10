@@ -34,8 +34,11 @@ const Impact = () => {
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
+          <p className="text-red-600 mb-4">
+            Data on this page is illustrative only. This project is still in concept stage.
+          </p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Transforming 
+            Transforming
             <span className="text-transparent bg-gradient-sunrise bg-clip-text"> Communities</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

@@ -20,6 +20,15 @@ describe('App router', () => {
     expect(screen.getByRole('link', { name: /pitch/i })).toBeInTheDocument();
   });
 
+  it('displays illustrative data notice on home page', () => {
+    renderWithPath('/');
+    expect(
+      screen.getByText(
+        'Data on this page is illustrative only. This project is still in concept stage.'
+      )
+    ).toBeInTheDocument();
+  });
+
   it('renders Pitch page', () => {
     renderWithPath('/pitch');
     expect(screen.getByText(/The Challenge/i)).toBeInTheDocument();
