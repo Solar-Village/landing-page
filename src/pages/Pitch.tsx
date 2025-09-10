@@ -53,7 +53,7 @@ const Pitch = () => {
       title: "Financing for PUE (Productive Use of Electricity)",
       className: "bg-gradient-to-br from-emerald-600 to-green-400 text-white",
       content: (
-        <ul className="list-disc space-y-2 text-left max-w-xl">
+        <ul className="list-disc space-y-2 text-left max-w-xl text-lg">
           <li>Provide upfront capital for productive devices</li>
           <li>Link repayments to energy revenues</li>
           <li>Boost local businesses and incomes</li>
@@ -67,7 +67,7 @@ const Pitch = () => {
       title: "Paying for Electricity with Crops or Labor (Sarafu-style)",
       className: "bg-gradient-to-br from-amber-200 to-orange-400 text-gray-900",
       content: (
-        <div className="grid gap-2 max-w-xl">
+        <div className="grid gap-2 max-w-xl text-lg">
           <div className="border rounded p-2 bg-white/70">
             Address cash liquidity gaps
           </div>
@@ -88,7 +88,7 @@ const Pitch = () => {
       title: "Irrefutable Tracking of QAMF Indicators",
       className: "bg-gradient-to-br from-indigo-600 to-purple-600 text-white",
       content: (
-        <div className="space-y-2 text-left max-w-xl">
+        <div className="space-y-2 text-left max-w-xl text-lg">
           <div className="flex items-start">
             <span className="mr-2">›</span>
             <span>Extend asset inventory + on-chain settlement</span>
@@ -113,7 +113,7 @@ const Pitch = () => {
       title: "Hybridization with the National Grid",
       className: "bg-gradient-to-br from-sky-500 to-blue-700 text-white",
       content: (
-        <ol className="list-decimal space-y-2 text-left max-w-xl">
+        <ol className="list-decimal space-y-2 text-left max-w-xl text-lg">
           <li>Integrate solar microgrids with grid extensions</li>
           <li>Use asset registry as integration point</li>
           <li>Maintain local assets as backup supply</li>
@@ -126,7 +126,7 @@ const Pitch = () => {
       title: "Village DAOs for Local Governance and Tariffs",
       className: "bg-gradient-to-br from-rose-500 to-pink-500 text-white",
       content: (
-        <div className="space-y-2 text-left max-w-xl">
+        <div className="space-y-2 text-left max-w-xl text-lg">
           <div className="flex items-start gap-2">
             <span>✅</span>
             <span>Community voting on tariffs, reinvestment, maintenance</span>
@@ -151,7 +151,7 @@ const Pitch = () => {
       title: "Carbon Credit Monetization from Diesel Displacement",
       className: "bg-gradient-to-br from-gray-800 to-green-700 text-white",
       content: (
-        <div className="grid gap-2 max-w-xl">
+        <div className="grid gap-2 max-w-xl text-lg">
           <div className="bg-white/20 rounded p-2">
             Replace diesel → measurable CO₂ savings
           </div>
@@ -173,7 +173,7 @@ const Pitch = () => {
       title: "Microfinance Using Repayment-Based Credit Scores",
       className: "bg-gradient-to-br from-teal-500 to-cyan-600 text-white",
       content: (
-        <div className="space-y-2 text-left max-w-xl">
+        <div className="space-y-2 text-left max-w-xl text-lg">
           <div className="flex items-center gap-2">
             <span className="font-bold">•</span>
             <span>Repayment history = community credit score</span>
@@ -198,7 +198,7 @@ const Pitch = () => {
       title: "End-of-Life Decommissioning of Minigrid Components",
       className: "bg-gradient-to-br from-slate-700 to-zinc-900 text-white",
       content: (
-        <ul className="list-disc space-y-2 text-left max-w-xl">
+        <ul className="list-disc space-y-2 text-left max-w-xl text-lg">
           <li>Register every component at deployment</li>
           <li>Track lifecycle for panels, inverters, batteries</li>
           <li>Enable responsible recycling/repurposing</li>
@@ -559,7 +559,7 @@ const Pitch = () => {
           </ul>
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button size="lg" className="mt-6">
+              <Button size="lg" className="mt-6 animate-bounce hover:animate-none">
                 Explore opportunities
               </Button>
             </DialogTrigger>

@@ -28,6 +28,7 @@ describe("Follow-on opportunities modal", () => {
 
     const user = userEvent.setup();
     const button = within(section).getByRole("button", { name: /explore opportunities/i });
+    expect(button.className).toMatch(/animate-bounce/);
     await user.click(button);
 
     const dialog = await screen.findByRole("dialog");
