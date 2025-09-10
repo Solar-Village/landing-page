@@ -2,7 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import FloatingBackButton from "@/components/FloatingBackButton";
 import PeopleReadingInTheDark from "@/assets/PeopleReadingInTheDark.png";
 import ChildrenStudyingWithLight from "@/assets/ChildrenStudyingWithLight.png";
@@ -17,6 +24,167 @@ const Pitch = () => {
     }
     window.scrollTo({ top: 0 });
   }, []);
+
+  const opportunities = [
+    {
+      letter: "A",
+      title: "Financing for PUE (Productive Use of Electricity)",
+      className: "bg-gradient-to-br from-emerald-600 to-green-400 text-white",
+      content: (
+        <ul className="list-disc space-y-2 text-left max-w-xl">
+          <li>Provide upfront capital for productive devices</li>
+          <li>Link repayments to energy revenues</li>
+          <li>Boost local businesses and incomes</li>
+          <li>Scale micro-enterprises through energy access</li>
+        </ul>
+      ),
+      tagline: "Power businesses for growth",
+    },
+    {
+      letter: "B",
+      title: "Paying for Electricity with Crops or Labor (Sarafu-style)",
+      className: "bg-gradient-to-br from-amber-200 to-orange-400 text-gray-900",
+      content: (
+        <div className="grid gap-2 max-w-xl">
+          <div className="border rounded p-2 bg-white/70">
+            Address cash liquidity gaps
+          </div>
+          <div className="border rounded p-2 bg-white/70">
+            Tokenize pledges of harvests or work
+          </div>
+          <div className="border rounded p-2 bg-white/70">
+            Use vouchers as collateral for energy
+          </div>
+          <div className="border rounded p-2 bg-white/70">
+            Expand affordability beyond cash
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "C",
+      title: "Irrefutable Tracking of QAMF Indicators",
+      className: "bg-gradient-to-br from-indigo-600 to-purple-600 text-white",
+      content: (
+        <div className="space-y-2 text-left max-w-xl">
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>Extend asset inventory + on-chain settlement</span>
+          </div>
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>Capture uptime, electrification, repayments, maintenance</span>
+          </div>
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>Publish tamper-proof records for donors/investors</span>
+          </div>
+          <div className="flex items-start">
+            <span className="mr-2">›</span>
+            <span>De-risk funding & enable scale</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "D",
+      title: "Hybridization with the National Grid",
+      className: "bg-gradient-to-br from-sky-500 to-blue-700 text-white",
+      content: (
+        <ol className="list-decimal space-y-2 text-left max-w-xl">
+          <li>Integrate solar microgrids with grid extensions</li>
+          <li>Use asset registry as integration point</li>
+          <li>Maintain local assets as backup supply</li>
+          <li>Reduce risk of stranded infrastructure</li>
+        </ol>
+      ),
+    },
+    {
+      letter: "E",
+      title: "Village DAOs for Local Governance and Tariffs",
+      className: "bg-gradient-to-br from-rose-500 to-pink-500 text-white",
+      content: (
+        <div className="space-y-2 text-left max-w-xl">
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Community voting on tariffs, reinvestment, maintenance</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Transparent, auditable decisions on local energy economy</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Empower users as active stakeholders</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <span>✅</span>
+            <span>Build trust & local ownership</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "F",
+      title: "Carbon Credit Monetization from Diesel Displacement",
+      className: "bg-gradient-to-br from-gray-800 to-green-700 text-white",
+      content: (
+        <div className="grid gap-2 max-w-xl">
+          <div className="bg-white/20 rounded p-2">
+            Replace diesel → measurable CO₂ savings
+          </div>
+          <div className="bg-white/20 rounded p-2">
+            Use transaction + asset records for audit trail
+          </div>
+          <div className="bg-white/20 rounded p-2">
+            Issue verified carbon credits
+          </div>
+          <div className="bg-white/20 rounded p-2">
+            Create new revenue stream for communities
+          </div>
+        </div>
+      ),
+      tagline: "Turn clean energy into capital",
+    },
+    {
+      letter: "G",
+      title: "Microfinance Using Repayment-Based Credit Scores",
+      className: "bg-gradient-to-br from-teal-500 to-cyan-600 text-white",
+      content: (
+        <div className="space-y-2 text-left max-w-xl">
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Repayment history = community credit score</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Unlock loans for education, healthcare, equipment</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Bridge from energy access to financial inclusion</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">•</span>
+            <span>Build resilience & upward mobility</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      letter: "H",
+      title: "End-of-Life Decommissioning of Minigrid Components",
+      className: "bg-gradient-to-br from-slate-700 to-zinc-900 text-white",
+      content: (
+        <ul className="list-disc space-y-2 text-left max-w-xl">
+          <li>Register every component at deployment</li>
+          <li>Track lifecycle for panels, inverters, batteries</li>
+          <li>Enable responsible recycling/repurposing</li>
+          <li>Support circular-economy financing</li>
+        </ul>
+      ),
+    },
+  ];
 
   const panels = [
     {
@@ -361,13 +529,42 @@ const Pitch = () => {
       title: "Follow-on Opportunities",
       subtitle: "Blockchain technology enables exciting growth paths",
       content: (
-        <ul className="space-y-2 text-lg">
-          <li>• Extend cNGN to Cardano for global impact finance</li>
-          <li>• Hybridize with national grid where feasible</li>
-          <li>• Village DAOs for local governance & tariffs</li>
-          <li>• Carbon credit monetization from diesel displacement</li>
-          <li>• Microfinance using repayment-based credit scores</li>
-        </ul>
+        <>
+          <ul className="space-y-2 text-lg">
+            {opportunities.map((o) => (
+              <li key={o.letter}>{`${o.letter} - ${o.title}`}</li>
+            ))}
+          </ul>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="lg" className="mt-6">
+                Explore opportunities
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none">
+              <DialogTitle className="sr-only">Follow-on Opportunities</DialogTitle>
+              <Carousel className="h-full" opts={{ loop: true }}>
+                <CarouselContent className="h-full">
+                  {opportunities.map((o) => (
+                    <CarouselItem key={o.letter}>
+                      <div
+                        className={`h-full w-full flex flex-col items-center justify-center p-8 text-center ${o.className}`}
+                      >
+                        <h3 className="text-3xl font-bold mb-4">{o.title}</h3>
+                        {o.content}
+                        {o.tagline && (
+                          <p className="mt-4 text-xl font-semibold">{o.tagline}</p>
+                        )}
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4 top-1/2 -translate-y-1/2" />
+                <CarouselNext className="right-4 top-1/2 -translate-y-1/2" />
+              </Carousel>
+            </DialogContent>
+          </Dialog>
+        </>
       ),
       className: "bg-background",
     },
