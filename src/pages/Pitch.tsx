@@ -672,26 +672,48 @@ const Pitch = () => {
       title: "Partnerships",
       subtitle: "",
       content: (
-        <div className="space-y-2 text-lg">
-          <div>
-            <strong>Africa Talks</strong> – USSD access
-          </div>
-          <div>
-            <strong>Local Banks & Mobile Money</strong> – payment rails
-          </div>
-          <div>
-            <strong>Contractors</strong> – deployment & maintenance
-          </div>
-          <div>
-            <strong>UNDP</strong> – oversight & legitimacy
-          </div>
-          <div>
-            <strong>Philanthropists & Impact Investors</strong> – financing
-          </div>
-          <div>
-            <strong>Compliant Naira</strong> – stablecoin settlement
-          </div>
-        </div>
+        <table className="w-full text-lg">
+          <tbody>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Policy & Regulation</td>
+              <td className="space-y-1">
+                <div>Rural Electrification Agency (REA)</div>
+                <div>Federal Ministry of Power</div>
+                <div>National Information Technology Development Agency (NITDA)</div>
+                <div>Nigeria Communications Commission (NCC)</div>
+                <div>State & Local Government Representatives</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Programmatic & Development</td>
+              <td className="space-y-1">
+                <div>Africa Minigrid Programme – Regional Team</div>
+                <div>United Nations Development Programme (UNDP)</div>
+                <div>Northwest Development Commission</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Technical & Delivery</td>
+              <td className="space-y-1">
+                <div>Rocky Mountain Institute (RMI)</div>
+                <div>Africa Talks (USSD access)</div>
+                <div>Contractors for microgrid deployment & maintenance</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Finance & Settlement</td>
+              <td className="space-y-1">
+                <div>Local Banks & Mobile Money Providers (payment rails)</div>
+                <div>Wrapped CBDC Ltd (Compliant Naira, cNGN)</div>
+                <div>Impact Investors & Philanthropists</div>
+              </td>
+            </tr>
+            <tr>
+              <td className="font-semibold pr-4 align-top">Community</td>
+              <td>Host Communities & Beneficiaries</td>
+            </tr>
+          </tbody>
+        </table>
       ),
       className: "bg-gradient-to-r from-primary to-secondary text-white",
     },
