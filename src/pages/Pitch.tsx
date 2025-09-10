@@ -742,6 +742,68 @@ const Pitch = () => {
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url(${ChildrenStudyingWithLight})`,
       },
     },
+    {
+      id: 17,
+      title: "Team",
+      subtitle: "",
+      content: (
+        <div className="grid gap-8 text-lg md:text-xl">
+          <div>
+            <h3 className="text-2xl font-semibold mb-4">Challenge owners</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="flex flex-col items-center text-center space-y-2">
+                <img
+                  src="/placeholder.svg"
+                  alt="Osondu Ogbodo"
+                  className="w-24 h-24 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold">Osondu Ogbodo</div>
+                  <div className="text-sm opacity-80">CT Analyst, UNDP Nigeria Country Office</div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center text-center space-y-2">
+                <img
+                  src="/placeholder.svg"
+                  alt="Temitope Omowumi"
+                  className="w-24 h-24 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold">Temitope Omowumi</div>
+                  <div className="text-sm opacity-80">AMP Digital Strategy, Planning Specialist</div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center text-center space-y-2">
+                <img
+                  src="/placeholder.svg"
+                  alt="Lantana Elhassan"
+                  className="w-24 h-24 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-semibold">Lantana Elhassan</div>
+                  <div className="text-sm opacity-80">Head of Exploration</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold mb-4">Solution maker</h3>
+            <div className="flex flex-col items-center text-center space-y-2">
+              <img
+                src="/placeholder.svg"
+                alt="Noak Lindqvist"
+                className="w-24 h-24 rounded-full object-cover"
+              />
+              <div>
+                <div className="font-semibold">Noak Lindqvist</div>
+                <div className="text-sm opacity-80">Founder, Cubid and MD, Firebelly Consulting</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      className: "bg-background",
+    },
   ];
 
   const panelRefs = useRef<HTMLDivElement[]>([]);
@@ -844,6 +906,14 @@ const Pitch = () => {
           <Button
             variant="ghost"
             className={navButtonClass}
+            onClick={() => scrollToPanel(0)}
+            disabled={currentIndex === 0}
+          >
+            First
+          </Button>
+          <Button
+            variant="ghost"
+            className={navButtonClass}
             onClick={() => scrollToPanel(currentIndex + 1)}
             disabled={currentIndex === panels.length - 1}
           >
@@ -852,18 +922,10 @@ const Pitch = () => {
           <Button
             variant="ghost"
             className={navButtonClass}
-            onClick={() => scrollToPanel(0)}
-            disabled={currentIndex === 0}
-          >
-            Top
-          </Button>
-          <Button
-            variant="ghost"
-            className={navButtonClass}
             onClick={() => scrollToPanel(panels.length - 1)}
             disabled={currentIndex === panels.length - 1}
           >
-            Bottom
+            Last
           </Button>
         </div>
       )}

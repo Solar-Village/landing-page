@@ -20,7 +20,7 @@ describe("Pitch navigation", () => {
     expect(Element.prototype.scrollIntoView).toHaveBeenCalledTimes(2);
   });
 
-  it("scrolls to the bottom and back to the top", async () => {
+  it("scrolls to the last panel and back to the first", async () => {
     Element.prototype.scrollIntoView = vi.fn();
     const user = userEvent.setup();
     render(
@@ -28,10 +28,10 @@ describe("Pitch navigation", () => {
         <Pitch />
       </BrowserRouter>
     );
-    const bottomButton = screen.getByRole("button", { name: /bottom/i });
-    await user.click(bottomButton);
-    const topButton = screen.getByRole("button", { name: /top/i });
-    await user.click(topButton);
+    const lastButton = screen.getByRole("button", { name: /last/i });
+    await user.click(lastButton);
+    const firstButton = screen.getByRole("button", { name: /first/i });
+    await user.click(firstButton);
     expect(Element.prototype.scrollIntoView).toHaveBeenCalledTimes(2);
   });
 
@@ -45,20 +45,20 @@ describe("Pitch navigation", () => {
     );
 
     const prevButton = screen.getByRole("button", { name: /previous/i });
-    const topButton = screen.getByRole("button", { name: /top/i });
+    const firstButton = screen.getByRole("button", { name: /first/i });
     const nextButton = screen.getByRole("button", { name: /next/i });
-    const bottomButton = screen.getByRole("button", { name: /bottom/i });
+    const lastButton = screen.getByRole("button", { name: /last/i });
 
     expect(prevButton).toBeDisabled();
-    expect(topButton).toBeDisabled();
+    expect(firstButton).toBeDisabled();
     expect(nextButton).toBeEnabled();
-    expect(bottomButton).toBeEnabled();
+    expect(lastButton).toBeEnabled();
 
-    await user.click(bottomButton);
+    await user.click(lastButton);
 
     expect(nextButton).toBeDisabled();
-    expect(bottomButton).toBeDisabled();
+    expect(lastButton).toBeDisabled();
     expect(prevButton).toBeEnabled();
-    expect(topButton).toBeEnabled();
+    expect(firstButton).toBeEnabled();
   });
 });
