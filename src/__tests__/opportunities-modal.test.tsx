@@ -38,8 +38,11 @@ describe("Follow-on opportunities modal", () => {
 
     const dots = within(dialog).getAllByTestId("opportunity-dot");
     expect(dots).toHaveLength(8);
-
+    const prev = within(dialog).getByRole("button", { name: /previous slide/i });
+    expect(prev).toBeVisible();
     const next = within(dialog).getByRole("button", { name: /next slide/i });
+    expect(next).toBeVisible();
+    expect(next).not.toBeDisabled();
     await user.click(next);
     expect(
       within(dialog).getByText(/Paying for Electricity with Crops or Labor/i)

@@ -563,14 +563,14 @@ const Pitch = () => {
                 Explore opportunities
               </Button>
             </DialogTrigger>
-            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none overflow-hidden">
+            <DialogContent className="p-0 w-[90vw] h-[90vh] max-w-none max-h-none overflow-hidden flex">
               <DialogTitle className="sr-only">Follow-on Opportunities</DialogTitle>
               <Carousel
                 className="h-full w-full"
                 opts={{ loop: true }}
                 setApi={setApi}
               >
-                <CarouselContent className="h-full w-full">
+                <CarouselContent containerClassName="h-full w-full" className="h-full w-full">
                   {opportunities.map((o) => (
                     <CarouselItem key={o.letter} className="h-full">
                       <div
@@ -585,15 +585,15 @@ const Pitch = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-4 top-1/2 -translate-y-1/2 z-10" />
-                <CarouselNext className="right-4 top-1/2 -translate-y-1/2 z-10" />
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                <CarouselPrevious className="!left-4 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="!right-4 top-1/2 -translate-y-1/2 z-10" />
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
                   {opportunities.map((_, idx) => (
                     <button
                       key={idx}
                       aria-label={`Go to slide ${idx + 1}`}
                       className={cn(
-                        "h-2 w-2 rounded-full bg-white/50",
+                        "h-3 w-3 rounded-full bg-white/50 border border-white",
                         idx === current && "bg-white"
                       )}
                       onClick={() => api?.scrollTo(idx)}
