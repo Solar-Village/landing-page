@@ -19,6 +19,11 @@ import FamilyWithLight from "@/assets/FamilyWithLight.png";
 import SolarVillageMetrics from "@/assets/solar-village-metrics.png";
 import SolarVillageStakeholders from "@/assets/solar-village-stakeholders.png";
 
+const osonduPic = new URL("/Osondu Pic.jpg", import.meta.url).href;
+const temiPic = new URL("/temi.jpeg", import.meta.url).href;
+const lantaaPic = new URL("/Lantaa.jpeg", import.meta.url).href;
+const noakPic = new URL("/Noak.jpeg", import.meta.url).href;
+
 const Pitch = () => {
   useEffect(() => {
     if (typeof navigator !== "undefined" && navigator.userAgent.includes("jsdom")) {
@@ -750,10 +755,10 @@ const Pitch = () => {
         <div className="grid gap-6 md:gap-8 text-sm md:text-xl">
           <div>
             <h3 className="text-xl md:text-2xl font-semibold mb-4">Challenge owners</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="flex flex-col items-center text-center space-y-2">
                 <img
-                  src="/Osondu%20Pic.jpg"
+                  src={osonduPic}
                   alt="Osondu Ogbodo"
                   className="w-24 h-24 rounded-full object-cover"
                 />
@@ -764,7 +769,7 @@ const Pitch = () => {
               </div>
               <div className="flex flex-col items-center text-center space-y-2">
                 <img
-                  src="/temi.jpeg"
+                  src={temiPic}
                   alt="Temitope Omowumi"
                   className="w-24 h-24 rounded-full object-cover"
                 />
@@ -775,7 +780,7 @@ const Pitch = () => {
               </div>
               <div className="flex flex-col items-center text-center space-y-2">
                 <img
-                  src="/Lantaa.jpeg"
+                  src={lantaaPic}
                   alt="Lantana Elhassan"
                   className="w-24 h-24 rounded-full object-cover"
                 />
@@ -790,7 +795,7 @@ const Pitch = () => {
             <h3 className="text-xl md:text-2xl font-semibold mb-4">Solution maker</h3>
             <div className="flex flex-col items-center text-center space-y-2">
               <img
-                src="/Noak.jpeg"
+                src={noakPic}
                 alt="Noak Lindqvist"
                 className="w-24 h-24 rounded-full object-cover"
               />
