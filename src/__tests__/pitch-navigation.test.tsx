@@ -6,8 +6,11 @@ import Pitch from "@/pages/Pitch";
 
 describe("Pitch navigation", () => {
   it("scrolls between panels using Next and Previous", async () => {
-    const scrollToMock = vi.fn();
-    Object.defineProperty(window, "scrollTo", { writable: true, value: scrollToMock });
+    const scrollIntoViewMock = vi.fn();
+    Object.defineProperty(window.HTMLElement.prototype, "scrollIntoView", {
+      writable: true,
+      value: scrollIntoViewMock,
+    });
     const user = userEvent.setup();
     render(
       <BrowserRouter>
@@ -18,12 +21,15 @@ describe("Pitch navigation", () => {
     await user.click(nextButton);
     const prevButton = screen.getByRole("button", { name: /previous/i });
     await user.click(prevButton);
-    expect(scrollToMock).toHaveBeenCalledTimes(2);
+    expect(scrollIntoViewMock).toHaveBeenCalledTimes(2);
   });
 
   it("scrolls to the last panel and back to the first", async () => {
-    const scrollToMock = vi.fn();
-    Object.defineProperty(window, "scrollTo", { writable: true, value: scrollToMock });
+    const scrollIntoViewMock = vi.fn();
+    Object.defineProperty(window.HTMLElement.prototype, "scrollIntoView", {
+      writable: true,
+      value: scrollIntoViewMock,
+    });
     const user = userEvent.setup();
     render(
       <BrowserRouter>
@@ -34,12 +40,15 @@ describe("Pitch navigation", () => {
     await user.click(lastButton);
     const firstButton = screen.getByRole("button", { name: /first/i });
     await user.click(firstButton);
-    expect(scrollToMock).toHaveBeenCalledTimes(2);
+    expect(scrollIntoViewMock).toHaveBeenCalledTimes(2);
   });
 
   it("disables navigation buttons at the boundaries", async () => {
-    const scrollToMock = vi.fn();
-    Object.defineProperty(window, "scrollTo", { writable: true, value: scrollToMock });
+    const scrollIntoViewMock = vi.fn();
+    Object.defineProperty(window.HTMLElement.prototype, "scrollIntoView", {
+      writable: true,
+      value: scrollIntoViewMock,
+    });
     const user = userEvent.setup();
     render(
       <BrowserRouter>

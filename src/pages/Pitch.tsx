@@ -440,7 +440,7 @@ const Pitch = () => {
       subtitle: "Blockchain technology enables exciting growth paths",
       content: (
         <>
-          <ul className="space-y-2 text-base md:text-lg">
+          <ul className="space-y-2 text-sm md:text-lg">
             {opportunities.map((o) => (
               <li key={o.letter}>{`${o.letter} - ${o.title}`}</li>
             ))}
@@ -464,7 +464,7 @@ const Pitch = () => {
                   {opportunities.map((o) => (
                     <CarouselItem key={o.letter} className="h-full">
                       <div
-                        className={`h-full w-full flex flex-col items-center justify-center p-8 text-center text-base md:text-xl ${o.className}`}
+                        className={`h-full w-full flex flex-col items-center justify-center p-8 text-center text-sm md:text-xl ${o.className}`}
                       >
                         <h3 className="text-3xl font-bold mb-6">{o.title}</h3>
                         {o.content}
@@ -506,27 +506,27 @@ const Pitch = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-white">
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Energy Users</div>
-            <div className="text-base md:text-lg">Community members</div>
+              <div className="text-sm md:text-lg">Community members</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Deployment</div>
-            <div className="text-base md:text-lg">Contractors & installers</div>
+              <div className="text-sm md:text-lg">Contractors & installers</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Financing</div>
-            <div className="text-base md:text-lg">Philanthropists & impact investors</div>
+              <div className="text-sm md:text-lg">Philanthropists & impact investors</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Oversight</div>
-            <div className="text-base md:text-lg">UNDP & agencies</div>
+              <div className="text-sm md:text-lg">UNDP & agencies</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Settlement</div>
-            <div className="text-base md:text-lg">Compliant Naira team</div>
+              <div className="text-sm md:text-lg">Compliant Naira team</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Payment Rails</div>
-            <div className="text-base md:text-lg">Local banks</div>
+              <div className="text-sm md:text-lg">Local banks</div>
           </div>
         </div>
       ),
@@ -618,24 +618,24 @@ const Pitch = () => {
         <div className="grid md:grid-cols-2 gap-4 text-white">
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">⚡</div>
-            <div className="text-base md:text-lg">Households electrified & kWh delivered</div>
+              <div className="text-sm md:text-lg">Households electrified & kWh delivered</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">💰</div>
-            <div className="text-base md:text-lg">Repayment rates and cNGN volume</div>
+              <div className="text-sm md:text-lg">Repayment rates and cNGN volume</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">⏱️</div>
-            <div className="text-base md:text-lg">Uptime and hours of reliable power</div>
+              <div className="text-sm md:text-lg">Uptime and hours of reliable power</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">🎓</div>
-            <div className="text-base md:text-lg">Reduced travel; better education outcomes</div>
+              <div className="text-sm md:text-lg">Reduced travel; better education outcomes</div>
           </div>
           <div className="md:col-span-2">
             <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30 text-center">
               <div className="text-2xl font-bold text-village mb-2">🌱</div>
-              <div className="text-base md:text-lg">Lower kerosene/diesel use & CO₂ avoided</div>
+                <div className="text-sm md:text-lg">Lower kerosene/diesel use & CO₂ avoided</div>
             </div>
           </div>
         </div>
@@ -747,13 +747,13 @@ const Pitch = () => {
       title: "Team",
       subtitle: "",
       content: (
-        <div className="grid gap-8 text-base md:text-xl">
+        <div className="grid gap-6 md:gap-8 text-sm md:text-xl">
           <div>
-            <h3 className="text-2xl font-semibold mb-4">Challenge owners</h3>
+            <h3 className="text-xl md:text-2xl font-semibold mb-4">Challenge owners</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="flex flex-col items-center text-center space-y-2">
                 <img
-                  src="/placeholder.svg"
+                  src="/Osondu%20Pic.jpg"
                   alt="Osondu Ogbodo"
                   className="w-24 h-24 rounded-full object-cover"
                 />
@@ -764,7 +764,7 @@ const Pitch = () => {
               </div>
               <div className="flex flex-col items-center text-center space-y-2">
                 <img
-                  src="/placeholder.svg"
+                  src="/temi.jpeg"
                   alt="Temitope Omowumi"
                   className="w-24 h-24 rounded-full object-cover"
                 />
@@ -775,7 +775,7 @@ const Pitch = () => {
               </div>
               <div className="flex flex-col items-center text-center space-y-2">
                 <img
-                  src="/placeholder.svg"
+                  src="/Lantaa.jpeg"
                   alt="Lantana Elhassan"
                   className="w-24 h-24 rounded-full object-cover"
                 />
@@ -787,10 +787,10 @@ const Pitch = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-4">Solution maker</h3>
+            <h3 className="text-xl md:text-2xl font-semibold mb-4">Solution maker</h3>
             <div className="flex flex-col items-center text-center space-y-2">
               <img
-                src="/placeholder.svg"
+                src="/Noak.jpeg"
                 alt="Noak Lindqvist"
                 className="w-24 h-24 rounded-full object-cover"
               />
@@ -842,8 +842,7 @@ const Pitch = () => {
   const scrollToPanel = (index: number) => {
     const target = panelRefs.current[index];
     if (target) {
-      const top = target.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top, behavior: "smooth" });
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setCurrentIndex(index);
     setShowNav(true);
