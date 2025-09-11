@@ -53,7 +53,7 @@ const Pitch = () => {
       title: "Financing for PUE (Productive Use of Electricity)",
       className: "bg-gradient-to-br from-emerald-600 to-green-400 text-white",
       content: (
-        <ul className="list-disc space-y-2 text-left max-w-xl text-xl">
+        <ul className="list-disc space-y-2 text-left max-w-xl text-lg md:text-xl">
           <li>Provide upfront capital for productive devices</li>
           <li>Link repayments to energy revenues</li>
           <li>Boost local businesses and incomes</li>
@@ -67,7 +67,7 @@ const Pitch = () => {
       title: "Paying for Electricity with Crops or Labor (Sarafu-style)",
       className: "bg-gradient-to-br from-amber-200 to-orange-400 text-gray-900",
       content: (
-        <div className="grid gap-2 max-w-xl text-xl">
+        <div className="grid gap-2 max-w-xl text-lg md:text-xl">
           <div className="border rounded p-2 bg-white/70">
             Address cash liquidity gaps
           </div>
@@ -88,7 +88,7 @@ const Pitch = () => {
       title: "Irrefutable Tracking of QAMF Indicators",
       className: "bg-gradient-to-br from-indigo-600 to-purple-600 text-white",
       content: (
-        <div className="space-y-2 text-left max-w-xl text-xl">
+        <div className="space-y-2 text-left max-w-xl text-lg md:text-xl">
           <div className="flex items-start">
             <span className="mr-2">›</span>
             <span>Extend asset inventory + on-chain settlement</span>
@@ -113,7 +113,7 @@ const Pitch = () => {
       title: "Hybridization with the National Grid",
       className: "bg-gradient-to-br from-sky-500 to-blue-700 text-white",
       content: (
-        <ol className="list-decimal space-y-2 text-left max-w-xl text-xl">
+        <ol className="list-decimal space-y-2 text-left max-w-xl text-lg md:text-xl">
           <li>Integrate solar microgrids with grid extensions</li>
           <li>Use asset registry as integration point</li>
           <li>Maintain local assets as backup supply</li>
@@ -126,7 +126,7 @@ const Pitch = () => {
       title: "Village DAOs for Local Governance and Tariffs",
       className: "bg-gradient-to-br from-rose-500 to-pink-500 text-white",
       content: (
-        <div className="space-y-2 text-left max-w-xl text-xl">
+        <div className="space-y-2 text-left max-w-xl text-lg md:text-xl">
           <div className="flex items-start gap-2">
             <span>✅</span>
             <span>Community voting on tariffs, reinvestment, maintenance</span>
@@ -151,7 +151,7 @@ const Pitch = () => {
       title: "Carbon Credit Monetization from Diesel Displacement",
       className: "bg-gradient-to-br from-gray-800 to-green-700 text-white",
       content: (
-        <div className="grid gap-2 max-w-xl text-xl">
+        <div className="grid gap-2 max-w-xl text-lg md:text-xl">
           <div className="bg-white/20 rounded p-2">
             Replace diesel → measurable CO₂ savings
           </div>
@@ -173,7 +173,7 @@ const Pitch = () => {
       title: "Microfinance Using Repayment-Based Credit Scores",
       className: "bg-gradient-to-br from-teal-500 to-cyan-600 text-white",
       content: (
-        <div className="space-y-2 text-left max-w-xl text-xl">
+        <div className="space-y-2 text-left max-w-xl text-lg md:text-xl">
           <div className="flex items-center gap-2">
             <span className="font-bold">•</span>
             <span>Repayment history = community credit score</span>
@@ -198,7 +198,7 @@ const Pitch = () => {
       title: "End-of-Life Decommissioning of Minigrid Components",
       className: "bg-gradient-to-br from-slate-700 to-zinc-900 text-white",
       content: (
-        <ul className="list-disc space-y-2 text-left max-w-xl text-xl">
+        <ul className="list-disc space-y-2 text-left max-w-xl text-lg md:text-xl">
           <li>Register every component at deployment</li>
           <li>Track lifecycle for panels, inverters, batteries</li>
           <li>Enable responsible recycling/repurposing</li>
@@ -214,7 +214,7 @@ const Pitch = () => {
       title: "SolarVillage",
       subtitle: "Powering Northern Nigeria with Transparent Solar Payments",
       content: (
-        <p className="text-lg md:text-lg">
+        <p className="text-base md:text-lg">
           Tap to top-up. Lights on. No travel, no middlemen, full transparency.
         </p>
       ),
@@ -233,7 +233,7 @@ const Pitch = () => {
             Solar hardware exists, but payment and accountability break the
             model:
           </p>
-          <ul className="space-y-2 text-lg">
+          <ul className="space-y-2 text-base md:text-lg">
             <li>- Families might have to travel far to pay, may lose a day’s income</li>
             <li>- Cash leakage and middlemen raise costs & reduce trust</li>
             <li>- Operators / maintenance crews face unpredictable revenues and delays</li>
@@ -280,39 +280,39 @@ const Pitch = () => {
             <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gradient-to-b from-primary to-village"></div>
             <div className="space-y-8">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-village rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-village rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg shadow-lg">
                   1
                 </div>
                 <div className="flex-1 pt-2">
-                  <span className="text-lg font-medium">
+                  <span className="text-base md:text-lg font-medium">
                     User tops up from bank or mobile wallet in the SolarVillage app or
                     via USSD
                   </span>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-village to-primary rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-r from-village to-primary rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg shadow-lg">
                   2
                 </div>
                 <div className="flex-1 pt-2">
-                  <span className="text-lg font-medium">
+                  <span className="text-base md:text-lg font-medium">
                     Funds settle instantly in cNGN; payment is recorded on-chain
                   </span>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-village rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-village rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg shadow-lg">
                   3
                 </div>
                 <div className="flex-1 pt-2">
-                  <span className="text-lg font-medium">
+                  <span className="text-base md:text-lg font-medium">
                     Meter is authorized and power turns on for the paid duration
                   </span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="text-lg text-muted-foreground bg-muted/50 rounded-lg p-4 italic">
+          <div className="text-base md:text-lg text-muted-foreground bg-muted/50 rounded-lg p-4 italic">
             (Backup paths like one-time activation codes are available where needed.)
           </div>
         </div>
@@ -400,7 +400,7 @@ const Pitch = () => {
       subtitle: "",
       content: (
         <div className="text-center text-black">
-          <ul className="space-y-4 text-xl">
+          <ul className="space-y-4 text-base md:text-xl">
             <li className="flex items-center justify-center gap-2">
               <span className="text-2xl">📜</span>
               <span>
@@ -440,7 +440,7 @@ const Pitch = () => {
       subtitle: "Blockchain technology enables exciting growth paths",
       content: (
         <>
-          <ul className="space-y-2 text-lg">
+          <ul className="space-y-2 text-base md:text-lg">
             {opportunities.map((o) => (
               <li key={o.letter}>{`${o.letter} - ${o.title}`}</li>
             ))}
@@ -464,12 +464,12 @@ const Pitch = () => {
                   {opportunities.map((o) => (
                     <CarouselItem key={o.letter} className="h-full">
                       <div
-                        className={`h-full w-full flex flex-col items-center justify-center p-8 text-center text-xl ${o.className}`}
+                        className={`h-full w-full flex flex-col items-center justify-center p-8 text-center text-base md:text-xl ${o.className}`}
                       >
                         <h3 className="text-3xl font-bold mb-6">{o.title}</h3>
                         {o.content}
                         {o.tagline && (
-                          <p className="mt-4 text-xl font-semibold">{o.tagline}</p>
+                          <p className="mt-4 text-base md:text-xl font-semibold">{o.tagline}</p>
                         )}
                       </div>
                     </CarouselItem>
@@ -506,27 +506,27 @@ const Pitch = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-white">
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Energy Users</div>
-            <div className="text-lg">Community members</div>
+            <div className="text-base md:text-lg">Community members</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Deployment</div>
-            <div className="text-lg">Contractors & installers</div>
+            <div className="text-base md:text-lg">Contractors & installers</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Financing</div>
-            <div className="text-lg">Philanthropists & impact investors</div>
+            <div className="text-base md:text-lg">Philanthropists & impact investors</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Oversight</div>
-            <div className="text-lg">UNDP & agencies</div>
+            <div className="text-base md:text-lg">UNDP & agencies</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Settlement</div>
-            <div className="text-lg">Compliant Naira team</div>
+            <div className="text-base md:text-lg">Compliant Naira team</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-orange-300 font-semibold mb-2">Payment Rails</div>
-            <div className="text-lg">Local banks</div>
+            <div className="text-base md:text-lg">Local banks</div>
           </div>
         </div>
       ),
@@ -540,7 +540,7 @@ const Pitch = () => {
       title: "Implementation Plan",
       subtitle: "",
       content: (
-        <div className="space-y-3 text-lg">
+        <div className="space-y-3 text-base md:text-lg">
           <div>
             <strong>Phase 1 (0–6 months):</strong> Pilot in 1-3 villages; launch
             app + USSD; train communities
@@ -565,7 +565,7 @@ const Pitch = () => {
       title: "Financial Model",
       subtitle: "",
       content: (
-        <div className="space-y-2 text-lg">
+        <div className="space-y-2 text-base md:text-lg">
           <div>
             <strong>Capital:</strong> Impact investors fund MicroGrid installs
           </div>
@@ -590,7 +590,7 @@ const Pitch = () => {
       title: "Risk Mitigation",
       subtitle: "",
       content: (
-        <div className="space-y-2 text-lg">
+        <div className="space-y-2 text-base md:text-lg">
           <div>
             <strong>Adoption:</strong> Localized training & UX for web + USSD
           </div>
@@ -618,24 +618,24 @@ const Pitch = () => {
         <div className="grid md:grid-cols-2 gap-4 text-white">
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">⚡</div>
-            <div className="text-lg">Households electrified & kWh delivered</div>
+            <div className="text-base md:text-lg">Households electrified & kWh delivered</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">💰</div>
-            <div className="text-lg">Repayment rates and cNGN volume</div>
+            <div className="text-base md:text-lg">Repayment rates and cNGN volume</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">⏱️</div>
-            <div className="text-lg">Uptime and hours of reliable power</div>
+            <div className="text-base md:text-lg">Uptime and hours of reliable power</div>
           </div>
           <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30">
             <div className="text-2xl font-bold text-village mb-2">🎓</div>
-            <div className="text-lg">Reduced travel; better education outcomes</div>
+            <div className="text-base md:text-lg">Reduced travel; better education outcomes</div>
           </div>
           <div className="md:col-span-2">
             <div className="bg-black/40 backdrop-blur rounded-lg p-4 border border-white/30 text-center">
               <div className="text-2xl font-bold text-village mb-2">🌱</div>
-              <div className="text-lg">Lower kerosene/diesel use & CO₂ avoided</div>
+              <div className="text-base md:text-lg">Lower kerosene/diesel use & CO₂ avoided</div>
             </div>
           </div>
         </div>
@@ -650,7 +650,7 @@ const Pitch = () => {
       title: "Roadmap",
       subtitle: "",
       content: (
-        <div className="space-y-3 text-lg">
+        <div className="space-y-3 text-base md:text-lg">
           <div>
             <strong>Year 1:</strong> Pilot & proof → 3–5 villages; 500–1,000
             households
@@ -672,7 +672,7 @@ const Pitch = () => {
       title: "Partnerships",
       subtitle: "",
       content: (
-        <table className="w-full text-lg">
+        <table className="w-full text-base md:text-lg">
           <tbody>
             <tr>
               <td className="font-semibold pr-4 align-top">Policy & Regulation</td>
@@ -723,15 +723,15 @@ const Pitch = () => {
       subtitle: "Join us to power Northern Nigeria sustainably.",
       content: (
         <div className="text-center space-y-6">
-          <p className="text-lg font-medium leading-relaxed">
+          <p className="text-base md:text-lg font-medium leading-relaxed">
             Fund, oversee, and scale SolarVillage—so families top-up on their
             phones and the lights come on. Transparent by design. Built to last.
           </p>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-            <p className="text-orange-300 font-semibold text-xl">
+            <p className="text-orange-300 font-semibold text-base md:text-xl">
               Ready to light up Northern Nigeria?
             </p>
-            <p className="text-lg mt-2 opacity-90">
+            <p className="text-base md:text-lg mt-2 opacity-90">
               Investors, philanthropists, and community partners are invited to join us.
             </p>
           </div>
@@ -747,7 +747,7 @@ const Pitch = () => {
       title: "Team",
       subtitle: "",
       content: (
-        <div className="grid gap-8 text-lg md:text-xl">
+        <div className="grid gap-8 text-base md:text-xl">
           <div>
             <h3 className="text-2xl font-semibold mb-4">Challenge owners</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -871,7 +871,7 @@ const Pitch = () => {
           >
             <div className="container mx-auto px-6 max-w-4xl">
               <div
-                className={`text-center md:text-left text-lg md:text-xl ${
+                className={`text-center md:text-left text-base md:text-xl ${
                   panel.style?.backgroundImage
                     ? "bg-black/60 border border-white rounded p-6"
                     : panel.className?.includes("bg-gradient")
