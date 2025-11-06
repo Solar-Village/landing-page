@@ -2,7 +2,6 @@ import { Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, MouseEvent, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { showConceptToast } from "@/lib/conceptToast";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,6 +9,7 @@ const Header = () => {
   const lastScrollY = useRef(0);
   const navigate = useNavigate();
   const location = useLocation();
+  const signInUrl = "https://app.solarvillage.xyz";
 
   const getHref = (id: string) =>
     location.pathname === "/" ? `#${id}` : `/#${id}`;
@@ -144,7 +144,11 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" onClick={showConceptToast}>Sign In</Button>
+            <Button variant="ghost" asChild>
+              <a href={signInUrl} rel="noreferrer">
+                Sign In
+              </a>
+            </Button>
             <Button
               className="bg-gradient-sunrise hover:shadow-solar transition-all duration-300"
               onClick={handleGetStarted}
@@ -210,8 +214,10 @@ const Header = () => {
               </a>
             </nav>
             <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-              <Button variant="ghost" className="w-full" onClick={showConceptToast}>
-                Sign In
+              <Button variant="ghost" className="w-full" asChild>
+                <a href={signInUrl} rel="noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
+                  Sign In
+                </a>
               </Button>
               <Button
                 className="w-full bg-gradient-sunrise hover:shadow-solar transition-all duration-300"
