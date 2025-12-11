@@ -24,12 +24,14 @@ describe("Pitch navigation", () => {
     expect(scrollIntoViewMock).toHaveBeenCalledTimes(2);
   });
 
-  it("scrolls to the last panel and back to the first", async () => {
+  it("scrolls to the Team section and back to the top", async () => {
     const scrollIntoViewMock = vi.fn();
     Object.defineProperty(window.HTMLElement.prototype, "scrollIntoView", {
       writable: true,
       value: scrollIntoViewMock,
     });
+    const scrollToMock = vi.fn();
+    window.scrollTo = scrollToMock;
     const user = userEvent.setup();
     render(
       <BrowserRouter>
@@ -40,7 +42,10 @@ describe("Pitch navigation", () => {
     await user.click(lastButton);
     const firstButton = screen.getByRole("button", { name: /first/i });
     await user.click(firstButton);
-    expect(scrollIntoViewMock).toHaveBeenCalledTimes(2);
+    const teamHeading = await screen.findByRole("heading", { name: /team/i });
+    const teamSection = teamHeading.closest("section");
+    expect(scrollIntoViewMock.mock.instances).toContain(teamSection);
+    expect(scrollToMock).toHaveBeenCalledWith({ top: 0, behavior: "smooth" });
   });
 
   it("disables navigation buttons at the boundaries", async () => {
@@ -72,5 +77,21 @@ describe("Pitch navigation", () => {
     expect(lastButton).toBeDisabled();
     expect(prevButton).toBeEnabled();
     expect(firstButton).toBeEnabled();
+  });
+
+  it("shows an email call to action", () => {
+    vi.stubGlobal("IntersectionObserver", class {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    });
+    render(
+      <BrowserRouter>
+        <Pitch />
+      </BrowserRouter>
+    );
+
+    const emailLink = screen.getByRole("link", { name: /email us/i });
+    expect(emailLink).toHaveAttribute("href", "mailto:solarvillage@firebelly.xyz");
   });
 });

@@ -23,10 +23,10 @@ const Impact = () => {
   ];
 
   const stats = [
-    { number: "50,000+", label: "Lives Improved", description: "People now have access to clean energy" },
-    { number: "12,000", label: "Students", description: "Can study after sunset" },
-    { number: "8,500", label: "Businesses", description: "Powered and growing" },
-    { number: "₦2.5M", label: "Savings", description: "On kerosene and candles monthly" }
+    { number: "50,000+", label: "Verified meter events", description: "Captured and hashed for auditability" },
+    { number: "12,000", label: "Households tracked", description: "Usage and uptime logged transparently" },
+    { number: "8,500", label: "Reports shared", description: "Delivered to funders and regulators" },
+    { number: "99.5%", label: "Data completeness", description: "Coverage maintained across sites" }
   ];
 
   return (
@@ -38,11 +38,11 @@ const Impact = () => {
             Data on this page is illustrative only. This project is still in concept stage.
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Transforming
-            <span className="text-transparent bg-gradient-sunrise bg-clip-text"> Communities</span>
+            Verifying
+            <span className="text-transparent bg-gradient-sunrise bg-clip-text"> Community Impact</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            See how solar power is creating opportunities, improving education, and building stronger communities across Africa.
+            Metered evidence, immutable reporting, and optional credits help communities prove outcomes, unlock financing, and invite trusted partners.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ const Impact = () => {
         {/* Testimonials */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-center text-foreground mb-12">
-            Stories from Our Community
+            Evidence-backed stories from our community
           </h3>
           
           <div className="grid lg:grid-cols-2 gap-8">
@@ -100,10 +100,10 @@ const Impact = () => {
         {/* Call to Action */}
         <div className="bg-earth rounded-3xl p-8 md:p-12 text-center text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Power Your Community?
+            Ready to Power and Prove Your Community Impact?
           </h3>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Join thousands of families already enjoying clean, reliable energy. Get started today with no upfront costs.
+            Start with transparent metering and reporting that funders, regulators, and communities can trust. Add credits and payments when you are ready.
           </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

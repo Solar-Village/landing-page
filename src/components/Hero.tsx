@@ -22,17 +22,17 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
             <Zap className="h-4 w-4 text-primary-glow" />
-            <span className="text-white text-sm font-medium">Powering Remote Communities</span>
+            <span className="text-white text-sm font-medium">Metering-first, evidence-ready minigrids</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Bringing <span className="text-transparent bg-gradient-sunrise bg-clip-text">Solar Power</span> to Every Village
+            Bringing <span className="text-transparent bg-gradient-sunrise bg-clip-text">Transparent Power</span> to Every Village
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl leading-relaxed">
-            Access clean, affordable energy with flexible payment plans. Track your usage, manage payments, and power your community's future.
+            Start with verified metering and immutable reporting. Layer in carbon credit readiness and community payments as optional modules—so every kilowatt is trusted, reportable, and financeable.
           </p>
 
           {/* CTAs */}
@@ -44,10 +44,10 @@ const Hero = () => {
                   document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Get Solar Power Today
+                Deploy trusted metering
               </Button>
               <Button size="lg" className="bg-white text-village hover:bg-white/90 text-lg px-8 py-6" asChild>
-                <Link to="/financials">See How It Works</Link>
+                <Link to="/pitch">See the modular stack</Link>
               </Button>
           </div>
 
@@ -58,21 +58,21 @@ const Hero = () => {
                 <Users className="h-6 w-6 text-primary-glow" />
               </div>
               <div className="text-2xl font-bold text-white">500+</div>
-              <div className="text-white/80 text-sm">Villages Powered</div>
+              <div className="text-white/80 text-sm">Sites monitored in pilot</div>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-2 mx-auto">
                 <Zap className="h-6 w-6 text-primary-glow" />
               </div>
               <div className="text-2xl font-bold text-white">10k+</div>
-              <div className="text-white/80 text-sm">Homes Connected</div>
+              <div className="text-white/80 text-sm">Metered household events</div>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-2 mx-auto">
                 <TrendingUp className="h-6 w-6 text-primary-glow" />
               </div>
               <div className="text-2xl font-bold text-white">99%</div>
-              <div className="text-white/80 text-sm">Uptime</div>
+              <div className="text-white/80 text-sm">Data completeness on-chain</div>
             </div>
           </div>
         </div>

@@ -15,43 +15,43 @@ const Features = () => {
   const features = [
     {
       icon: <Sun className="h-8 w-8" />,
-      title: "Clean Solar Energy",
-      description: "Harness the power of the sun with our high-efficiency solar panels designed for African conditions."
+      title: "Evidence-grade metering",
+      description: "Revenue-grade meters and tamper alerts capture every kWh so energy, credits, and payments are anchored in proof."
     },
     {
       icon: <CreditCard className="h-8 w-8" />,
-      title: "Flexible Payments",
-      description: "Pay as you go with mobile money integration. No upfront costs, just affordable daily rates."
+      title: "Optional payments stack",
+      description: "Enable PAYG, invoicing, or pooled community payments only when you need them—no lock-in."
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,
-      title: "Usage Monitoring",
-      description: "Track your power consumption in real-time and optimize your energy usage with smart insights."
+      title: "Immutable reporting",
+      description: "Automatic on-chain logs deliver auditable energy data for investors, grantors, and regulators."
     },
     {
       icon: <Smartphone className="h-8 w-8" />,
-      title: "Mobile App Control",
-      description: "Manage everything from your phone - payments, usage, support, and account settings."
+      title: "Ops dashboard",
+      description: "Remote controls, anomaly alerts, and household-level telemetry in one mobile-friendly console."
     },
     {
       icon: <Battery className="h-8 w-8" />,
-      title: "Reliable Storage",
-      description: "Advanced battery systems ensure power availability even during cloudy days and at night."
+      title: "Resilience first",
+      description: "Smart storage orchestration keeps power available while preserving the evidence chain during outages."
     },
     {
       icon: <Shield className="h-8 w-8" />,
-      title: "Secure & Safe",
-      description: "Built-in safety features and theft protection keep your investment secure and your family safe."
+      title: "Security & custody",
+      description: "Data signing, role-based access, and incident logging protect your sites and your reputation."
     },
     {
       icon: <Users className="h-8 w-8" />,
-      title: "Community Support",
-      description: "Local technicians and 24/7 customer support in your language ensure continuous service."
+      title: "Community accountability",
+      description: "Household rollups, tamper flags, and equitable access controls support fair village-level governance."
     },
     {
       icon: <Wifi className="h-8 w-8" />,
-      title: "Smart Connectivity",
-      description: "IoT-enabled systems provide remote monitoring and automatic issue detection."
+      title: "Carbon-ready connectivity",
+      description: "Offline caching with sync to chain ensures carbon credit issuance can rely on complete, verified records."
     }
   ];
 
@@ -61,11 +61,11 @@ const Features = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Everything You Need for 
-            <span className="text-transparent bg-gradient-sunrise bg-clip-text"> Clean Energy</span>
+            Everything You Need for
+            <span className="text-transparent bg-gradient-sunrise bg-clip-text"> Evidence-backed Energy</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our comprehensive solar solution brings reliable, affordable power to your community with modern payment and monitoring systems.
+            Start with accurate metering and immutable reporting, then switch on carbon credits or payments when stakeholders are ready.
           </p>
         </div>
 
@@ -95,23 +95,23 @@ const Features = () => {
         <div className="mt-20 bg-gradient-hero rounded-3xl p-8 md:p-12 text-center text-white">
           <Zap className="h-16 w-16 mx-auto mb-6 text-primary-glow" />
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Power On Demand
+            Proof On Demand
           </h3>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Start with as little as $1/day. Scale up as your needs grow. No contracts, no hidden fees.
+            Deploy the metering and reporting core first. Add settlement flows or carbon credit issuance as optional modules.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div className="bg-white/20 rounded-lg p-4">
-              <div className="text-2xl font-bold">$0.50</div>
-              <div className="text-sm opacity-80">Basic Daily Rate</div>
+              <div className="text-2xl font-bold">Module 1</div>
+              <div className="text-sm opacity-80">Verified metering & audit logs</div>
             </div>
             <div className="bg-white/20 rounded-lg p-4">
-              <div className="text-2xl font-bold">$1.50</div>
-              <div className="text-sm opacity-80">Full Power Daily</div>
+              <div className="text-2xl font-bold">Module 2</div>
+              <div className="text-sm opacity-80">Optional payments stack</div>
             </div>
             <div className="bg-white/20 rounded-lg p-4">
-              <div className="text-2xl font-bold">$3.00</div>
-              <div className="text-sm opacity-80">Premium Package</div>
+              <div className="text-2xl font-bold">Module 3</div>
+              <div className="text-sm opacity-80">Carbon credit readiness</div>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Impact from "@/components/Impact";
 import SignUp from "@/components/SignUp";
+import MinigridSurveyCTA from "@/components/MinigridSurveyCTA";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
       <Hero />
       <Features />
       <Impact />
+      <MinigridSurveyCTA />
       <SignUp />
       <Footer />
     </div>

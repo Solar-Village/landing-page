@@ -52,175 +52,129 @@ const Pitch = () => {
     }
   }, [api, open]);
 
-  const opportunities = [
+  const baseOpportunities = [
     {
-      letter: "A",
-      title: "Financing for PUE (Productive Use of Electricity)",
-      className: "bg-gradient-to-br from-emerald-600 to-green-400 text-white",
+      title: "Verified metering + asset uptime",
+      className: "bg-gradient-to-br from-emerald-700 to-green-500 text-white",
       content: (
         <ul className="list-disc space-y-2 text-left max-w-xl text-lg md:text-xl">
-          <li>Provide upfront capital for productive devices</li>
-          <li>Link repayments to energy revenues</li>
-          <li>Boost local businesses and incomes</li>
-          <li>Scale micro-enterprises through energy access</li>
+          <li>Stream kWh, uptime, and fault data directly from meters</li>
+          <li>Attach every event to an auditable asset ID</li>
+          <li>Surface anomalies fast for crews and funders</li>
+          <li>Prove reliability with continuous evidence</li>
         </ul>
       ),
-      tagline: "Power businesses for growth",
+      tagline: "Metered truth as a service",
     },
     {
-      letter: "B",
-      title: "Paying for Electricity with Crops or Labor (Sarafu-style)",
-      className: "bg-gradient-to-br from-amber-200 to-orange-400 text-gray-900",
-      content: (
-        <div className="grid gap-2 max-w-xl text-lg md:text-xl">
-          <div className="border rounded p-2 bg-white/70">
-            Address cash liquidity gaps
-          </div>
-          <div className="border rounded p-2 bg-white/70">
-            Tokenize pledges of harvests or work
-          </div>
-          <div className="border rounded p-2 bg-white/70">
-            Use vouchers as collateral for energy
-          </div>
-          <div className="border rounded p-2 bg-white/70">
-            Expand affordability beyond cash
-          </div>
-        </div>
-      ),
-    },
-    {
-      letter: "C",
-      title: "Irrefutable Tracking of QAMF Indicators",
-      className: "bg-gradient-to-br from-indigo-600 to-purple-600 text-white",
+      title: "Immutable reporting layer",
+      className: "bg-gradient-to-br from-indigo-600 to-purple-700 text-white",
       content: (
         <div className="space-y-2 text-left max-w-xl text-lg md:text-xl">
           <div className="flex items-start">
             <span className="mr-2">›</span>
-            <span>Extend asset inventory + on-chain settlement</span>
+            <span>Anchor meter events and maintenance logs on-chain</span>
           </div>
           <div className="flex items-start">
             <span className="mr-2">›</span>
-            <span>Capture uptime, electrification, repayments, maintenance</span>
+            <span>Deliver time-stamped proofs for donors, regulators, and insurers</span>
           </div>
           <div className="flex items-start">
             <span className="mr-2">›</span>
-            <span>Publish tamper-proof records for donors/investors</span>
+            <span>Export ready-made evidence for ESG and grant compliance</span>
           </div>
           <div className="flex items-start">
             <span className="mr-2">›</span>
-            <span>De-risk funding & enable scale</span>
+            <span>Replace spreadsheets with verifiable feeds</span>
           </div>
         </div>
       ),
     },
     {
-      letter: "D",
-      title: "Hybridization with the National Grid",
+      title: "Insightful dashboards & alerts",
       className: "bg-gradient-to-br from-sky-500 to-blue-700 text-white",
       content: (
         <ol className="list-decimal space-y-2 text-left max-w-xl text-lg md:text-xl">
-          <li>Integrate solar microgrids with grid extensions</li>
-          <li>Use asset registry as integration point</li>
-          <li>Maintain local assets as backup supply</li>
-          <li>Reduce risk of stranded infrastructure</li>
+          <li>Portfolio view of generation, demand, and downtime</li>
+          <li>Drill-down by village, asset, or installer</li>
+          <li>Automated alerts when thresholds slip</li>
+          <li>Share-only links for transparent reporting</li>
         </ol>
       ),
     },
     {
-      letter: "E",
-      title: "Village DAOs for Local Governance and Tariffs",
-      className: "bg-gradient-to-br from-rose-500 to-pink-500 text-white",
-      content: (
-        <div className="space-y-2 text-left max-w-xl text-lg md:text-xl">
-          <div className="flex items-start gap-2">
-            <span>✅</span>
-            <span>Community voting on tariffs, reinvestment, maintenance</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <span>✅</span>
-            <span>Transparent, auditable decisions on local energy economy</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <span>✅</span>
-            <span>Empower users as active stakeholders</span>
-          </div>
-          <div className="flex items-start gap-2">
-            <span>✅</span>
-            <span>Build trust & local ownership</span>
-          </div>
-        </div>
-      ),
-    },
-    {
-      letter: "F",
-      title: "Carbon Credit Monetization from Diesel Displacement",
-      className: "bg-gradient-to-br from-gray-800 to-green-700 text-white",
+      title: "Optional carbon credit minting",
+      className: "bg-gradient-to-br from-gray-900 to-green-700 text-white",
       content: (
         <div className="grid gap-2 max-w-xl text-lg md:text-xl">
           <div className="bg-white/20 rounded p-2">
-            Replace diesel → measurable CO₂ savings
+            Use metered diesel displacement as quantified impact
           </div>
           <div className="bg-white/20 rounded p-2">
-            Use transaction + asset records for audit trail
+            Publish verifiable reduction claims on-chain
           </div>
           <div className="bg-white/20 rounded p-2">
-            Issue verified carbon credits
+            Mint carbon credits only when data meets audit standards
           </div>
           <div className="bg-white/20 rounded p-2">
-            Create new revenue stream for communities
-          </div>
+            Turn verified impact into new revenue streams</div>
         </div>
       ),
-      tagline: "Turn clean energy into capital",
+      tagline: "Impact to issuance, when you want it",
     },
     {
-      letter: "G",
-      title: "Microfinance Using Repayment-Based Credit Scores",
+      title: "Optional multi-rail payments",
+      className: "bg-gradient-to-br from-amber-300 to-orange-500 text-gray-900",
+      content: (
+        <div className="grid gap-2 max-w-xl text-lg md:text-xl">
+          <div className="border rounded p-2 bg-white/80">USSD or web payments mapped to meter time</div>
+          <div className="border rounded p-2 bg-white/80">Local fiat rails with on-chain receipts</div>
+          <div className="border rounded p-2 bg-white/80">Plug-and-play for community wallets or banks</div>
+          <div className="border rounded p-2 bg-white/80">Skip entirely if pre-funded or donor-paid</div>
+        </div>
+      ),
+    },
+    {
+      title: "Financing and insurance that trust the data",
       className: "bg-gradient-to-br from-teal-500 to-cyan-600 text-white",
       content: (
         <div className="space-y-2 text-left max-w-xl text-lg md:text-xl">
           <div className="flex items-center gap-2">
             <span className="font-bold">•</span>
-            <span>Repayment history = community credit score</span>
+            <span>Use uptime and service history as underwriting inputs</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="font-bold">•</span>
-            <span>Unlock loans for education, healthcare, equipment</span>
+            <span>Design risk-sharing for operators and donors</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="font-bold">•</span>
-            <span>Bridge from energy access to financial inclusion</span>
+            <span>Bundle guarantees with verifiable maintenance</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="font-bold">•</span>
-            <span>Build resilience & upward mobility</span>
+            <span>Open a data-backed path to scale</span>
           </div>
         </div>
       ),
     },
-    {
-      letter: "H",
-      title: "End-of-Life Decommissioning of Minigrid Components",
-      className: "bg-gradient-to-br from-slate-700 to-zinc-900 text-white",
-      content: (
-        <ul className="list-disc space-y-2 text-left max-w-xl text-lg md:text-xl">
-          <li>Register every component at deployment</li>
-          <li>Track lifecycle for panels, inverters, batteries</li>
-          <li>Enable responsible recycling/repurposing</li>
-          <li>Support circular-economy financing</li>
-        </ul>
-      ),
-    },
   ];
+
+  const opportunities = baseOpportunities.map((opportunity, idx) => ({
+    ...opportunity,
+    letter: String.fromCharCode(65 + idx),
+  }));
 
   const panels = [
     {
       id: 1,
-      title: "SolarVillage",
-      subtitle: "Powering Northern Nigeria with Transparent Solar Payments",
+      title: "Sun Village Connect",
+      subtitle: "Immutable metering, verifiable reporting, optional value-adds",
       content: (
         <p className="text-base md:text-lg">
-          Tap to top-up. Lights on. No travel, no middlemen, full transparency.
+          Measure every kilowatt-hour, store the proof on-chain, and give funders
+          and regulators a clear line of sight—then switch on carbon credits or
+          payments when they help the community.
         </p>
       ),
       className: "text-white bg-cover bg-center",
@@ -231,19 +185,18 @@ const Pitch = () => {
     {
       id: 2,
       title: "The Challenge",
-      subtitle: "Reliable energy is scarce; paying for it is harder",
+      subtitle: "Reliable energy is scarce; trustworthy data is even rarer",
       content: (
         <div className="space-y-4">
           <p className="text-muted-foreground">
-            Solar hardware exists, but payment and accountability break the
-            model:
+            Solar hardware exists, but the evidence layer is broken:
           </p>
           <ul className="space-y-2 text-base md:text-lg">
-            <li>- Families might have to travel far to pay, may lose a day’s income</li>
-            <li>- Cash leakage and middlemen raise costs & reduce trust</li>
-            <li>- Operators / maintenance crews face unpredictable revenues and delays</li>
-            <li>- Many users only have feature phones and/or limited internet</li>
-            <li>- Donors lack clear line-of-sight on repayments & impact</li>
+            <li>- Meters and maintenance logs are scattered or manual</li>
+            <li>- Funders and regulators need tamper-proof performance proof</li>
+            <li>- Carbon savings are claimed without verifiable baselines</li>
+            <li>- Payments are useful, but shouldn’t be the only operating model</li>
+            <li>- Communities deserve transparency without extra burden</li>
           </ul>
         </div>
       ),
@@ -252,21 +205,20 @@ const Pitch = () => {
     {
       id: 3,
       title: "The Solution",
-      subtitle: "A SolarVillage App",
+      subtitle: "A verifiable metering + reporting backbone",
       content: (
         <div className="space-y-6 text-white">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-            <strong className="text-white/90">Dual access:</strong> mobile-first web app for smartphones +
-            USSD (via Africa Talks) for feature phones.
+            <strong className="text-white/90">Metering-first:</strong> Stream data from existing meters,
+            attach it to assets, and secure it immutably.
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-            <strong className="text-white/90">How it feels:</strong> Top-up on your phone → electricity
-            starts. As simple as airtime.
+            <strong className="text-white/90">Evidence by default:</strong> Automated uptime, generation,
+            and maintenance records become tamper-proof.
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-            <strong className="text-white/90">Under the hood:</strong> Compliant Naira (cNGN) provides
-            regulator-approved, on-chain settlement for end-to-end
-            transparency and immutability.
+            <strong className="text-white/90">Modular value-adds:</strong> Carbon credit minting and
+            flexible payments can be switched on when needed—never forced.
           </div>
         </div>
       ),
@@ -290,8 +242,7 @@ const Pitch = () => {
                 </div>
                 <div className="flex-1 pt-2">
                   <span className="text-base md:text-lg font-medium">
-                    User tops up from bank or mobile wallet in the SolarVillage app or
-                    via USSD
+                    Smart meters stream kWh, uptime, and fault data to the registry
                   </span>
                 </div>
               </div>
@@ -301,7 +252,7 @@ const Pitch = () => {
                 </div>
                 <div className="flex-1 pt-2">
                   <span className="text-base md:text-lg font-medium">
-                    Funds settle instantly in cNGN; payment is recorded on-chain
+                    Events are written immutably on-chain with asset IDs and GPS context
                   </span>
                 </div>
               </div>
@@ -311,14 +262,15 @@ const Pitch = () => {
                 </div>
                 <div className="flex-1 pt-2">
                   <span className="text-base md:text-lg font-medium">
-                    Meter is authorized and power turns on for the paid duration
+                    Dashboards and alerts power reporting; optional modules trigger (payments, carbon)
                   </span>
                 </div>
               </div>
             </div>
           </div>
           <div className="text-base md:text-lg text-muted-foreground bg-muted/50 rounded-lg p-4 italic">
-            (Backup paths like one-time activation codes are available where needed.)
+            (Choose the modules you want: keep to core metering + reporting, or layer in carbon
+            issuance and payments when they add value.)
           </div>
         </div>
       ),
@@ -373,26 +325,28 @@ const Pitch = () => {
         <div className="grid md:grid-cols-2 gap-6 text-white">
           <div className="space-y-4">
             <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
-              <strong className="text-yellow-300">Communities:</strong> Instant access, no travel, real energy
-              security
+              <strong className="text-yellow-300">Communities:</strong> Proven uptime, clearer service
+              commitments, and optional payments that match local reality
             </div>
             <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
-              <strong className="text-yellow-300">Contractors:</strong> Predictable cash flow and faster
-              payouts
+              <strong className="text-yellow-300">Contractors:</strong> Faster troubleshooting and service
+              validation with verifiable logs
             </div>
           </div>
           <div className="space-y-4">
             <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
-              <strong className="text-yellow-300">Philanthropists:</strong> Village-tied repayments, auditable
-              impact
+              <strong className="text-yellow-300">Philanthropists:</strong> Auditable impact per asset and
+              shareable evidence for every grant dollar
             </div>
             <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20">
-              <strong className="text-yellow-300">UNDP:</strong> Independent oversight and replicable model
+              <strong className="text-yellow-300">UNDP:</strong> Independent oversight, cleaner reporting, and a
+              replicable evidence stack
             </div>
           </div>
           <div className="md:col-span-2">
             <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/20 text-center">
-              <strong className="text-yellow-300">cNGN:</strong> Flagship, real-world settlement at scale
+              <strong className="text-yellow-300">Carbon + payments (optional):</strong> Switch them on when
+              they unlock more value, keep them off when grants cover energy
             </div>
           </div>
         </div>
@@ -409,29 +363,29 @@ const Pitch = () => {
             <li className="flex items-center justify-center gap-2">
               <span className="text-2xl">📜</span>
               <span>
-                <strong>Regulatory tailwind:</strong> cNGN is already
-                regulator-approved
+                <strong>Regulatory tailwind:</strong> Compliance-first pilots
+                demand immutable evidence
               </span>
             </li>
             <li className="flex items-center justify-center gap-2">
               <span className="text-2xl">🔍</span>
               <span>
-                <strong>True transparency:</strong> On-chain flows align users,
-                contractors, and donors
+                <strong>True transparency:</strong> On-chain meter trails align
+                operators, donors, and communities
               </span>
             </li>
             <li className="flex items-center justify-center gap-2">
               <span className="text-2xl">🤖</span>
               <span>
-                <strong>Smart Contracts:</strong> Programability, automated
-                payment flows
+                <strong>Smart Contracts:</strong> Automate alerts, enforce SLAs,
+                and selectively enable payment or carbon modules
               </span>
             </li>
             <li className="flex items-center justify-center gap-2">
               <span className="text-2xl">🚀</span>
               <span>
-                <strong>Follow-on opportunities:</strong> with DAOs, on-chain
-                governance, micro-finance, and more
+                <strong>Follow-on opportunities:</strong> Insurance, finance,
+                and governance that trust the data layer
               </span>
             </li>
           </ul>
@@ -441,8 +395,8 @@ const Pitch = () => {
     },
     {
       id: 12,
-      title: "Follow-on Opportunities",
-      subtitle: "Blockchain technology enables exciting growth paths",
+      title: "Modular Capabilities",
+      subtitle: "Start with metering + reporting; add what you need, when you need it",
       content: (
         <>
           <ul className="space-y-2 text-sm md:text-lg">
@@ -572,7 +526,7 @@ const Pitch = () => {
       content: (
         <div className="space-y-2 text-base md:text-lg">
           <div>
-            <strong>Capital:</strong> Impact investors fund MicroGrid installs
+            <strong>Capital:</strong> Impact investors fund minigrid installs
           </div>
           <div>
             <strong>User payments:</strong> Simple prepaid top-ups → power meter starts remotely
@@ -674,7 +628,7 @@ const Pitch = () => {
     },
     {
       id: 15,
-      title: "Partnerships",
+      title: "Potential Partnerships",
       subtitle: "",
       content: (
         <table className="w-full text-base md:text-lg">
@@ -702,7 +656,7 @@ const Pitch = () => {
               <td className="space-y-1">
                 <div>Rocky Mountain Institute (RMI)</div>
                 <div>Africa Talks (USSD access)</div>
-                <div>Contractors for microgrid deployment & maintenance</div>
+                <div>Contractors for minigrid deployment & maintenance</div>
               </td>
             </tr>
             <tr>
@@ -729,16 +683,27 @@ const Pitch = () => {
       content: (
         <div className="text-center space-y-6">
           <p className="text-base md:text-lg font-medium leading-relaxed">
-            Fund, oversee, and scale SolarVillage—so families top-up on their
-            phones and the lights come on. Transparent by design. Built to last.
+            Fund, oversee, and scale Sun Village Connect—so every meter event is
+            verifiable, every report is trusted, and carbon or payment add-ons
+            only appear when they help.
           </p>
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
             <p className="text-orange-300 font-semibold text-base md:text-xl">
-              Ready to light up Northern Nigeria?
+              Ready to prove and improve every kilowatt-hour?
             </p>
             <p className="text-base md:text-lg mt-2 opacity-90">
-              Investors, philanthropists, and community partners are invited to join us.
+              Investors, philanthropists, regulators, and community partners are
+              invited to join us.
             </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90"
+            >
+              <a href="mailto:solarvillage@firebelly.xyz">Email Us</a>
+            </Button>
           </div>
         </div>
       ),
@@ -775,7 +740,7 @@ const Pitch = () => {
                 />
                 <div>
                   <div className="font-semibold">Temitope Omowumi</div>
-                  <div className="text-sm opacity-80">AMP Digital Strategy, Planning Specialist</div>
+                  <div className="text-sm opacity-80">Planning & Digital Strategy Specialist, African Minigrid Programme</div>
                 </div>
               </div>
               <div className="flex flex-col items-center text-center space-y-2">
@@ -786,7 +751,7 @@ const Pitch = () => {
                 />
                 <div>
                   <div className="font-semibold">Lantana Elhassan</div>
-                  <div className="text-sm opacity-80">Head of Exploration</div>
+                  <div className="text-sm opacity-80">Head of Exploration, UNDP Nigeria Country Office</div>
                 </div>
               </div>
             </div>
@@ -810,6 +775,9 @@ const Pitch = () => {
       className: "bg-background",
     },
   ];
+
+  const teamPanelIndex = panels.findIndex((panel) => panel.title === "Team");
+  const lastNavIndex = teamPanelIndex === -1 ? panels.length - 1 : teamPanelIndex;
 
   const panelRefs = useRef<HTMLDivElement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -845,11 +813,18 @@ const Pitch = () => {
   }, []);
 
   const scrollToPanel = (index: number) => {
-    const target = panelRefs.current[index];
+    const clampedIndex = Math.max(0, Math.min(index, panels.length - 1));
+    const target = panelRefs.current[clampedIndex];
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setCurrentIndex(index);
+    setCurrentIndex(clampedIndex);
+    setShowNav(true);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setCurrentIndex(0);
     setShowNav(true);
   };
 
@@ -914,7 +889,7 @@ const Pitch = () => {
           <Button
             variant="ghost"
             className={navButtonClass}
-            onClick={() => scrollToPanel(0)}
+            onClick={scrollToTop}
             disabled={currentIndex === 0}
           >
             First
@@ -930,8 +905,8 @@ const Pitch = () => {
           <Button
             variant="ghost"
             className={navButtonClass}
-            onClick={() => scrollToPanel(panels.length - 1)}
-            disabled={currentIndex === panels.length - 1}
+            onClick={() => scrollToPanel(lastNavIndex)}
+            disabled={currentIndex === lastNavIndex}
           >
             Last
           </Button>

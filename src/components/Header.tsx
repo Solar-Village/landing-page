@@ -30,9 +30,11 @@ const Header = () => {
 
   const handleGetStarted = () => {
     if (location.pathname === "/") {
-      document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("minigrid-survey")
+        ?.scrollIntoView({ behavior: "smooth" });
     } else {
-      navigate("/#signup");
+      navigate("/#minigrid-survey");
     }
     setIsMobileMenuOpen(false);
   };
@@ -120,11 +122,18 @@ const Header = () => {
               Impact
             </a>
             <a
+              href={getHref("minigrid-survey")}
+              onClick={(e) => handleAnchorClick(e, "minigrid-survey")}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Looking for Minigrid Operators
+            </a>
+            <a
               href="/financials"
               onClick={(e) => handlePageNav(e, "/financials")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              Financials
+              Use Cases
             </a>
             <a
               href="/pitch"
@@ -192,11 +201,18 @@ const Header = () => {
                 Impact
               </a>
               <a
+                href={getHref("minigrid-survey")}
+                onClick={(e) => handleAnchorClick(e, "minigrid-survey")}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Looking for Minigrid Operators
+              </a>
+              <a
                 href="/financials"
                 onClick={(e) => handlePageNav(e, "/financials")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                Financials
+                Use Cases
               </a>
               <a
                 href="/pitch"
