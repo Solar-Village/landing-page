@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { vi } from "vitest";
 import Pitch from "@/pages/Pitch";
 
-describe("Follow-on opportunities modal", () => {
+describe("Modular capabilities modal", () => {
   it("shows all bullets and opens modal with slides", async () => {
     vi.stubGlobal("IntersectionObserver", class {
       observe() {}
@@ -22,9 +22,9 @@ describe("Follow-on opportunities modal", () => {
       </BrowserRouter>
     );
 
-    const section = screen.getByText("Follow-on Opportunities").closest("section")!;
+    const section = screen.getByText("Modular Capabilities").closest("section")!;
     const bullets = within(section).getAllByRole("listitem");
-    expect(bullets).toHaveLength(8);
+    expect(bullets).toHaveLength(6);
 
     const user = userEvent.setup();
     const button = within(section).getByRole("button", { name: /explore opportunities/i });
@@ -34,11 +34,11 @@ describe("Follow-on opportunities modal", () => {
     const dialog = await screen.findByRole("dialog");
     expect(dialog).toBeInTheDocument();
     expect(
-      within(dialog).getByText(/Financing for PUE \(Productive Use of Electricity\)/i)
+      within(dialog).getByText(/Verified metering \+ asset uptime/i)
     ).toBeInTheDocument();
 
     const dots = within(dialog).getAllByTestId("opportunity-dot");
-    expect(dots).toHaveLength(8);
+    expect(dots).toHaveLength(6);
     const prev = within(dialog).getByRole("button", { name: /previous slide/i });
     expect(prev).toBeVisible();
     const next = within(dialog).getByRole("button", { name: /next slide/i });
@@ -46,7 +46,7 @@ describe("Follow-on opportunities modal", () => {
     expect(next).not.toBeDisabled();
     await user.click(next);
     expect(
-      within(dialog).getByText(/Paying for Electricity with Crops or Labor/i)
+      within(dialog).getByText(/Immutable reporting layer/i)
     ).toBeInTheDocument();
   });
 });

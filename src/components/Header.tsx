@@ -120,11 +120,18 @@ const Header = () => {
               Impact
             </a>
             <a
+              href={getHref("microgrid-survey")}
+              onClick={(e) => handleAnchorClick(e, "microgrid-survey")}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Microgrid CTA
+            </a>
+            <a
               href="/financials"
               onClick={(e) => handlePageNav(e, "/financials")}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
-              Financials
+              Use Cases
             </a>
             <a
               href="/pitch"
@@ -192,11 +199,18 @@ const Header = () => {
                 Impact
               </a>
               <a
+                href={getHref("microgrid-survey")}
+                onClick={(e) => handleAnchorClick(e, "microgrid-survey")}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Microgrid CTA
+              </a>
+              <a
                 href="/financials"
                 onClick={(e) => handlePageNav(e, "/financials")}
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                Financials
+                Use Cases
               </a>
               <a
                 href="/pitch"

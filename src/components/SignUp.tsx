@@ -157,10 +157,10 @@ const SignUp = () => {
           {/* Left Side - Benefits */}
           <div className="text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Bring Solar Power to Your Village
+              Bring Metered Solar to Your Village
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Partner with us to electrify your entire community. Zero upfront costs, community ownership after payoff.
+              Partner with us to electrify your entire community with transparent metering and immutable reporting. Layer on payments and carbon credits when your stakeholders are ready.
             </p>
 
             <div className="space-y-6 mb-8">
@@ -169,8 +169,8 @@ const SignUp = () => {
                   <MapPin className="h-6 w-6 text-primary-glow" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">1. Register Village Interest</h3>
-                  <p className="opacity-80">Propose a solar site in or near your village for assessment.</p>
+                  <h3 className="font-semibold text-lg">1. Register village interest</h3>
+                  <p className="opacity-80">Propose a metered solar site in or near your village for assessment.</p>
                 </div>
               </div>
               
@@ -179,8 +179,8 @@ const SignUp = () => {
                   <Users className="h-6 w-6 text-primary-glow" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">2. Assessment & Approval</h3>
-                  <p className="opacity-80">Our team evaluates your site and secures investment funding.</p>
+                  <h3 className="font-semibold text-lg">2. Assessment & approval</h3>
+                  <p className="opacity-80">Our team evaluates your site, validates metering needs, and secures investment funding.</p>
                 </div>
               </div>
 
@@ -189,8 +189,8 @@ const SignUp = () => {
                   <Smartphone className="h-6 w-6 text-primary-glow" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">3. Build & Connect</h3>
-                  <p className="opacity-80">We build the solar site and connect every household in your village.</p>
+                  <h3 className="font-semibold text-lg">3. Build, meter & connect</h3>
+                  <p className="opacity-80">We build the solar site, connect every household, and activate evidence-grade metering.</p>
                 </div>
               </div>
             </div>
@@ -219,14 +219,14 @@ const SignUp = () => {
 
           {/* Right Side - Sign Up Form */}
           <Card className="bg-white/95 backdrop-blur-sm shadow-2xl border-0">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center text-foreground">
-                Register Your Village
-              </CardTitle>
-              <p className="text-center text-muted-foreground">
-                Village representatives: start the process to bring solar power to your community
-              </p>
-            </CardHeader>
+              <CardHeader>
+                <CardTitle className="text-2xl text-center text-foreground">
+                  Register Your Village
+                </CardTitle>
+                <p className="text-center text-muted-foreground">
+                  Village representatives: start the process to bring metered, transparent solar to your community
+                </p>
+              </CardHeader>
             <CardContent>
               <p className="text-xs text-muted-foreground text-center mb-4">
                 All fields are required.
@@ -390,9 +390,9 @@ const SignUp = () => {
                   <ul className="text-sm text-muted-foreground space-y-1 ml-6">
                     <li>• Complete village solar microgrid installation</li>
                     <li>• Every household gets connected to clean energy</li>
-                    <li>• ₦1,000/day + ₦10/kWh (sun) + ₦100/kWh (no sun)</li>
-                    <li>• Community ownership after investment payoff</li>
-                    <li>• Mobile payment and usage monitoring app</li>
+                    <li>• Evidence-grade metering and immutable reporting</li>
+                    <li>• Optional: ₦1,000/day + ₦10/kWh (sun) + ₦100/kWh (no sun)</li>
+                    <li>• Optional: community payment rails and credit readiness</li>
                     <li>• Technical support and maintenance</li>
                   </ul>
                 </div>
@@ -406,8 +406,8 @@ const SignUp = () => {
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  By registering, you indicate interest in solar development for your village.
-                  Our team will assess feasibility and contact you about next steps.
+                  By registering, you indicate interest in transparent, metered solar development for your village.
+                  Our team will assess feasibility, evidence needs, and contact you about next steps.
                 </p>
               </form>
             </CardContent>
