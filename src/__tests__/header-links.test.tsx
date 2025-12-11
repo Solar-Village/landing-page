@@ -45,16 +45,16 @@ describe("Header navigation", () => {
     expect(window.location.hash).toBe("#impact");
   });
 
-  test("Microgrid CTA link navigates to #microgrid-survey", async () => {
+  test("Minigrid CTA link navigates to #minigrid-survey", async () => {
     render(
       <BrowserRouter>
         <Header />
       </BrowserRouter>
     );
-    const microgridLink = screen.getByRole("link", { name: /microgrid cta/i });
-    expect(microgridLink.getAttribute("href")).toBe("#microgrid-survey");
-    await userEvent.click(microgridLink);
-    expect(window.location.hash).toBe("#microgrid-survey");
+    const minigridLink = screen.getByRole("link", { name: /looking for minigrid operators/i });
+    expect(minigridLink.getAttribute("href")).toBe("#minigrid-survey");
+    await userEvent.click(minigridLink);
+    expect(window.location.hash).toBe("#minigrid-survey");
   });
 
   test("Use Cases link navigates to the use cases page", async () => {

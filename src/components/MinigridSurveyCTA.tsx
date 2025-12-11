@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
 
-const MicrogridSurveyCTA = () => {
+const MinigridSurveyCTA = () => {
   return (
     <section
-      id="microgrid-survey"
+      id="minigrid-survey"
       className="py-16 bg-muted/40 border-y border-border/60"
-      aria-labelledby="microgrid-survey-heading"
+      aria-labelledby="minigrid-survey-heading"
     >
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
         <div className="flex-1 space-y-4">
-          <p className="text-sm uppercase tracking-wide text-primary">For microgrid owners & operators</p>
-          <h2 id="microgrid-survey-heading" className="text-3xl md:text-4xl font-bold text-foreground">
+          <p className="text-sm uppercase tracking-wide text-primary">For minigrid owners & operators</p>
+          <h2 id="minigrid-survey-heading" className="text-3xl md:text-4xl font-bold text-foreground">
             Help shape deployments and get pre-qualified
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
@@ -27,7 +27,7 @@ const MicrogridSurveyCTA = () => {
           <div className="bg-card border border-border rounded-2xl shadow-card p-8 space-y-6">
             <div className="space-y-2">
               <p className="text-sm font-semibold text-primary">Pre-qualification survey</p>
-              <p className="text-xl font-bold text-foreground">Tell us about your microgrid portfolio</p>
+              <p className="text-xl font-bold text-foreground">Tell us about your minigrid portfolio</p>
               <p className="text-muted-foreground">
                 Share details on capacity, metering maturity, and financing needs so we can align the right modules for you.
               </p>
@@ -42,7 +42,7 @@ const MicrogridSurveyCTA = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                Fill out the microgrid survey
+                Fill out the minigrid survey
               </a>
             </Button>
             <p className="text-xs text-muted-foreground">
@@ -55,4 +55,4 @@ const MicrogridSurveyCTA = () => {
   );
 };
 
-export default MicrogridSurveyCTA;
+export default MinigridSurveyCTA;

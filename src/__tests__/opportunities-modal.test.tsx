@@ -25,6 +25,10 @@ describe("Modular capabilities modal", () => {
     const section = screen.getByText("Modular Capabilities").closest("section")!;
     const bullets = within(section).getAllByRole("listitem");
     expect(bullets).toHaveLength(6);
+    const bulletLetters = bullets.map((bullet) =>
+      bullet.textContent?.trim().split(" - ")[0]
+    );
+    expect(bulletLetters).toEqual(["A", "B", "C", "D", "E", "F"]);
 
     const user = userEvent.setup();
     const button = within(section).getByRole("button", { name: /explore opportunities/i });

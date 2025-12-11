@@ -52,9 +52,8 @@ const Pitch = () => {
     }
   }, [api, open]);
 
-  const opportunities = [
+  const baseOpportunities = [
     {
-      letter: "A",
       title: "Verified metering + asset uptime",
       className: "bg-gradient-to-br from-emerald-700 to-green-500 text-white",
       content: (
@@ -68,7 +67,6 @@ const Pitch = () => {
       tagline: "Metered truth as a service",
     },
     {
-      letter: "B",
       title: "Immutable reporting layer",
       className: "bg-gradient-to-br from-indigo-600 to-purple-700 text-white",
       content: (
@@ -93,7 +91,6 @@ const Pitch = () => {
       ),
     },
     {
-      letter: "C",
       title: "Insightful dashboards & alerts",
       className: "bg-gradient-to-br from-sky-500 to-blue-700 text-white",
       content: (
@@ -106,7 +103,6 @@ const Pitch = () => {
       ),
     },
     {
-      letter: "D",
       title: "Optional carbon credit minting",
       className: "bg-gradient-to-br from-gray-900 to-green-700 text-white",
       content: (
@@ -127,7 +123,6 @@ const Pitch = () => {
       tagline: "Impact to issuance, when you want it",
     },
     {
-      letter: "E",
       title: "Optional multi-rail payments",
       className: "bg-gradient-to-br from-amber-300 to-orange-500 text-gray-900",
       content: (
@@ -140,7 +135,6 @@ const Pitch = () => {
       ),
     },
     {
-      letter: "F",
       title: "Financing and insurance that trust the data",
       className: "bg-gradient-to-br from-teal-500 to-cyan-600 text-white",
       content: (
@@ -165,6 +159,11 @@ const Pitch = () => {
       ),
     },
   ];
+
+  const opportunities = baseOpportunities.map((opportunity, idx) => ({
+    ...opportunity,
+    letter: String.fromCharCode(65 + idx),
+  }));
 
   const panels = [
     {
@@ -527,7 +526,7 @@ const Pitch = () => {
       content: (
         <div className="space-y-2 text-base md:text-lg">
           <div>
-            <strong>Capital:</strong> Impact investors fund MicroGrid installs
+            <strong>Capital:</strong> Impact investors fund minigrid installs
           </div>
           <div>
             <strong>User payments:</strong> Simple prepaid top-ups → power meter starts remotely
@@ -657,7 +656,7 @@ const Pitch = () => {
               <td className="space-y-1">
                 <div>Rocky Mountain Institute (RMI)</div>
                 <div>Africa Talks (USSD access)</div>
-                <div>Contractors for microgrid deployment & maintenance</div>
+                <div>Contractors for minigrid deployment & maintenance</div>
               </td>
             </tr>
             <tr>

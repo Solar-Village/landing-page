@@ -33,7 +33,7 @@ const audienceSections = [
     ],
   },
   {
-    title: "Investors, Grantors, and Government Agencies",
+    title: "Investors, Grantmakers, and Government Agencies",
     subtitle: "Clarity from first kilowatt to long-term repayment.",
     points: [
       "Access immutable reports on generation, per-user consumption, and credit balances.",

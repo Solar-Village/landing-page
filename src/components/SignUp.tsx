@@ -388,7 +388,7 @@ const SignUp = () => {
                     <span className="text-sm font-medium">Village benefits:</span>
                   </div>
                   <ul className="text-sm text-muted-foreground space-y-1 ml-6">
-                    <li>• Complete village solar microgrid installation</li>
+                    <li>• Complete village solar minigrid installation</li>
                     <li>• Every household gets connected to clean energy</li>
                     <li>• Evidence-grade metering and immutable reporting</li>
                     <li>• Optional: ₦1,000/day + ₦10/kWh (sun) + ₦100/kWh (no sun)</li>

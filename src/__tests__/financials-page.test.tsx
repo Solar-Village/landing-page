@@ -31,7 +31,7 @@ describe("Use Cases & Benefits page", () => {
       "Villages, Communities, and Minigrid Operators",
       "Users and Consumers",
       "Payment Agents",
-      "Investors, Grantors, and Government Agencies",
+      "Investors, Grantmakers, and Government Agencies",
       "Contractors",
     ];
 

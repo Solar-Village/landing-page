@@ -22,7 +22,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
             <Zap className="h-4 w-4 text-primary-glow" />
-            <span className="text-white text-sm font-medium">Metering-first, evidence-ready microgrids</span>
+            <span className="text-white text-sm font-medium">Metering-first, evidence-ready minigrids</span>
           </div>
 
           {/* Main Headline */}
