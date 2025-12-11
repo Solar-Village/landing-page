@@ -628,7 +628,7 @@ const Pitch = () => {
     },
     {
       id: 15,
-      title: "Partnerships",
+      title: "Potential Partnerships",
       subtitle: "",
       content: (
         <table className="w-full text-base md:text-lg">
@@ -696,6 +696,15 @@ const Pitch = () => {
               invited to join us.
             </p>
           </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90"
+            >
+              <a href="mailto:solarvillage@firebelly.xyz">Email Us</a>
+            </Button>
+          </div>
         </div>
       ),
       className: "text-white text-center bg-cover bg-center bg-fixed",
@@ -731,7 +740,7 @@ const Pitch = () => {
                 />
                 <div>
                   <div className="font-semibold">Temitope Omowumi</div>
-                  <div className="text-sm opacity-80">AMP Digital Strategy, Planning Specialist</div>
+                  <div className="text-sm opacity-80">Planning & Digital Strategy Specialist, African Minigrid Programme</div>
                 </div>
               </div>
               <div className="flex flex-col items-center text-center space-y-2">
@@ -742,7 +751,7 @@ const Pitch = () => {
                 />
                 <div>
                   <div className="font-semibold">Lantana Elhassan</div>
-                  <div className="text-sm opacity-80">Head of Exploration</div>
+                  <div className="text-sm opacity-80">Head of Exploration, UNDP Nigeria Country Office</div>
                 </div>
               </div>
             </div>
@@ -766,6 +775,9 @@ const Pitch = () => {
       className: "bg-background",
     },
   ];
+
+  const teamPanelIndex = panels.findIndex((panel) => panel.title === "Team");
+  const lastNavIndex = teamPanelIndex === -1 ? panels.length - 1 : teamPanelIndex;
 
   const panelRefs = useRef<HTMLDivElement[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -801,11 +813,18 @@ const Pitch = () => {
   }, []);
 
   const scrollToPanel = (index: number) => {
-    const target = panelRefs.current[index];
+    const clampedIndex = Math.max(0, Math.min(index, panels.length - 1));
+    const target = panelRefs.current[clampedIndex];
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setCurrentIndex(index);
+    setCurrentIndex(clampedIndex);
+    setShowNav(true);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setCurrentIndex(0);
     setShowNav(true);
   };
 
@@ -870,7 +889,7 @@ const Pitch = () => {
           <Button
             variant="ghost"
             className={navButtonClass}
-            onClick={() => scrollToPanel(0)}
+            onClick={scrollToTop}
             disabled={currentIndex === 0}
           >
             First
@@ -886,8 +905,8 @@ const Pitch = () => {
           <Button
             variant="ghost"
             className={navButtonClass}
-            onClick={() => scrollToPanel(panels.length - 1)}
-            disabled={currentIndex === panels.length - 1}
+            onClick={() => scrollToPanel(lastNavIndex)}
+            disabled={currentIndex === lastNavIndex}
           >
             Last
           </Button>

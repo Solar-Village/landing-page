@@ -57,6 +57,26 @@ describe("Header navigation", () => {
     expect(window.location.hash).toBe("#minigrid-survey");
   });
 
+  test("Get Started scrolls to the pre-qualification survey", async () => {
+    const scrollIntoView = vi.fn();
+    const surveySection = document.createElement("section");
+    surveySection.id = "minigrid-survey";
+    surveySection.scrollIntoView = scrollIntoView;
+    document.body.appendChild(surveySection);
+
+    render(
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+    );
+
+    const getStartedButton = screen.getByRole("button", { name: /get started/i });
+    await userEvent.click(getStartedButton);
+
+    expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth" });
+    document.body.removeChild(surveySection);
+  });
+
   test("Use Cases link navigates to the use cases page", async () => {
     render(
       <BrowserRouter>

@@ -22,6 +22,7 @@ describe("Partnerships panel", () => {
       </BrowserRouter>
     );
 
+    expect(screen.getByText("Potential Partnerships")).toBeInTheDocument();
     expect(screen.getByRole("table")).toBeInTheDocument();
     expect(screen.getByText("Policy & Regulation")).toBeInTheDocument();
     expect(

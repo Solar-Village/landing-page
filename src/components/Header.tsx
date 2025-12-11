@@ -30,9 +30,11 @@ const Header = () => {
 
   const handleGetStarted = () => {
     if (location.pathname === "/") {
-      document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById("minigrid-survey")
+        ?.scrollIntoView({ behavior: "smooth" });
     } else {
-      navigate("/#signup");
+      navigate("/#minigrid-survey");
     }
     setIsMobileMenuOpen(false);
   };
