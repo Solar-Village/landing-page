@@ -104,9 +104,10 @@ const Impact = () => {
           <div className="max-w-5xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-card bg-black">
             <iframe
               title="Build Trust and Unlock Power For Millions"
-              src="https://drive.google.com/file/d/1E-O2mHQo2k12VshsUGUD2Y3BKsQ8jK_S/preview?autoplay=1&mute=1"
+              src="https://www.youtube.com/embed/iw7Ia9X2uNc"
               className="w-full h-full"
-              allow="autoplay; fullscreen"
+              allow="fullscreen"
+              sandbox="allow-scripts allow-same-origin"
             />
           </div>
         </div>
