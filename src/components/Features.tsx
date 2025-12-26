@@ -102,16 +102,16 @@ const Features = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div className="bg-white/20 rounded-lg p-4">
-              <div className="text-2xl font-bold">Module 1</div>
-              <div className="text-sm opacity-80">Verified metering & audit logs</div>
+              <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Base Module</div>
+              <div className="text-2xl md:text-3xl font-bold">Verified metering & audit logs</div>
             </div>
             <div className="bg-white/20 rounded-lg p-4">
-              <div className="text-2xl font-bold">Module 2</div>
-              <div className="text-sm opacity-80">Optional payments stack</div>
+              <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Optional Module</div>
+              <div className="text-2xl md:text-3xl font-bold">Payment Stack</div>
             </div>
             <div className="bg-white/20 rounded-lg p-4">
-              <div className="text-2xl font-bold">Module 3</div>
-              <div className="text-sm opacity-80">Carbon credit readiness</div>
+              <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Optional Module</div>
+              <div className="text-2xl md:text-3xl font-bold">Carbon Credit Minting</div>
             </div>
           </div>
         </div>
