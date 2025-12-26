@@ -97,6 +97,20 @@ const Impact = () => {
           </div>
         </div>
 
+        <div className="mb-20">
+          <h3 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-8">
+            Build Trust and Unlock Power For Millions
+          </h3>
+          <div className="max-w-5xl mx-auto aspect-video rounded-3xl overflow-hidden shadow-card bg-black">
+            <iframe
+              title="Build Trust and Unlock Power For Millions"
+              src="https://drive.google.com/file/d/1E-O2mHQo2k12VshsUGUD2Y3BKsQ8jK_S/preview?autoplay=1&mute=1"
+              className="w-full h-full"
+              allow="autoplay; fullscreen"
+            />
+          </div>
+        </div>
+
         {/* Call to Action */}
         <div className="bg-earth rounded-3xl p-8 md:p-12 text-center text-white">
           <h3 className="text-3xl md:text-4xl font-bold mb-6">
