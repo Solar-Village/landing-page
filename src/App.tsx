@@ -54,8 +54,24 @@ const App = () => {
         },
         { timeoutMs: 5000, retries: 1, retryDelayMs: 500 }
       );
+      if (response.status === 404) {
+        addDiagnosticEvent({
+          type: "fetch_error",
+          message: "Health endpoint not configured (404).",
+          timestamp: Date.now(),
+        });
+        return;
+      }
       if (!response.ok) {
-        throw new Error(`Health check failed with ${response.status}`);
+        if (response.status >= 500) {
+          throw new Error(`Health check failed with ${response.status}`);
+        }
+        addDiagnosticEvent({
+          type: "fetch_error",
+          message: `Health check returned ${response.status}.`,
+          timestamp: Date.now(),
+        });
+        return;
       }
     } catch (error) {
       const message =

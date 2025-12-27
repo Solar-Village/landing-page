@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { vi } from 'vitest';
 import App from '@/App';
 
@@ -9,6 +9,24 @@ vi.mock('@/components/SignUp', () => ({ default: () => <div>SignUp</div> }));
 window.scrollTo = vi.fn();
 
 describe('App router', () => {
+  let fetchMock: ReturnType<typeof vi.spyOn>;
+
+  beforeEach(() => {
+    fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({ ok: true, ts: '2024-01-01T00:00:00.000Z' }),
+        {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    );
+  });
+
+  afterEach(() => {
+    fetchMock.mockRestore();
+  });
+
   const renderWithPath = (path: string) => {
     window.history.pushState({}, '', path);
     return render(<App />);
@@ -42,5 +60,15 @@ describe('App router', () => {
   it('renders NotFound for invalid routes', () => {
     renderWithPath('/does-not-exist');
     expect(screen.getByText(/404/i)).toBeInTheDocument();
+  });
+
+  it('does not show boot error when health endpoint is missing', async () => {
+    fetchMock.mockResolvedValueOnce(new Response(null, { status: 404 }));
+    renderWithPath('/');
+    await waitFor(() => {
+      expect(
+        screen.queryByText(/We are having trouble loading data/i)
+      ).not.toBeInTheDocument();
+    });
   });
 });
