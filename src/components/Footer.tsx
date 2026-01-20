@@ -150,29 +150,42 @@ const Footer = () => {
             <div className="text-white/60 text-sm">
               © 2024 SolarVillage. All rights reserved. Powering Africa's future.
             </div>
-            <div className="flex space-x-6 text-sm">
-                <a
-                  href="#"
-                  className="text-white/60 hover:text-primary-glow transition-colors"
-                  onClick={showConceptToast}
-                >
-                  Privacy Policy
-                </a>
-                <a
-                  href="#"
-                  className="text-white/60 hover:text-primary-glow transition-colors"
-                  onClick={showConceptToast}
-                >
-                  Terms of Service
-                </a>
-                <a
-                  href="#"
-                  className="text-white/60 hover:text-primary-glow transition-colors"
-                  onClick={showConceptToast}
-                >
-                  Cookie Policy
-                </a>
-              </div>
+            <div className="flex flex-col items-center gap-4 text-sm md:flex-row md:space-x-6">
+              <div className="flex space-x-6 text-sm">
+                  <a
+                    href="#"
+                    className="text-white/60 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Privacy Policy
+                  </a>
+                  <a
+                    href="#"
+                    className="text-white/60 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Terms of Service
+                  </a>
+                  <a
+                    href="#"
+                    className="text-white/60 hover:text-primary-glow transition-colors"
+                    onClick={showConceptToast}
+                  >
+                    Cookie Policy
+                  </a>
+                </div>
+                <div className="text-white/60">
+                  Website by{" "}
+                  <a
+                    href="https://www.firebelly.xyz/"
+                    className="font-bold text-orange-600 hover:text-orange-500 dark:text-orange-300 dark:hover:text-orange-200 transition-colors"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Firebelly
+                  </a>
+                </div>
+            </div>
           </div>
         </div>
       </div>

@@ -2,7 +2,6 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react-swc";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
 const healthEndpointPlugin = () => {
   const sendHealth = (res: import("http").ServerResponse) => {
@@ -46,8 +45,6 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     basicSsl(),
     react(),
-    mode === 'development' &&
-    componentTagger(),
     healthEndpointPlugin(),
   ].filter(Boolean),
   resolve: {
