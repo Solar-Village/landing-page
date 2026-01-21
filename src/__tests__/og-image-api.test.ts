@@ -1,5 +1,7 @@
-import { describe, expect, it } from "vitest";
-import handler from "../../api/og-image";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 const createResponse = () => {
   let body: Buffer | string = "";
@@ -22,7 +24,29 @@ const createResponse = () => {
 };
 
 describe("og image api", () => {
-  it("returns png image for GET", () => {
+  let tempDir = "";
+  let tempPath = "";
+
+  const loadHandler = async () =>
+    (await import("../../api/og-image")).default;
+
+  beforeEach(() => {
+    tempDir = mkdtempSync(join(tmpdir(), "og-image-"));
+    tempPath = join(tempDir, "preview.png");
+    writeFileSync(tempPath, Buffer.from("mock"));
+    process.env.OG_IMAGE_PATH = tempPath;
+  });
+
+  afterEach(() => {
+    vi.resetModules();
+    delete process.env.OG_IMAGE_PATH;
+    if (tempDir) {
+      rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it("returns png image for GET", async () => {
+    const handler = await loadHandler();
     const { res, getBody, getHeaders } = createResponse();
     handler({ method: "GET" }, res);
 
@@ -34,7 +58,8 @@ describe("og image api", () => {
     expect((body as Buffer).length).toBeGreaterThan(0);
   });
 
-  it("returns headers without body for HEAD", () => {
+  it("returns headers without body for HEAD", async () => {
+    const handler = await loadHandler();
     const { res, getBody, getHeaders } = createResponse();
     handler({ method: "HEAD" }, res);
 
@@ -43,7 +68,8 @@ describe("og image api", () => {
     expect(getBody()).toBe("");
   });
 
-  it("rejects non-GET methods", () => {
+  it("rejects non-GET methods", async () => {
+    const handler = await loadHandler();
     const { res, getBody, getHeaders } = createResponse();
     handler({ method: "POST" }, res);
 

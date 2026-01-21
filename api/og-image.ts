@@ -19,14 +19,6 @@ const handler = (req: ApiRequest, res: ApiResponse) => {
     return;
   }
 
-  const imagePath = resolve(
-    process.cwd(),
-    "src",
-    "assets",
-    "solar-village-preview.png"
-  );
-  const imageBuffer = readFileSync(imagePath);
-
   res.statusCode = 200;
   res.setHeader("content-type", "image/png");
   res.setHeader("cache-control", "public, max-age=3600");
@@ -36,6 +28,10 @@ const handler = (req: ApiRequest, res: ApiResponse) => {
     return;
   }
 
+  const imagePath =
+    process.env.OG_IMAGE_PATH ??
+    resolve(process.cwd(), "src", "assets", "solar-village-preview.png");
+  const imageBuffer = readFileSync(imagePath);
   res.end(imageBuffer);
 };
 
