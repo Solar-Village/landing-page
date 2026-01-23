@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import Impact from "@/components/Impact";
+import Partnerships from "@/components/Partnerships";
 import SignUp from "@/components/SignUp";
 import MinigridSurveyCTA from "@/components/MinigridSurveyCTA";
 import Footer from "@/components/Footer";
@@ -29,6 +30,7 @@ const Index = () => {
       <Features />
       <Impact />
       <MinigridSurveyCTA />
+      <Partnerships />
       <SignUp />
       <Footer />
     </div>
