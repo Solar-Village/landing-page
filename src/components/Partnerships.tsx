@@ -14,6 +14,9 @@ import reanLogo from "@/assets/rean-logo-300-304.png";
 import cubidLogo from "@/assets/cubid-logo-421x425.png";
 import solarFoundationLogo from "@/assets/solar-foundation-logo-563-158.svg";
 import greenpillLogo from "@/assets/greenpill-logo-1000x419.png";
+import switchLogo from "@/assets/switch-logo.png.webp";
+import m3teringLogo from "@/assets/m3tering-logo.png";
+import tasLogo from "@/assets/tas-logo.png";
 
 const partnerships = [
   {
@@ -79,6 +82,30 @@ const partnerships = [
     url: "https://greenpill.network/",
     summary:
       "Two of our core team members are also active Greenpill chapter leads: Greenpill Naija (Nigeria) and Greenpill Toronto (Canada). As a network of dreamers, hackers and doers, Greenpillers help with any blockchain-related aspects of the project.",
+  },
+  {
+    id: "switch-electric",
+    name: "Switch Electric",
+    image: switchLogo,
+    url: "https://www.whynotswitch.com/",
+    summary:
+      "Switch provides metering hardware designed to publish verifiable proofs about energy consumption, for undeniable record-keeping and fully traceable carbon credits.",
+  },
+  {
+    id: "m3tering-protocol",
+    name: "M3tering Protocol",
+    image: m3teringLogo,
+    url: "https://m3ter.ing/",
+    summary:
+      "We build our tech on open source software / digital public goods from M3tering Protocol, the most modern and trustworthy metering software imaginable.",
+  },
+  {
+    id: "tech-and-sun",
+    name: "Tech And Sun",
+    image: tasLogo,
+    url: null,
+    summary:
+      "T.A.S are electrical engineers with one containerized minigrid already running, and in process of building new microgrids next to universities in Nigeria. They have partnered with us as volunteers to be early pilot installers and beta testers.",
   },
 ] as const;
 
@@ -164,14 +191,16 @@ const Partnerships = () => {
                   <p className="text-sm text-foreground/80">
                     {activePartner.summary}
                   </p>
-                  <a
-                    href={activePartner.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline"
-                  >
-                    Visit partner website
-                  </a>
+                  {activePartner.url ? (
+                    <a
+                      href={activePartner.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                    >
+                      Visit partner website
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </div>

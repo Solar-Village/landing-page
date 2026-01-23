@@ -19,4 +19,24 @@ describe("Partnerships section", () => {
       screen.getByRole("link", { name: /Visit partner website/i })
     ).toHaveAttribute("href", "https://africaminigrids.org/");
   });
+
+  it("omits website link when partner has no url", () => {
+    render(<Partnerships />);
+
+    const partnerButton = screen.getByRole("button", {
+      name: /Tech And Sun logo/i,
+    });
+
+    fireEvent.click(partnerButton);
+
+    expect(
+      screen.getByRole("heading", { name: "Tech And Sun" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/containerized minigrid already running/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: /Visit partner website/i })
+    ).not.toBeInTheDocument();
+  });
 });
