@@ -48,7 +48,7 @@ pnpm dev
 
 This project is built with:
 
-- Vite
+- Vite 
 - TypeScript
 - React
 - shadcn-ui
