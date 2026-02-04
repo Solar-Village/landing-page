@@ -1,4 +1,5 @@
 export type NewsItem = {
+  id: string;
   title: string;
   link: string;
   date: string;
@@ -9,6 +10,7 @@ export type NewsItem = {
 
 export const newsReelItems: NewsItem[] = [
   {
+    id: "undp-report",
     title:
       "Solar Village featured in new report from UNDP: 'New Tech, New Partners: Transforming development in the digital era'",
     link: "https://www.undp.org/publications/new-tech-new-partners-transforming-development-digital-era",
@@ -20,6 +22,7 @@ export const newsReelItems: NewsItem[] = [
       "UNDP spotlights Solar Village in its digital development report, with our full-page feature on page 34.",
   },
   {
+    id: "sdg-blockchain-accelerator",
     title:
       "Solar Village is one of 37 Teams Selected to Join Cohort 2 of the SDG Blockchain Accelerator",
     link: "https://innovation.eurasia.undp.org/37-teams-selected-to-join-cohort-2-of-the-sdg-blockchain-accelerator/",
@@ -31,6 +34,7 @@ export const newsReelItems: NewsItem[] = [
       "The UNDP Innovation team included Solar Village among the 37 teams moving into Accelerator Cohort 2.",
   },
   {
+    id: "artizen-season-6",
     title: "Solar Village joins Artizen Fund for their Season 6",
     link: "https://artizen.fund/index/p/solar-village?season=6",
     date: "January 25, 2026",

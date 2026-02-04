@@ -33,7 +33,7 @@ const NewsReel = () => {
             <CarouselContent>
               {newsReelItems.map((item) => (
                 <CarouselItem
-                  key={item.title}
+                  key={item.id}
                   className="basis-full md:basis-1/2 xl:basis-1/3"
                 >
                   <Card className="h-full border-0 shadow-sm bg-card/90">
