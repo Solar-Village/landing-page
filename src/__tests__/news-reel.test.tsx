@@ -3,7 +3,7 @@ import NewsReel from "@/components/NewsReel";
 import { newsReelItems } from "@/data/newsReel";
 
 describe("NewsReel", () => {
-  it("renders each news item with controls, link, and date", () => {
+  it("renders each news item with controls, indicators, link, and date", () => {
     render(<NewsReel />);
 
     expect(
@@ -31,6 +31,19 @@ describe("NewsReel", () => {
         item.image
       );
     });
+  });
+
+  it("renders bold emphasis in the newest item description", () => {
+    render(<NewsReel />);
+
+    expect(
+      screen.getByText("SDG Blockchain Accelerator", { selector: "strong" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("helped accelerate our path to real-world adoption.", {
+        selector: "strong",
+      })
+    ).toBeInTheDocument();
   });
 
   it("sorts news items by date descending", () => {

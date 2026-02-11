@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -9,12 +9,34 @@ import {
 import { cn } from "@/lib/utils";
 import { newsReelItems } from "@/data/newsReel";
 
-const AUTO_SCROLL_INTERVAL_MS = 2000;
+const ONE_TIME_SCROLL_DELAY_MS = 2000;
+
+const renderDescriptionWithBold = (description: string) => {
+  const parts = description.split("**");
+
+  return parts.map((part, index) => {
+    const key = `${part}-${index}`;
+
+    if (index % 2 === 1) {
+      return <strong key={key}>{part}</strong>;
+    }
+
+    return <Fragment key={key}>{part}</Fragment>;
+  });
+};
 
 const NewsReel = () => {
   const [api, setApi] = useState<CarouselApi>();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const [oneTimeScrollEnabled, setOneTimeScrollEnabled] = useState(true);
+
+  const initialIndex = useMemo(() => {
+    if (newsReelItems.length < 2) {
+      return 0;
+    }
+
+    return 1;
+  }, []);
 
   useEffect(() => {
     if (!api) {
@@ -28,51 +50,47 @@ const NewsReel = () => {
     updateCurrentSlide();
     api.on("select", updateCurrentSlide);
 
-    const disableAutoplay = () => {
-      setAutoplayEnabled(false);
+    const disableOneTimeScroll = () => {
+      setOneTimeScrollEnabled(false);
     };
 
-    api.on("pointerDown", disableAutoplay);
-    api.on("slideFocus", disableAutoplay);
+    api.on("pointerDown", disableOneTimeScroll);
+    api.on("slideFocus", disableOneTimeScroll);
 
     return () => {
       api.off("select", updateCurrentSlide);
-      api.off("pointerDown", disableAutoplay);
-      api.off("slideFocus", disableAutoplay);
+      api.off("pointerDown", disableOneTimeScroll);
+      api.off("slideFocus", disableOneTimeScroll);
     };
   }, [api]);
 
   useEffect(() => {
-    if (!api || !autoplayEnabled) {
+    if (!api || !oneTimeScrollEnabled) {
       return;
     }
 
-    const intervalId = window.setInterval(() => {
-      if (api.canScrollNext()) {
-        api.scrollNext();
-        return;
-      }
-
+    const timeoutId = window.setTimeout(() => {
       api.scrollTo(0);
-    }, AUTO_SCROLL_INTERVAL_MS);
+      setOneTimeScrollEnabled(false);
+    }, ONE_TIME_SCROLL_DELAY_MS);
 
     return () => {
-      window.clearInterval(intervalId);
+      window.clearTimeout(timeoutId);
     };
-  }, [api, autoplayEnabled]);
+  }, [api, oneTimeScrollEnabled]);
 
   const handlePrevious = () => {
-    setAutoplayEnabled(false);
+    setOneTimeScrollEnabled(false);
     api?.scrollPrev();
   };
 
   const handleNext = () => {
-    setAutoplayEnabled(false);
+    setOneTimeScrollEnabled(false);
     api?.scrollNext();
   };
 
   const handleGoToSlide = (index: number) => {
-    setAutoplayEnabled(false);
+    setOneTimeScrollEnabled(false);
     api?.scrollTo(index);
   };
 
@@ -94,7 +112,7 @@ const NewsReel = () => {
 
         <div className="mt-12">
           <Carousel
-            opts={{ align: "start", loop: false }}
+            opts={{ align: "start", loop: false, startIndex: initialIndex }}
             className="relative"
             setApi={setApi}
           >
@@ -122,7 +140,7 @@ const NewsReel = () => {
                           {item.title}
                         </h3>
                         <p className="text-sm text-muted-foreground">
-                          {item.description}
+                          {renderDescriptionWithBold(item.description)}
                         </p>
                       </div>
                       <a
@@ -143,7 +161,7 @@ const NewsReel = () => {
 
             <button
               type="button"
-              className="absolute left-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-2xl font-bold text-foreground shadow-md backdrop-blur transition hover:bg-background"
+              className="absolute left-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#556b2f]/70 text-2xl font-bold text-white shadow-md backdrop-blur transition hover:bg-[#556b2f]/85 lg:-left-6"
               aria-label="Previous news item"
               onClick={handlePrevious}
             >
@@ -152,7 +170,7 @@ const NewsReel = () => {
 
             <button
               type="button"
-              className="absolute right-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-2xl font-bold text-foreground shadow-md backdrop-blur transition hover:bg-background"
+              className="absolute right-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#556b2f]/70 text-2xl font-bold text-white shadow-md backdrop-blur transition hover:bg-[#556b2f]/85 lg:-right-6"
               aria-label="Next news item"
               onClick={handleNext}
             >

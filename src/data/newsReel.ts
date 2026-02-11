@@ -53,7 +53,7 @@ const unsortedNewsReelItems: NewsItem[] = [
     image:
       "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/SDG%20Blockchain%20Acc.%20Badge%20DARK%20RGB.png",
     description:
-      "We are proud to graduate from the #SDGBlockchainAccelerator Cohort 2 with UNDP Nigeria! Strategically led by @UNDP_AltFinLab with @ChainforGood and @EMURGOLabs, this program accelerated our path to real-world adoption.",
+      "We are proud to graduate from the **SDG Blockchain Accelerator** Cohort 2 with UNDP Nigeria! Strategically led by UNDP's AltFinLab with the Blockchain for Good Alliance and EMURGO Labs, this program **helped accelerate our path to real-world adoption.**",
   },
 ];
 
