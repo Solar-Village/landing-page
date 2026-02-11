@@ -1,14 +1,81 @@
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 import { newsReelItems } from "@/data/newsReel";
 
+const AUTO_SCROLL_INTERVAL_MS = 2000;
+
 const NewsReel = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const updateCurrentSlide = () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    };
+
+    updateCurrentSlide();
+    api.on("select", updateCurrentSlide);
+
+    const disableAutoplay = () => {
+      setAutoplayEnabled(false);
+    };
+
+    api.on("pointerDown", disableAutoplay);
+    api.on("slideFocus", disableAutoplay);
+
+    return () => {
+      api.off("select", updateCurrentSlide);
+      api.off("pointerDown", disableAutoplay);
+      api.off("slideFocus", disableAutoplay);
+    };
+  }, [api]);
+
+  useEffect(() => {
+    if (!api || !autoplayEnabled) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext();
+        return;
+      }
+
+      api.scrollTo(0);
+    }, AUTO_SCROLL_INTERVAL_MS);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [api, autoplayEnabled]);
+
+  const handlePrevious = () => {
+    setAutoplayEnabled(false);
+    api?.scrollPrev();
+  };
+
+  const handleNext = () => {
+    setAutoplayEnabled(false);
+    api?.scrollNext();
+  };
+
+  const handleGoToSlide = (index: number) => {
+    setAutoplayEnabled(false);
+    api?.scrollTo(index);
+  };
+
   return (
     <section id="news" className="py-20 bg-muted/20">
       <div className="container mx-auto px-6">
@@ -26,18 +93,10 @@ const NewsReel = () => {
         </div>
 
         <div className="mt-12">
-          <div className="mb-4 flex items-center justify-center gap-3 text-sm font-medium text-muted-foreground md:hidden">
-            <span aria-hidden="true" className="animate-pulse text-base">
-              ←
-            </span>
-            <p className="animate-pulse">Swipe left or right for more news</p>
-            <span aria-hidden="true" className="animate-pulse text-base">
-              →
-            </span>
-          </div>
           <Carousel
             opts={{ align: "start", loop: false }}
             className="relative"
+            setApi={setApi}
           >
             <CarouselContent>
               {newsReelItems.map((item) => (
@@ -81,9 +140,46 @@ const NewsReel = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
+
+            <button
+              type="button"
+              className="absolute left-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-2xl font-bold text-foreground shadow-md backdrop-blur transition hover:bg-background"
+              aria-label="Previous news item"
+              onClick={handlePrevious}
+            >
+              <span aria-hidden="true">&lt;</span>
+            </button>
+
+            <button
+              type="button"
+              className="absolute right-3 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-2xl font-bold text-foreground shadow-md backdrop-blur transition hover:bg-background"
+              aria-label="Next news item"
+              onClick={handleNext}
+            >
+              <span aria-hidden="true">&gt;</span>
+            </button>
           </Carousel>
+
+          <div
+            className="mt-6 flex items-center justify-center gap-2"
+            aria-label="News reel slide indicator"
+          >
+            {newsReelItems.map((item, index) => (
+              <button
+                key={item.id}
+                type="button"
+                className={cn(
+                  "h-2.5 w-2.5 rounded-full transition-all",
+                  currentSlide === index
+                    ? "bg-primary ring-2 ring-primary/30"
+                    : "bg-muted-foreground/35 hover:bg-muted-foreground/60"
+                )}
+                onClick={() => handleGoToSlide(index)}
+                aria-label={`Go to news item ${index + 1}`}
+                aria-current={currentSlide === index ? "true" : undefined}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

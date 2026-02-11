@@ -3,12 +3,20 @@ import NewsReel from "@/components/NewsReel";
 import { newsReelItems } from "@/data/newsReel";
 
 describe("NewsReel", () => {
-  it("renders each news item with link and date", () => {
+  it("renders each news item with controls, link, and date", () => {
     render(<NewsReel />);
 
     expect(
-      screen.getByText("Swipe left or right for more news")
+      screen.getByRole("button", { name: "Previous news item" })
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Next news item" })
+    ).toBeInTheDocument();
+
+    const indicators = screen.getAllByRole("button", {
+      name: /Go to news item/i,
+    });
+    expect(indicators).toHaveLength(newsReelItems.length);
 
     newsReelItems.forEach((item) => {
       expect(
