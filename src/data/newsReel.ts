@@ -6,9 +6,10 @@ export type NewsItem = {
   dateTime: string;
   image: string;
   description: string;
+  ctaLabel?: string;
 };
 
-export const newsReelItems: NewsItem[] = [
+const unsortedNewsReelItems: NewsItem[] = [
   {
     id: "undp-report",
     title:
@@ -17,9 +18,10 @@ export const newsReelItems: NewsItem[] = [
     date: "January 21, 2026",
     dateTime: "2026-01-21",
     image:
-      "https://www.undp.org/sites/g/files/zskgke326/files/styles/publication/public/2026-01/undp-new-tech-new-partners-transforming-development-in-the-digital-era.png?itok=9pjqVfiN",
+      "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/undp-new-tech-new-partners-transforming-development-in-the-digital-era%20(1).png",
     description:
       "UNDP spotlights Solar Village in its digital development report, with our full-page feature on page 34.",
+    ctaLabel: "Download report",
   },
   {
     id: "sdg-blockchain-accelerator",
@@ -29,7 +31,7 @@ export const newsReelItems: NewsItem[] = [
     date: "October 15, 2025",
     dateTime: "2025-10-15",
     image:
-      "https://innovation.eurasia.undp.org/wp-content/uploads/2025/10/Hackathon-Winners-1536x803.png",
+      "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/Hackathon-Winners-1536x803.png",
     description:
       "The UNDP Innovation team included Solar Village among the 37 teams moving into Accelerator Cohort 2.",
   },
@@ -40,8 +42,24 @@ export const newsReelItems: NewsItem[] = [
     date: "January 25, 2026",
     dateTime: "2026-01-25",
     image:
-      "https://b52a6191a6a50af956eb089c76ac973d.cdn.bubble.io/cdn-cgi/image/w=768,h=768,f=auto,dpr=1.25,fit=cover,q=25/f1769349709960x346347210931840200/bubblez6aoi4ltc1m.jpeg",
+      "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/bubblez6aoi4ltc1m.avif",
     description:
       "Help sponsor the project by buying our genesis Artifact through the Artizen Season 6 community fund.",
+    ctaLabel: "View on Artizen",
+  },
+  {
+    id: "sdg-blockchain-accelerator-graduate",
+    title: "Solar Village graduates from #SDGBlockchainAccelerator Cohort 2",
+    link: "https://innovation.eurasia.undp.org/37-teams-selected-to-join-cohort-2-of-the-sdg-blockchain-accelerator/",
+    date: "February 3, 2026",
+    dateTime: "2026-02-03",
+    image:
+      "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/SDG%20Blockchain%20Acc.%20Badge%20DARK%20RGB.png",
+    description:
+      "We are proud to graduate from the **SDG Blockchain Accelerator** Cohort 2 with UNDP Nigeria! Strategically led by UNDP's AltFinLab with the Blockchain for Good Alliance and EMURGO Labs, this program **helped accelerate our path to real-world adoption.**",
   },
 ];
+
+export const newsReelItems = unsortedNewsReelItems.sort((a, b) =>
+  b.dateTime.localeCompare(a.dateTime)
+);
