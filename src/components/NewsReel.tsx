@@ -26,6 +26,15 @@ const NewsReel = () => {
         </div>
 
         <div className="mt-12">
+          <div className="mb-4 flex items-center justify-center gap-3 text-sm font-medium text-muted-foreground md:hidden">
+            <span aria-hidden="true" className="animate-pulse text-base">
+              ←
+            </span>
+            <p className="animate-pulse">Swipe left or right for more news</p>
+            <span aria-hidden="true" className="animate-pulse text-base">
+              →
+            </span>
+          </div>
           <Carousel
             opts={{ align: "start", loop: false }}
             className="relative"

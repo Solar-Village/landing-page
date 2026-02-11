@@ -6,6 +6,10 @@ describe("NewsReel", () => {
   it("renders each news item with link and date", () => {
     render(<NewsReel />);
 
+    expect(
+      screen.getByText("Swipe left or right for more news")
+    ).toBeInTheDocument();
+
     newsReelItems.forEach((item) => {
       expect(
         screen.getByRole("heading", { name: item.title })
@@ -19,5 +23,12 @@ describe("NewsReel", () => {
         item.image
       );
     });
+  });
+
+  it("sorts news items by date descending", () => {
+    const dateTimes = newsReelItems.map((item) => item.dateTime);
+    const sortedDateTimes = [...dateTimes].sort((a, b) => b.localeCompare(a));
+
+    expect(dateTimes).toEqual(sortedDateTimes);
   });
 });
