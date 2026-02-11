@@ -145,7 +145,10 @@ const NewsReel = () => {
             setApi={setApi}
           >
             <CarouselContent>
-              {newsReelItems.map((item) => (
+              {newsReelItems.map((item) => {
+                const ctaLabel = item.ctaLabel ?? "Read article";
+
+                return (
                 <CarouselItem
                   key={item.id}
                   className="basis-full md:basis-1/2 xl:basis-1/3"
@@ -176,15 +179,16 @@ const NewsReel = () => {
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-between rounded-full border border-border px-5 py-2 text-sm font-semibold text-primary transition hover:border-primary hover:bg-primary/10"
-                        aria-label={`Read article: ${item.title}`}
+                        aria-label={`${ctaLabel}: ${item.title}`}
                       >
-                        Read article
+                        {ctaLabel}
                         <span aria-hidden="true">↗</span>
                       </a>
                     </CardContent>
                   </Card>
                 </CarouselItem>
-              ))}
+                );
+              })}
             </CarouselContent>
 
             <button

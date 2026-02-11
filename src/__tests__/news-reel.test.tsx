@@ -24,7 +24,7 @@ describe("NewsReel", () => {
     ).toBe(true);
   });
 
-  it("renders each news item with controls, indicators, link, and date", () => {
+  it("renders each news item with controls, indicators, link labels, and date", () => {
     render(<NewsReel />);
 
     expect(
@@ -43,9 +43,13 @@ describe("NewsReel", () => {
       expect(
         screen.getByRole("heading", { name: item.title })
       ).toBeInTheDocument();
-      expect(
-        screen.getByRole("link", { name: `Read article: ${item.title}` })
-      ).toHaveAttribute("href", item.link);
+      const ctaLabel = item.ctaLabel ?? "Read article";
+      const ctaLink = screen.getByRole("link", {
+        name: `${ctaLabel}: ${item.title}`,
+      });
+
+      expect(ctaLink).toHaveAttribute("href", item.link);
+      expect(ctaLink).toHaveTextContent(ctaLabel);
       expect(screen.getByText(item.date)).toBeInTheDocument();
       expect(screen.getByAltText(item.title)).toHaveAttribute(
         "src",

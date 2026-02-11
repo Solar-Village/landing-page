@@ -6,6 +6,7 @@ export type NewsItem = {
   dateTime: string;
   image: string;
   description: string;
+  ctaLabel?: string;
 };
 
 const unsortedNewsReelItems: NewsItem[] = [
@@ -20,6 +21,7 @@ const unsortedNewsReelItems: NewsItem[] = [
       "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/undp-new-tech-new-partners-transforming-development-in-the-digital-era%20(1).png",
     description:
       "UNDP spotlights Solar Village in its digital development report, with our full-page feature on page 34.",
+    ctaLabel: "Download report",
   },
   {
     id: "sdg-blockchain-accelerator",
@@ -43,12 +45,13 @@ const unsortedNewsReelItems: NewsItem[] = [
       "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/bubblez6aoi4ltc1m.avif",
     description:
       "Help sponsor the project by buying our genesis Artifact through the Artizen Season 6 community fund.",
+    ctaLabel: "View on Artizen",
   },
   {
     id: "sdg-blockchain-accelerator-graduate",
     title: "Solar Village graduates from #SDGBlockchainAccelerator Cohort 2",
     link: "https://innovation.eurasia.undp.org/37-teams-selected-to-join-cohort-2-of-the-sdg-blockchain-accelerator/",
-    date: "Feb 3, 2026",
+    date: "February 3, 2026",
     dateTime: "2026-02-03",
     image:
       "https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/SDG%20Blockchain%20Acc.%20Badge%20DARK%20RGB.png",
