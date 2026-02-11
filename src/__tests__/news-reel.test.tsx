@@ -3,6 +3,27 @@ import NewsReel from "@/components/NewsReel";
 import { newsReelItems } from "@/data/newsReel";
 
 describe("NewsReel", () => {
+  it("observes news section visibility to start intro motion when 50% visible", () => {
+    const observe = vi.fn();
+    const disconnect = vi.fn();
+
+    class MockIntersectionObserver {
+      observe = observe;
+      disconnect = disconnect;
+
+      constructor() {}
+    }
+
+    vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
+
+    render(<NewsReel />);
+
+    expect(observe).toHaveBeenCalled();
+    expect(
+      observe.mock.calls.some(([element]) => element.id === "news")
+    ).toBe(true);
+  });
+
   it("renders each news item with controls, indicators, link, and date", () => {
     render(<NewsReel />);
 

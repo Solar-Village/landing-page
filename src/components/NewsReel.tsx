@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -29,6 +29,8 @@ const NewsReel = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(1);
   const [oneTimeScrollEnabled, setOneTimeScrollEnabled] = useState(true);
+  const [isNewsReelVisible, setIsNewsReelVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const initialIndex = useMemo(() => {
     if (newsReelItems.length < 2) {
@@ -36,6 +38,32 @@ const NewsReel = () => {
     }
 
     return 1;
+  }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current) {
+      return;
+    }
+
+    if (typeof window === "undefined" || !window.IntersectionObserver) {
+      setIsNewsReelVisible(true);
+      return;
+    }
+
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          setIsNewsReelVisible(true);
+        }
+      },
+      { threshold: [0.5] }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -65,7 +93,7 @@ const NewsReel = () => {
   }, [api]);
 
   useEffect(() => {
-    if (!api || !oneTimeScrollEnabled) {
+    if (!api || !oneTimeScrollEnabled || !isNewsReelVisible) {
       return;
     }
 
@@ -77,7 +105,7 @@ const NewsReel = () => {
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [api, oneTimeScrollEnabled]);
+  }, [api, oneTimeScrollEnabled, isNewsReelVisible]);
 
   const handlePrevious = () => {
     setOneTimeScrollEnabled(false);
@@ -95,7 +123,7 @@ const NewsReel = () => {
   };
 
   return (
-    <section id="news" className="py-20 bg-muted/20">
+    <section id="news" className="py-20 bg-muted/20" ref={sectionRef}>
       <div className="container mx-auto px-6">
         <div className="flex flex-col gap-4 text-center">
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
