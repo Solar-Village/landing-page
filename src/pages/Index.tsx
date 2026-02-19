@@ -7,6 +7,7 @@ import Impact from "@/components/Impact";
 import Partnerships from "@/components/Partnerships";
 import NewsReel from "@/components/NewsReel";
 import SignUp from "@/components/SignUp";
+import SolarFundingInvesting from "@/components/SolarFundingInvesting";
 import MinigridSurveyCTA from "@/components/MinigridSurveyCTA";
 import Footer from "@/components/Footer";
 
@@ -34,6 +35,7 @@ const Index = () => {
       <Partnerships />
       <NewsReel />
       <SignUp />
+      <SolarFundingInvesting />
       <Footer />
     </div>
   );

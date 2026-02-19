@@ -48,4 +48,20 @@ describe("Use Cases & Benefits page", () => {
       expect(listItems.length).toBeGreaterThanOrEqual(3);
     });
   });
+
+  test("includes future Solar Bond investing information", () => {
+    render(
+      <MemoryRouter>
+        <Financials />
+      </MemoryRouter>
+    );
+
+    expect(
+      screen.getByRole("heading", { name: /future feature: solar bond investing/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/diversifying across sites can reduce concentration risk/i)
+    ).toBeInTheDocument();
+  });
+
 });
