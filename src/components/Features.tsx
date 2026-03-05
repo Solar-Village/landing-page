@@ -8,7 +8,8 @@ import {
   Users,
   Sun,
   Battery,
-  Wifi
+  Wifi,
+  Handshake
 } from "lucide-react";
 
 const Features = () => {
@@ -52,6 +53,11 @@ const Features = () => {
       icon: <Wifi className="h-8 w-8" />,
       title: "Carbon-ready connectivity",
       description: "Offline caching with sync to chain ensures carbon credit issuance can rely on complete, verified records."
+    },
+    {
+      icon: <Handshake className="h-8 w-8" />,
+      title: "Investment matchmaking",
+      description: "Coordinate investors, villages, and project managers with verifiable operating data and aligned financing intent."
     }
   ];
 
@@ -65,7 +71,7 @@ const Features = () => {
             <span className="text-transparent bg-gradient-sunrise bg-clip-text"> Evidence-backed Energy</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Start with accurate metering and immutable reporting, then switch on carbon credits or payments when stakeholders are ready.
+            Start with accurate metering and immutable reporting, then switch on carbon credits, payments, or investment modules when stakeholders are ready.
           </p>
         </div>
 
@@ -98,7 +104,7 @@ const Features = () => {
             Proof On Demand
           </h3>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Deploy the metering and reporting core first. Add settlement flows or carbon credit issuance as optional modules.
+            Deploy the metering and reporting core first. Add settlement flows, carbon credit issuance, or investment pathways as optional modules.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div className="bg-white/20 rounded-lg p-4">
@@ -112,6 +118,14 @@ const Features = () => {
             <div className="bg-white/20 rounded-lg p-4">
               <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Optional Module</div>
               <div className="text-2xl md:text-3xl font-bold">Carbon Credit Minting</div>
+            </div>
+            <div className="bg-white/20 rounded-lg p-4">
+              <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Future Module</div>
+              <div className="text-2xl md:text-3xl font-bold">Investment Matchmaking</div>
+            </div>
+            <div className="bg-white/20 rounded-lg p-4">
+              <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Future Module</div>
+              <div className="text-2xl md:text-3xl font-bold">Solar Bonds</div>
             </div>
           </div>
         </div>

@@ -39,6 +39,7 @@ const audienceSections = [
       "Access immutable reports on generation, per-user consumption, and credit balances.",
       "Monitor carbon credits minted and the financial impact of optional payments modules.",
       "Optionally manage repayments within the same platform for end-to-end visibility.",
+      "Prepare for future Solar Bond participation to diversify exposure across multiple village projects and reduce concentration risk.",
     ],
   },
   {
@@ -100,6 +101,8 @@ const Financials = () => {
             ))}
           </div>
         </section>
+
+
       </main>
       <Footer />
     </div>
