@@ -39,6 +39,7 @@ const audienceSections = [
       "Access immutable reports on generation, per-user consumption, and credit balances.",
       "Monitor carbon credits minted and the financial impact of optional payments modules.",
       "Optionally manage repayments within the same platform for end-to-end visibility.",
+      "Prepare for future Solar Bond participation to diversify exposure across multiple village projects and reduce concentration risk.",
     ],
   },
   {
@@ -102,23 +103,6 @@ const Financials = () => {
         </section>
 
 
-        <section className="w-full pb-20">
-          <div className="container mx-auto px-6">
-            <div className="bg-card border border-border rounded-2xl shadow-sm p-8 md:p-10">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Future Feature: Solar Bond Investing</h2>
-              <p className="text-muted-foreground mb-6">
-                We are designing a Solar Bond to give investors exposure to multiple village projects through one
-                instrument. Diversifying across sites can reduce concentration risk while preserving transparent
-                reporting from metered energy, payments, and impact outcomes.
-              </p>
-              <ul className="space-y-3 text-muted-foreground list-disc list-inside">
-                <li>Portfolio-style allocation across verified projects instead of single-site exposure.</li>
-                <li>Evidence-backed reporting intended to support investor confidence and governance oversight.</li>
-                <li>Optional participation pathways for both mission-aligned investors and larger institutions.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>

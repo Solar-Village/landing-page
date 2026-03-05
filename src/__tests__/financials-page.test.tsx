@@ -49,18 +49,24 @@ describe("Use Cases & Benefits page", () => {
     });
   });
 
-  test("includes future Solar Bond investing information", () => {
+  test("includes Solar Bond information inside the investors panel", () => {
     render(
       <MemoryRouter>
         <Financials />
       </MemoryRouter>
     );
 
+    const investorsHeading = screen.getByRole("heading", {
+      name: /investors, grantmakers, and government agencies/i,
+    });
+    const investorsCard = investorsHeading.parentElement?.parentElement?.parentElement;
+
+    if (!investorsCard) {
+      throw new Error("Expected investors card container");
+    }
+
     expect(
-      screen.getByRole("heading", { name: /future feature: solar bond investing/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/diversifying across sites can reduce concentration risk/i)
+      within(investorsCard).getByText(/future Solar Bond participation/i)
     ).toBeInTheDocument();
   });
 

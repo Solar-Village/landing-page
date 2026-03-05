@@ -123,6 +123,10 @@ const Features = () => {
               <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Future Module</div>
               <div className="text-2xl md:text-3xl font-bold">Investment Matchmaking</div>
             </div>
+            <div className="bg-white/20 rounded-lg p-4">
+              <div className="text-xs font-semibold uppercase tracking-wide opacity-70">Future Module</div>
+              <div className="text-2xl md:text-3xl font-bold">Solar Bonds</div>
+            </div>
           </div>
         </div>
       </div>

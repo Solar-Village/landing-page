@@ -130,7 +130,7 @@ const SolarFundingInvesting = () => {
                     Show your interest as an investor
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="bg-background border-2 border-border shadow-xl">
                   <DialogHeader>
                     <DialogTitle>{modeTitle.managed_service}</DialogTitle>
                     <DialogDescription>{modeDescription.managed_service}</DialogDescription>
@@ -139,22 +139,22 @@ const SolarFundingInvesting = () => {
                     <input type="hidden" {...register("mode")} />
                     <div className="space-y-2">
                       <Label htmlFor="fullName">Full name</Label>
-                      <Input id="fullName" {...register("fullName")} />
+                      <Input id="fullName" className="bg-background border-2 border-input" {...register("fullName")} />
                       {currentMode === "managed_service" && errors.fullName && <p className="text-sm text-destructive">{errors.fullName.message}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" {...register("email")} />
+                      <Input id="email" type="email" className="bg-background border-2 border-input" {...register("email")} />
                       {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="organization">Organization</Label>
-                      <Input id="organization" {...register("organization")} />
+                      <Input id="organization" className="bg-background border-2 border-input" {...register("organization")} />
                       {currentMode === "managed_service" && errors.organization && <p className="text-sm text-destructive">{errors.organization.message}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="geography">Geographic area of interest</Label>
-                      <Input id="geography" placeholder="e.g. Nigeria, East Africa, West Africa" {...register("geography")} />
+                      <Input id="geography" className="bg-background border-2 border-input" placeholder="e.g. Nigeria, East Africa, West Africa" {...register("geography")} />
                       {currentMode === "managed_service" && errors.geography && <p className="text-sm text-destructive">{errors.geography.message}</p>}
                     </div>
                     <div className="space-y-2">
@@ -179,12 +179,12 @@ const SolarFundingInvesting = () => {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="ticketSize">Estimated ticket size</Label>
-                      <Input id="ticketSize" placeholder="e.g. $50,000 - $150,000" {...register("ticketSize")} />
+                      <Input id="ticketSize" className="bg-background border-2 border-input" placeholder="e.g. $50,000 - $150,000" {...register("ticketSize")} />
                       {currentMode === "managed_service" && errors.ticketSize && <p className="text-sm text-destructive">{errors.ticketSize.message}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="notes">Anything else we should know? (optional)</Label>
-                      <Textarea id="notes" rows={3} {...register("notes")} />
+                      <Textarea id="notes" rows={3} className="bg-background border-2 border-input" {...register("notes")} />
                     </div>
                     <Button type="submit" className="w-full">Submit investor profile</Button>
                   </form>
@@ -197,7 +197,7 @@ const SolarFundingInvesting = () => {
                     Add me to the waitlist
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="bg-background border-2 border-border shadow-xl">
                   <DialogHeader>
                     <DialogTitle>{modeTitle.solar_bond_waitlist}</DialogTitle>
                     <DialogDescription>{modeDescription.solar_bond_waitlist}</DialogDescription>
@@ -206,7 +206,7 @@ const SolarFundingInvesting = () => {
                     <input type="hidden" {...register("mode")} />
                     <div className="space-y-2">
                       <Label htmlFor="waitlistEmail">Email</Label>
-                      <Input id="waitlistEmail" type="email" {...register("email")} />
+                      <Input id="waitlistEmail" type="email" className="bg-background border-2 border-input" {...register("email")} />
                       {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
                     </div>
                     <Button type="submit" className="w-full">Join Solar Bond waitlist</Button>
