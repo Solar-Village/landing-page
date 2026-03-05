@@ -3,15 +3,15 @@ import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import SolarFundingInvesting from "@/components/SolarFundingInvesting";
 
-const { insertMock, toastMock } = vi.hoisted(() => ({
-  insertMock: vi.fn(),
+const { upsertMock, toastMock } = vi.hoisted(() => ({
+  upsertMock: vi.fn(),
   toastMock: vi.fn(),
 }));
 
 vi.mock("@/lib/supabase", () => ({
   createClient: () => ({
     from: () => ({
-      insert: insertMock,
+      upsert: upsertMock,
     }),
   }),
 }));
@@ -22,8 +22,8 @@ vi.mock("@/hooks/use-toast", () => ({
 
 describe("Solar Funding and Investing section", () => {
   beforeEach(() => {
-    insertMock.mockResolvedValue({ error: null });
-    insertMock.mockClear();
+    upsertMock.mockResolvedValue({ error: null });
+    upsertMock.mockClear();
     toastMock.mockClear();
   });
 
@@ -55,13 +55,14 @@ describe("Solar Funding and Investing section", () => {
 
     await user.click(screen.getByRole("button", { name: /submit investor profile/i }));
 
-    expect(insertMock).toHaveBeenCalledWith(
+    expect(upsertMock).toHaveBeenCalledWith(
       expect.objectContaining({
         signup_type: "managed_service",
         email: "ada@example.com",
         full_name: "Ada Investor",
         geographic_area: "West Africa",
-      })
+      }),
+      { onConflict: "email,signup_type" }
     );
   });
 
@@ -73,12 +74,32 @@ describe("Solar Funding and Investing section", () => {
     await user.type(screen.getByLabelText(/^email$/i), "bond@example.com");
     await user.click(screen.getByRole("button", { name: /join solar bond waitlist/i }));
 
-    expect(insertMock).toHaveBeenCalledWith(
+    expect(upsertMock).toHaveBeenCalledWith(
       expect.objectContaining({
         signup_type: "solar_bond_waitlist",
         email: "bond@example.com",
         notes: "Solar Bond waitlist",
-      })
+        investment_preference: null,
+      }),
+      { onConflict: "email,signup_type" }
     );
   });
+
+  test("switching dialogs resets managed-service validation errors", async () => {
+    const user = userEvent.setup();
+    render(<SolarFundingInvesting />);
+
+    await user.click(
+      screen.getByRole("button", { name: /show your interest as an investor/i })
+    );
+    await user.click(screen.getByRole("button", { name: /submit investor profile/i }));
+
+    expect(await screen.findByText(/full name is required/i)).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    await user.click(screen.getByRole("button", { name: /add me to the waitlist/i }));
+
+    expect(screen.queryByText(/full name is required/i)).not.toBeInTheDocument();
+  });
+
 });

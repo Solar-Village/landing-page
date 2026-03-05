@@ -31,6 +31,8 @@ const waitlistSchema = z.object({
 const investorSchema = z.discriminatedUnion("mode", [managedServiceSchema, waitlistSchema]);
 
 type InvestorFormValues = z.infer<typeof investorSchema>;
+type ManagedServiceValues = z.infer<typeof managedServiceSchema>;
+type WaitlistValues = z.infer<typeof waitlistSchema>;
 
 type InvestorMode = InvestorFormValues["mode"];
 
@@ -46,6 +48,22 @@ const modeDescription: Record<InvestorMode, string> = {
     "Join the Solar Bond waitlist to receive updates as we design diversified portfolio access.",
 };
 
+const managedServiceDefaults: ManagedServiceValues = {
+  mode: "managed_service",
+  fullName: "",
+  email: "",
+  organization: "",
+  geography: "",
+  investmentPreference: "both",
+  ticketSize: "",
+  notes: "",
+};
+
+const waitlistDefaults: WaitlistValues = {
+  mode: "solar_bond_waitlist",
+  email: "",
+};
+
 const SolarFundingInvesting = () => {
   const [openMode, setOpenMode] = useState<InvestorMode | null>(null);
 
@@ -58,16 +76,17 @@ const SolarFundingInvesting = () => {
     formState: { errors },
   } = useForm<InvestorFormValues>({
     resolver: zodResolver(investorSchema),
-    defaultValues: { mode: "managed_service", investmentPreference: "both", notes: "" } as InvestorFormValues,
+    defaultValues: managedServiceDefaults,
   });
 
   const currentMode = watch("mode");
   const investmentPreference = watch("investmentPreference") ?? "both";
 
   const openDialog = (mode: InvestorMode) => {
-    setValue("mode", mode, { shouldValidate: true });
     if (mode === "managed_service") {
-      setValue("investmentPreference", "both", { shouldValidate: true });
+      reset(managedServiceDefaults);
+    } else {
+      reset(waitlistDefaults);
     }
     setOpenMode(mode);
   };
@@ -79,13 +98,15 @@ const SolarFundingInvesting = () => {
       full_name: values.mode === "managed_service" ? values.fullName : null,
       organization: values.mode === "managed_service" ? values.organization : null,
       geographic_area: values.mode === "managed_service" ? values.geography : null,
-      investment_preference: values.mode === "managed_service" ? values.investmentPreference : "solar_bond",
+      investment_preference: values.mode === "managed_service" ? values.investmentPreference : null,
       ticket_size: values.mode === "managed_service" ? values.ticketSize : null,
       notes: values.mode === "managed_service" ? values.notes || null : "Solar Bond waitlist",
     };
 
     const supabase = createClient();
-    const { error } = await supabase.from("investor_signups").insert(payload);
+    const { error } = await supabase
+      .from("investor_signups")
+      .upsert(payload, { onConflict: "email,signup_type" });
 
     if (error) {
       toast({
@@ -101,11 +122,7 @@ const SolarFundingInvesting = () => {
           : "You are on the Solar Bond waitlist. We will share updates as soon as this product evolves.",
     });
 
-    reset(
-      values.mode === "managed_service"
-        ? ({ mode: "managed_service", investmentPreference: "both", notes: "" } as InvestorFormValues)
-        : ({ mode: "solar_bond_waitlist", email: "" } as InvestorFormValues)
-    );
+    reset(values.mode === "managed_service" ? managedServiceDefaults : waitlistDefaults);
     setOpenMode(null);
   };
 
