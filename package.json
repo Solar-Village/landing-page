@@ -7,12 +7,16 @@
   "scripts": {
     "dev": "pnpm --filter @solar-village/landing-page dev",
     "dev:landing-page": "pnpm --filter @solar-village/landing-page dev",
+    "dev:hub": "pnpm --filter @solar-village/hub dev",
     "build": "pnpm --filter @solar-village/landing-page build",
     "build:landing-page": "pnpm --filter @solar-village/landing-page build",
+    "build:hub": "pnpm --filter @solar-village/hub build",
     "lint": "pnpm --filter @solar-village/landing-page lint",
     "lint:landing-page": "pnpm --filter @solar-village/landing-page lint",
+    "lint:hub": "pnpm --filter @solar-village/hub lint",
     "preview": "pnpm --filter @solar-village/landing-page preview",
     "preview:landing-page": "pnpm --filter @solar-village/landing-page preview",
+    "preview:hub": "pnpm --filter @solar-village/hub preview",
     "test": "pnpm --filter @solar-village/landing-page test",
     "test:landing-page": "pnpm --filter @solar-village/landing-page test"
   }

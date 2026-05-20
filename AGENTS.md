@@ -2,9 +2,10 @@
 
 ## Repo Shape
 
-This repository is a pnpm workspace for SolarVillage web apps. The current app is the public landing page, with room for sibling Vite apps under `apps/`.
+This repository is a pnpm workspace for SolarVillage web apps.
 
 - Landing page app under `apps/landing-page/`
+- Hub app under `apps/hub/`
 - Public pages and sections under `apps/landing-page/src/pages/` and `apps/landing-page/src/components/`
 - Browser-side Supabase writes through `apps/landing-page/src/lib/supabase.ts`
 - Vercel-style API handlers in `apps/landing-page/api/`
@@ -32,7 +33,7 @@ For publish work:
 
 ## Package Manager
 
-This repo is a pnpm workspace with apps declared in `pnpm-workspace.yaml`. Root scripts delegate to the landing-page app with `pnpm --filter @solar-village/landing-page ...`.
+This repo is a pnpm workspace with apps declared in `pnpm-workspace.yaml`. Root default scripts delegate to the landing-page app with `pnpm --filter @solar-village/landing-page ...`. Use `:hub` scripts or `pnpm --filter @solar-village/hub ...` for the hub app.
 
 Use pnpm for installs, scripts, and lockfile updates. Do not add npm, Yarn, Bun, or other package-manager lockfiles.
 
@@ -53,6 +54,11 @@ Browser-side Supabase writes are acceptable for this landing page. Treat them as
 Remote Supabase modifications require explicit human consent before running them. This includes push, sync, link-and-push, migration repair, SQL execution against hosted databases, or any other hosted project write. Read-only remote inspection is allowed. Local Supabase can be reset when needed without explicit consent.
 
 Use the `solar-village` Colima profile for local Docker/Supabase work. When the user asks to run dev, start both local Supabase and the Vite dev server, and leave both running for the user. Otherwise, stop local Supabase immediately when finished and at the end of each session unless the user explicitly asks to keep it running.
+
+Local dev ports:
+
+- Landing page: `http://localhost:8080/`
+- Hub: `http://localhost:8081/`
 
 Still keep the Supabase contract explicit:
 

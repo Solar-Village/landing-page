@@ -7,6 +7,7 @@ SolarVillage web apps live in this pnpm workspace.
 | App | Path | Purpose |
 | --- | --- | --- |
 | `@solar-village/landing-page` | `apps/landing-page` | Public landing page for <https://solarvillage.xyz>. |
+| `@solar-village/hub` | `apps/hub` | SolarVillage dashboard hub app imported from `solardash-hub-fork`. |
 
 Add future Vite apps as siblings under `apps/`.
 
@@ -19,7 +20,7 @@ pnpm install
 pnpm dev
 ```
 
-The root `pnpm dev` script currently starts the landing page app. The Vite dev server is configured for HTTP on port `8080`.
+The root `pnpm dev` script currently starts the landing page app. The landing page dev server uses HTTP on port `8080`; the hub dev server uses HTTP on port `8081`.
 
 ## Scripts
 
@@ -34,6 +35,7 @@ pnpm preview    # preview the landing page production build
 ```
 
 App-specific aliases are also available, such as `pnpm dev:landing-page`.
+Hub aliases are also available, such as `pnpm dev:hub`, `pnpm lint:hub`, and `pnpm build:hub`.
 
 ## Environment
 

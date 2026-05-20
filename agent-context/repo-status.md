@@ -2,7 +2,7 @@
 
 | Requirement | Current status |
 | --- | --- |
-| Repo shape | Pass - pnpm workspace with the landing page app under `apps/landing-page` and room for sibling apps under `apps/`. |
+| Repo shape | Pass - pnpm workspace with the landing page app under `apps/landing-page` and the hub app under `apps/hub`. |
 | Branch and integration workflow | Pass - Local `main` tracks `origin/main`, and `AGENTS.md` defines branch, PR, validation, Supabase, and agent-context expectations. |
 | README quality | Pass - README documents local setup, scripts, env vars, Supabase table contracts, API handlers, and deployment assumptions. |
 | License | Missing - No `LICENSE` or `LICENCE` file found. |
