@@ -11,7 +11,7 @@ const { upsertMock, toastMock } = vi.hoisted(() => ({
 vi.mock("@/lib/supabase", () => ({
   createClient: () => ({
     from: () => ({
-      upsert: upsertMock,
+      insert: upsertMock,
     }),
   }),
 }));
@@ -61,8 +61,7 @@ describe("Solar Funding and Investing section", () => {
         email: "ada@example.com",
         full_name: "Ada Investor",
         geographic_area: "West Africa",
-      }),
-      { onConflict: "email,signup_type" }
+      })
     );
   });
 
@@ -80,8 +79,7 @@ describe("Solar Funding and Investing section", () => {
         email: "bond@example.com",
         notes: "Solar Bond waitlist",
         investment_preference: null,
-      }),
-      { onConflict: "email,signup_type" }
+      })
     );
   });
 

@@ -1,59 +1,66 @@
-# SolarVillage landing page
+# SolarVillage Landing Page
 
-## Project info
+Public landing page for SolarVillage at <https://solarvillage.xyz>.
 
-**URL**: https://solarvillage.xyz
+The app is a Vite, React, and TypeScript site with shadcn/ui components, Tailwind CSS, Vitest tests, Vercel-style API handlers, and browser-side Supabase writes for public interest forms.
 
-## How can I edit this code?
+## Local Setup
 
-There are several ways of editing your application.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes.
-
-The only requirement is having Node.js & pnpm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Use pnpm for local work.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
 pnpm install
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 pnpm dev
 ```
 
-**Edit a file directly in GitHub**
+The Vite dev server is configured in `vite.config.ts` for HTTP on port `8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Scripts
 
-**Use GitHub Codespaces**
+```sh
+pnpm dev        # start the local dev server
+pnpm test       # run Vitest
+pnpm lint       # run ESLint
+pnpm build      # build production assets
+pnpm preview    # preview the production build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Environment
 
-## What technologies are used for this project?
+Create `.env.local` from `.env.example` for local development.
 
-This project is built with:
+| Variable | Required | Runtime | Purpose |
+| --- | --- | --- | --- |
+| `VITE_SUPABASE_URL` | Yes | Browser | Supabase project URL used by public signup forms. |
+| `VITE_SUPABASE_ANON_KEY` | Yes | Browser | Supabase anon key used by public signup forms. |
+| `VITE_SENTRY_DSN` | No | Browser | Enables Sentry monitoring when present. |
+| `OG_IMAGE_PATH` | No | API handler | Overrides the image served by `api/og-image.ts`; defaults to `src/assets/solar-village-preview.png`. |
 
-- Vite 
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Do not place service-role keys or privileged Supabase credentials in browser-visible `VITE_*` variables.
 
-## How can I deploy this project?
+## Supabase Contract
 
-Deploy the static build output from `pnpm build` with your preferred hosting provider.
+Browser-side Supabase writes are intentional for this landing page. The public forms use the anon key and should be protected by database constraints, RLS/write policies, and operational spam controls rather than by privileged browser credentials.
+
+Current browser-written tables:
+
+| Feature | Source | Table | Write shape |
+| --- | --- | --- | --- |
+| Village/community interest form | `src/components/SignUp.tsx` | `solar_village_signups` | Public insert. |
+| Investor managed-service form | `src/components/SolarFundingInvesting.tsx` | `investor_signups` | Public insert; duplicate `email,signup_type` is treated as already submitted. |
+| Solar Bond waitlist form | `src/components/SolarFundingInvesting.tsx` | `investor_signups` | Public insert; duplicate `email,signup_type` is treated as already submitted. |
+
+Migrations live under `supabase/migrations/`. The current authoritative public-schema baseline is `supabase/migrations/20260519212500_remote_public_schema_baseline.sql`.
+
+Public Supabase Storage image URLs in `src/data/newsReel.ts` point at the hosted SolarVillage Supabase project bucket `homepage-news`. Keep those assets public, or replace them with repo-local/public-hosted images before changing that bucket or project.
+
+## API Handlers
+
+- `api/health.ts` returns a no-store JSON health response.
+- `api/og-image.ts` serves the default preview image or `OG_IMAGE_PATH`.
+
+## Deployment
+
+Deploy the static build output from `pnpm build` with the hosting provider. The current source layout also supports Vercel-style `api/` handlers for health and OG image routes.
+
+Production/preview environments need the required Supabase browser variables configured in the hosting platform.

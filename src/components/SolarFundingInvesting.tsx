@@ -104,11 +104,9 @@ const SolarFundingInvesting = () => {
     };
 
     const supabase = createClient();
-    const { error } = await supabase
-      .from("investor_signups")
-      .upsert(payload, { onConflict: "email,signup_type" });
+    const { error } = await supabase.from("investor_signups").insert(payload);
 
-    if (error) {
+    if (error && error.code !== "23505") {
       toast({
         description: `Unable to submit your interest right now. Please try again later. ${error.message}`,
       });
