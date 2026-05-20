@@ -2,11 +2,12 @@
 
 ## Repo Shape
 
-This repository is the SolarVillage public landing page. It is a single Vite, React, and TypeScript app with:
+This repository is a pnpm workspace for SolarVillage web apps. The current app is the public landing page, with room for sibling Vite apps under `apps/`.
 
-- Public pages and sections under `src/pages/` and `src/components/`
-- Browser-side Supabase writes through `src/lib/supabase.ts`
-- Vercel-style API handlers in `api/`
+- Landing page app under `apps/landing-page/`
+- Public pages and sections under `apps/landing-page/src/pages/` and `apps/landing-page/src/components/`
+- Browser-side Supabase writes through `apps/landing-page/src/lib/supabase.ts`
+- Vercel-style API handlers in `apps/landing-page/api/`
 - Supabase migrations in `supabase/migrations/`
 - Agent control-plane notes in `agent-context/`
 
@@ -31,7 +32,9 @@ For publish work:
 
 ## Package Manager
 
-This repo is intended to standardize on `pnpm`, but the cleanup todo is still pending. Until that todo is completed, avoid modifying lockfiles unless the package-manager cleanup is the active task.
+This repo is a pnpm workspace with apps declared in `pnpm-workspace.yaml`. Root scripts delegate to the landing-page app with `pnpm --filter @solar-village/landing-page ...`.
+
+Use pnpm for installs, scripts, and lockfile updates. Do not add npm, Yarn, Bun, or other package-manager lockfiles.
 
 ## Validation
 
@@ -60,8 +63,8 @@ Still keep the Supabase contract explicit:
 
 Current browser-write features:
 
-- Village/community interest form in `src/components/SignUp.tsx`, writing to `solar_village_signups`.
-- Investor managed-service and Solar Bond waitlist forms in `src/components/SolarFundingInvesting.tsx`, writing to `investor_signups`.
+- Village/community interest form in `apps/landing-page/src/components/SignUp.tsx`, writing to `solar_village_signups`.
+- Investor managed-service and Solar Bond waitlist forms in `apps/landing-page/src/components/SolarFundingInvesting.tsx`, writing to `investor_signups`.
 
 ## Agent Context Files
 

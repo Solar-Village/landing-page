@@ -2,7 +2,7 @@
 
 | Requirement | Current status |
 | --- | --- |
-| Repo shape | Pass - Single Vite, React, TypeScript landing-page app with Vercel-style `api/` handlers and a small Supabase migration footprint. |
+| Repo shape | Pass - pnpm workspace with the landing page app under `apps/landing-page` and room for sibling apps under `apps/`. |
 | Branch and integration workflow | Pass - Local `main` tracks `origin/main`, and `AGENTS.md` defines branch, PR, validation, Supabase, and agent-context expectations. |
 | README quality | Pass - README documents local setup, scripts, env vars, Supabase table contracts, API handlers, and deployment assumptions. |
 | License | Missing - No `LICENSE` or `LICENCE` file found. |
@@ -16,5 +16,5 @@
 | Local acceptance harness | Missing - Unit/component tests cover important flows, but there is no documented local end-to-end acceptance harness. |
 | CI validation | Missing - No `.github/workflows/` directory found, so PR validation is not currently enforced by GitHub Actions. |
 | Supabase access rules | Pass - Browser writes are explicitly acceptable and documented in README plus `docs/engineering/supabase-architecture.md`; the migration baseline covers the hosted public schema inventory from project `cmzhtpkjwquncfwmirtt`. |
-| Environment and script conventions | Partial - `.env.example` documents required Supabase browser vars, optional Sentry, and OG image override. Multiple lockfiles remain until the package-manager cleanup todo standardizes on pnpm. |
+| Environment and script conventions | Pass - `apps/landing-page/.env.example` documents required Supabase browser vars, optional Sentry, and OG image override. The workspace is standardized on pnpm with `pnpm-lock.yaml`. |
 | Disposable artifacts and git hygiene | Pass - No tracked build output or local dependency directory found during the initial audit. |

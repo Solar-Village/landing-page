@@ -29,9 +29,9 @@ The public landing page only writes to lead-capture tables from browser code:
 
 | Feature | Source | Table | Operation |
 | --- | --- | --- | --- |
-| Village/community interest form | `src/components/SignUp.tsx` | `solar_village_signups` | Insert |
-| Investor managed-service form | `src/components/SolarFundingInvesting.tsx` | `investor_signups` | Insert; duplicate `email,signup_type` is treated as already submitted |
-| Solar Bond waitlist form | `src/components/SolarFundingInvesting.tsx` | `investor_signups` | Insert; duplicate `email,signup_type` is treated as already submitted |
+| Village/community interest form | `apps/landing-page/src/components/SignUp.tsx` | `solar_village_signups` | Insert |
+| Investor managed-service form | `apps/landing-page/src/components/SolarFundingInvesting.tsx` | `investor_signups` | Insert; duplicate `email,signup_type` is treated as already submitted |
+| Solar Bond waitlist form | `apps/landing-page/src/components/SolarFundingInvesting.tsx` | `investor_signups` | Insert; duplicate `email,signup_type` is treated as already submitted |
 
 Browser-side Supabase writes are acceptable for this landing page. They must use the anon key only. Do not add service-role keys or privileged Supabase credentials to browser-visible `VITE_*` variables.
 
@@ -81,7 +81,7 @@ The current hosted public schema includes these enums:
 
 ### `investor_signups`
 
-Used by `src/components/SolarFundingInvesting.tsx`.
+Used by `apps/landing-page/src/components/SolarFundingInvesting.tsx`.
 
 Key contract:
 
@@ -94,7 +94,7 @@ Key contract:
 
 ### `solar_village_signups`
 
-Used by `src/components/SignUp.tsx`.
+Used by `apps/landing-page/src/components/SignUp.tsx`.
 
 Key contract:
 
@@ -127,7 +127,7 @@ Because the remote schema was available through generated types rather than a fu
 
 ## Storage Asset Ownership
 
-`src/data/newsReel.ts` references public Supabase Storage objects under:
+`apps/landing-page/src/data/newsReel.ts` references public Supabase Storage objects under:
 
 ```text
 https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/
@@ -135,8 +135,8 @@ https://cmzhtpkjwquncfwmirtt.supabase.co/storage/v1/object/public/homepage-news/
 
 Those assets are treated as SolarVillage-owned public homepage assets. If the Supabase project, bucket, or object paths change, either:
 
-- migrate the objects and update `src/data/newsReel.ts`, or
-- replace the URLs with repo-local assets under `public/` or `src/assets/`.
+- migrate the objects and update `apps/landing-page/src/data/newsReel.ts`, or
+- replace the URLs with repo-local assets under `apps/landing-page/public/` or `apps/landing-page/src/assets/`.
 
 Do not leave the news reel dependent on private or expiring storage URLs.
 

@@ -9,4 +9,3 @@ No carried-over active items.
 ## CI And Tooling
 
 - CI Baseline: Add GitHub Actions for install, lint, test, and build using the chosen package manager.
-- Package Manager Cleanup: Set this repo to pnpm, remove conflicting lockfiles, and document the policy.
